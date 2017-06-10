@@ -18,7 +18,7 @@ public class CalculatorIeftin {
      * Porneste calculatorul. 
      */
     public CalculatorIeftin() {
-        System.out.println("Sa inceapa petrecerea!");
+        CalculatorIeftin.salut();
     }
     
     /**
@@ -27,23 +27,24 @@ public class CalculatorIeftin {
      * @param operatiePrimita operatia pe care vreti sa o efectuati
      */
     public CalculatorIeftin(double[] numerePrimite, char operatiePrimita) {
-        System.out.println("Doamne-ajuta!");
+        System.out.println("1...2...3...");
         this.setNumarul(1, numerePrimite[0]);
         this.setNumarul(2, numerePrimite[1]);
         this.setOperatie(operatiePrimita);
     }
     
+    public static void salut() {
+        System.out.println("Salut! Stai sa caut o foaie si-un pix");
+    }
+    
+    
     /**
      *Calculeaza rezultatul daca toate verificarile au fost validate. 
      */
     public void calculeaza() {
-        if(verificaNumerele()) {
             if (verificaOperatia(operatie)) {
-                if(verificaRezultat()) {
                     amCalculat = true;
                 } 
-            }
-        }
     }
     
     /**
@@ -51,58 +52,44 @@ public class CalculatorIeftin {
      *  daca nu detine tehnologia necesara, iti va sugera surse capabile sa-ti ofere raspunsul
      */
     public void printResult() {
-        if(this.amCalculat()) {
+        if(amCalculat) {
             System.out.println("Rezultatul operatiei de " + 
                 this.getStringOperation() + " este " + this.getRezultat());
         } else {
-            System.out.println("Cauta pe Google!");
+            System.out.println("Pentru " + this.getStringOperation() + ", cauta pe Google!");
         }
         
     }
     
-    private boolean verificaNumerele() {
-        for(int i = 0; i < numere.length; i++) {
-            if(isNotDouble(numere[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
     
-    private boolean isNotDouble(double number) {
-        if(number < Double.MIN_VALUE && number > Double.MAX_VALUE ) {
-            return true;
-        }
-        return false;
-    }
     
     private boolean verificaOperatia(char operatiePrimita) {
-        if(operatiePrimita == '+') {
-            operatie = operatiePrimita;
-            return true;
-        } else {
-            System.out.println("Imi pare rau, "
+        
+        switch(operatiePrimita) {
+            case '+':
+                operatie = operatiePrimita;
+                rezultat = numere[0] + numere[1];
+                return true;
+            default:
+                System.out.println("Imi pare rau, "
                     + "domnu' Pacurar ne-a invatat doar adunare!");
-            return false;
+                 return false;
         }
     }
-    
-    
-    private boolean verificaRezultat() {
-        if(operatie == '+') {
-            rezultat = numere[0] + numere[1];
-            return true;
-        } else {
-            return false;
-        }
-    }
-       
     
     private String getStringOperation() {
-        if(operatie == '+') {
-            return "adunare";
+        switch(operatie) {
+            case '+':
+                return "adunare";
+            case '-':
+                return "scadere";
+            case '*':
+                return "inmultire";
+            case '/':
+                return "impartire";
+            default:
+                return "";
         }
-        return "";
     }
     
     /**
@@ -118,11 +105,6 @@ public class CalculatorIeftin {
     
     private double getRezultat() {
         return rezultat;
-    }
-    
-   
-    private boolean amCalculat() {
-        return amCalculat;
     }
     
     /**
