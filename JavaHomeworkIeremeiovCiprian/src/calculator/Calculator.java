@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Calculator {
 
     /**
-     * @param args the command line arguments
+     * @param args daca vom folosi linia de comanda, dar nu este cazul acum.
      */
     public static void main(String[] args) {
         

@@ -14,10 +14,18 @@ public class CalculatorIeftin {
     private double rezultat;
     private boolean amCalculat = false;
     
+    /**
+     * Porneste calculatorul. 
+     */
     public CalculatorIeftin() {
         System.out.println("Sa inceapa petrecerea!");
     }
     
+    /**
+     * Porneste calculatorul cu parametrii pre-setati
+     * @param numerePrimite numerele pe care vreti sa le calculati
+     * @param operatiePrimita operatia pe care vreti sa o efectuati
+     */
     public CalculatorIeftin(double[] numerePrimite, char operatiePrimita) {
         System.out.println("Doamne-ajuta!");
         this.setNumarul(1, numerePrimite[0]);
@@ -25,6 +33,9 @@ public class CalculatorIeftin {
         this.setOperatie(operatiePrimita);
     }
     
+    /**
+     *Calculeaza rezultatul daca toate verificarile au fost validate. 
+     */
     public void calculeaza() {
         if(verificaNumerele()) {
             if (verificaOperatia(operatie)) {
@@ -35,6 +46,10 @@ public class CalculatorIeftin {
         }
     }
     
+    /**
+     *  Printeaza rezultatul daca a reusit sa calculeze;
+     *  daca nu detine tehnologia necesara, iti va sugera surse capabile sa-ti ofere raspunsul
+     */
     public void printResult() {
         if(this.amCalculat()) {
             System.out.println("Rezultatul operatiei de " + 
@@ -82,29 +97,49 @@ public class CalculatorIeftin {
         }
     }
        
-    public String getStringOperation() {
+    
+    private String getStringOperation() {
         if(operatie == '+') {
             return "adunare";
         }
         return "";
     }
     
+    /**
+     *  Returneaza "true" daca recunoastem sau stim sa utilizam operatia respectiva,
+     *  altfel returneaza "false" si ne permite sa intrerupem procesul imediat dupa
+     *  ce ati selectat o operatie invalida.
+     * @return true/false
+     */
     public boolean verificaOperatiaPublic() {
         return verificaOperatia(this.operatie);
     }
     
-    public double getRezultat() {
+    
+    private double getRezultat() {
         return rezultat;
     }
     
-    public boolean amCalculat() {
+   
+    private boolean amCalculat() {
         return amCalculat;
     }
     
+    /**
+     *
+     *  Seteaza al 'n'-lea numar pe care vreti sa il calculati
+     *  
+     * @param n ordinul numarului
+     * @param numar valoarea numarului
+     */
     public void setNumarul(int n, double numar) {
         this.numere[n-1] = numar;
     }
     
+    /**
+     *  Seteaza operatia pe care vreti sa o efectueze calculatorul
+     * @param operatiePrimita operation
+     */
     public void setOperatie(char operatiePrimita) {
         operatie = operatiePrimita;
     }
