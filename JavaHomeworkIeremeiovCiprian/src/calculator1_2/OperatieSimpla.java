@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Aici delegam si operatiei cateva chestii :)
+ *
  */
 package calculator1_2;
 
@@ -11,13 +10,23 @@ package calculator1_2;
  */
 public class OperatieSimpla {
     
-    public char simbolOperatie[] = {'+', '-', '*', '/'};
-    public String stringOperatie[] = {"adunare", "scadere", "inmultire", "impartire"};
-    public char operatie;
-    public int indexOperatie;
-    boolean cunoscOperatia = true;
-    public char operatieNecunoscuta = ' ';
+    private char simbolOperatie[] = {'+', '-', '*', '/'};
+
     
+    private String stringOperatie[] = {"adunare", "scadere", "inmultire", "impartire"};
+
+    /**
+     *
+     */
+    public char operatie;
+    private int indexOperatie;
+    private boolean cunoscOperatia = true;
+    private char operatieNecunoscuta = ' ';
+    
+    /**
+     *
+     * @param operatiePrimita operatia pe care o introduce utilizatorul
+     */
     public OperatieSimpla(char operatiePrimita) {
      //   System.out.println("Constructor OperatieSimpla");
         
@@ -30,8 +39,7 @@ public class OperatieSimpla {
             }
     }
     
-    
-    public boolean verificaOperatie(char operatiePrimita) {
+    private boolean verificaOperatie(char operatiePrimita) {
     //    System.out.println("operatie.verificaOperaite()");
         boolean flag = true;
         for(int i = 0; i < simbolOperatie.length; i++) {
@@ -46,6 +54,11 @@ public class OperatieSimpla {
         return flag;
     }
     
+    /**
+     *
+     * @param numere un array de numere pe care vrem sa le adunam
+     * @return rezultatul operatiei de adunare
+     */
     public double adunare(double[] numere) {
         double rezultat = 0;
         for(int i = 0; i < numere.length; i++) {
@@ -54,6 +67,44 @@ public class OperatieSimpla {
         return rezultat;
     }
     
-   
-
+    /**
+     *
+     * @return simbolul operatiei selectate
+     */
+    public char getSimbolOperatie() {
+        return simbolOperatie[this.indexOperatie];
+    }
+    
+    /**
+     *
+     * @return daca este o operatie cunoscuta ( in versiunea 1.2 este valabil doar la adunare)
+     */
+    public boolean getCunoscOperatie() {
+        return cunoscOperatia;
+    }
+    
+    /**
+     *
+     * @return indexul corespunzator operatiei selectate de utilizator, in raport cu array-ul de simboluri al clasei OperatieSimpla:
+     *  {'+', '-', '*', '/'}
+     */
+    public int getIndexOperatie() {
+        return indexOperatie;
+    }
+    
+    /**
+     *
+     * @return simbolul operatiei necunoscute
+     */
+    public int getOperatieNecunoscuta() {
+        return operatieNecunoscuta;
+    }
+    
+    /**
+     *
+     * @return operatia aleasa, sub forma unui sir de caractere, pentru a le putea printa
+     */
+    public String getStringOperatie() {
+        return this.stringOperatie[this.getIndexOperatie()];
+    }
 }

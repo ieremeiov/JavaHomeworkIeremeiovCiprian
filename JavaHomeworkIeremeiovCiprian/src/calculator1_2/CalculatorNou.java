@@ -1,67 +1,74 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Calculator adunare
+ *   
  */
 package calculator1_2;
 
+import java.util.Scanner;
+
 /**
- *
+ * @version 1.2
  * @author Cip
  */
 public class CalculatorNou {
     
-    public int indexNumar = 0;
     
-    public double[] numere = new double[2];
-    public OperatieSimpla operatie;
-    double rezultat;
-    boolean nuAmInvatatIncaOperatia = false;
-    boolean nuAmAuzitDeOperatie = false;
+    private int indexNumar = 0;
     
-    public CalculatorNou() {
+    private double[] numere = new double[2];
+    private OperatieSimpla operatie;
+    private double rezultat;
+    private boolean nuAmInvatatIncaOperatia = false;
+    private boolean nuAmAuzitDeOperatie = false;
+    private int NUMERE;
+    
+    /**
+     *
+     * @param NUMERE cate numere vrem sa calculam
+     */
+    public CalculatorNou(int NUMERE) {
+        this.NUMERE = NUMERE;
         printMenu();
     }
     
-    public void printMenu() {
+    private void printMenu() {
         System.out.println(" <<< CALCULATOR 1_2 >>>\n");
     }
     
-    public void bagaNumarul() {
+    private void bagaNumarul() {
         if(indexNumar == 0) {
             System.out.println("Spune-mi primul numar: ");
         } else {
-            System.out.println("Spune-mi numarul al " + (indexNumar+2) + "-lea");
+            System.out.println("Spune-mi numarul al " + (indexNumar+1) + "-lea numar: ");
         }
     }
     
-    public void setNumere(int index, double[] numere) {
+    private void setNumere(int index, double[] numere) {
         this.numere[index] = numere[index];
     }
     
-    public void printNumere() {
+    private void printNumere() {
         System.out.print("\nNumerele sunt: ");
-        for(int i = 0; i < numere.length; i++) {
+        for(int i = 0; i < NUMERE; i++) {
             System.out.print("[" + numere[i] + "] ");
         }
         System.out.println("\n");
     }
     
-    public void bagaOperatia() {
+    private void bagaOperatia() {
         System.out.println("Ce sa facem cu numerele astea?");
         System.out.println("Daca vrei adunare apasa: '+'\n"
                 + "Daca vrei scadere apasa: '-'\nDaca vrei inmultire apasa: '*'\n"
                 + "Daca vrei impartire apasa: '/'");
     }
     
-    public void setOperatie(char operatie) {
+    private void setOperatie(char operatie) {
         this.operatie = new OperatieSimpla(operatie);
-        
     }
     
-    public void efectueazaOperatia() {
+    private void efectueazaOperatia() {
       //  System.out.println("operatie.efectueazaOperatia()");
-        switch(operatie.simbolOperatie[operatie.indexOperatie]) {
+        switch(operatie.getSimbolOperatie()) {
             case '+':
                 rezultat = operatie.adunare(numere);
                 break;
@@ -77,23 +84,48 @@ public class CalculatorNou {
         }
     }
     
-    
-    public void printRezultat() {
-        if(!nuAmAuzitDeOperatie && operatie.cunoscOperatia) {
+    private void printRezultat() {
+        if(!nuAmAuzitDeOperatie && operatie.getCunoscOperatie()) {
             if(!nuAmInvatatIncaOperatia) {
                 System.out.println("Rezultatul operatiei de " 
-                    + operatie.stringOperatie[operatie.indexOperatie] + " este: " +
+                    + operatie.getStringOperatie() + " este: " +
                     rezultat);
                 System.out.println("Scoala Informala nu Greseste Niciodata! :)");
             } else {
                 System.out.println("Domnul Pacurar ma va pregati si pentru "
-                    + "operatia de " + operatie.stringOperatie[operatie.indexOperatie]);
+                    + "operatia de " + operatie.getStringOperatie());
                 System.out.println("Pana atunci da-i si tu un Search pe GOOGLE");
             }
         } else {
-            System.out.println("Chiar nu am auzit de operatia: " + 
-                    operatie.operatieNecunoscuta);
+            System.out.println("Chiar nu am auzit de operatia: " +
+                  Character.toString ((char) operatie.getOperatieNecunoscuta()));
         }
+    }
+    
+    /**
+     *  O sa ceara numerele unul cate unul, apoi operatia
+     */
+    public void incepeTreaba() {
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        while(indexNumar < NUMERE) {
+            this.bagaNumarul();
+            numere[indexNumar] = scanner.nextDouble();
+            this.setNumere(indexNumar, numere);
+            indexNumar++;
+        }
+        
+        this.printNumere();
+        this.bagaOperatia();
+        
+        char operatieCitita = scanner.next().charAt(0);
+        System.out.println(operatieCitita);
+        this.setOperatie(operatieCitita);
+        
+        this.efectueazaOperatia();
+        this.printRezultat();
+        
     }
     
     
