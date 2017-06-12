@@ -1,9 +1,8 @@
 /*
- *  Calculator care stie doar adunare 
+ *  AddPlus Calculator version: 1.2
+ *  Used to compute simple operations on real numbers.
  */
 package calculator1_2;
-
-import java.util.Scanner;
 
 /**
  *
@@ -12,18 +11,14 @@ import java.util.Scanner;
 public class Calculator {
 
     /**
-     * @param args daca vom folosi linia de comanda, dar nu este cazul acum.
+     * @param args We won't use the command line arguments yet.
      */
     public static void main(String[] args) {
         
-        int NUMERE = 2; // Stim sa calculam doar 2 numere
+        int howManyNumbers = 2; // We can only compute two numbers
         
-        
-        
-        
-        CalculatorNou calculator = new CalculatorNou(NUMERE);
-        calculator.incepeTreaba();
-        
+        NewCalculator calculator = new NewCalculator(howManyNumbers);
+        calculator.useCalculator();
     }
     
 }

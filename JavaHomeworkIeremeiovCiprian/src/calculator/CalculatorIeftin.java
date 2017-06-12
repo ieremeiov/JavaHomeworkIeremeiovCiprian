@@ -88,7 +88,7 @@ public class CalculatorIeftin {
             case '/':
                 return "impartire";
             default:
-                return "";
+                return "orice altceva";
         }
     }
     
