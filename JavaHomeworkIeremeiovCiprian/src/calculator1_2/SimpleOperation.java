@@ -12,8 +12,8 @@ package calculator1_2;
  */
 public class SimpleOperation {
     
-    private final char[] operationSymbol = {'+', '-', '*', '/'};
-    private final String[] operationToString = {"addition", "substraction", "multiplication", "division"};
+    private final char[] OPERATION_SYMBOL = {'+', '-', '*', '/'};
+    private final String[] OPERATION_STRING = {"addition", "substraction", "multiplication", "division"};
     
     private char operation;
     private int operationIndex;
@@ -27,7 +27,7 @@ public class SimpleOperation {
     public SimpleOperation(char requestedOperation) {
         
         if(verifyOperation(requestedOperation)) {
-                this.operation = operationSymbol[operationIndex];
+                this.operation = OPERATION_SYMBOL[operationIndex];
             } else {
                 knownOperation = false;
                 unknownOperation = requestedOperation;
@@ -37,8 +37,8 @@ public class SimpleOperation {
     
     private boolean verifyOperation(char requestedOperation) {
         boolean flag = true;
-        for(int i = 0; i < operationSymbol.length; i++) {
-            if(requestedOperation == operationSymbol[i]) {
+        for(int i = 0; i < OPERATION_SYMBOL.length; i++) {
+            if(requestedOperation == OPERATION_SYMBOL[i]) {
                 operationIndex = i;
                 return true;
             } else {
@@ -67,7 +67,7 @@ public class SimpleOperation {
      * @return The symbol of your requested operation.
      */
     public char getOperationSymbol() {
-        return operationSymbol[this.operationIndex];
+        return OPERATION_SYMBOL[this.operationIndex];
     }
     
     /**
@@ -101,6 +101,6 @@ public class SimpleOperation {
      * @return The name of your operation, as a String.
      */
     public String getOperationToString() {
-        return this.operationToString[this.getOperationIndex()];
+        return this.OPERATION_STRING[this.getOperationIndex()];
     }
 }

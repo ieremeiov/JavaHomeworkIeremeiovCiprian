@@ -15,19 +15,19 @@ public class NewCalculator {
     
     private int numberIndex = 0;
     
-    private final double[] numbers = new double[2];
+    private final double[] NUMBERS = new double[Calculator.HOW_MANY_NUMBERS];
     private SimpleOperation operation;
     private double result;
     private boolean unableToSolveYet = false;
     private boolean unableToSolveEver = false;
-    private final int howManyNumbers;
+    private final int HOW_MANY_NUMBERS;
     
     /**
      *
      * @param howManyNumbers how many numbers can we compute (version 1.2 can only compute 2 numbers)
      */
     public NewCalculator(int howManyNumbers) {
-        this.howManyNumbers = howManyNumbers;
+        this.HOW_MANY_NUMBERS = howManyNumbers;
         printMenu();
     }
     
@@ -53,14 +53,14 @@ public class NewCalculator {
     }
     
     private void setNumbers(int index, double[] numbers) {
-        this.numbers[index] = numbers[index];
+        this.NUMBERS[index] = numbers[index];
     }
     
     private void printComputation() {
         if(operation.getKnownOperation()) {
             System.out.print("\nYou wish to perform " + operation.getOperationToString().toUpperCase() + " on the numbers: ");
-            for(int i = 0; i < howManyNumbers; i++) {
-                System.out.print("[" + numbers[i] + "] ");
+            for(int i = 0; i < HOW_MANY_NUMBERS; i++) {
+                System.out.print("[" + NUMBERS[i] + "] ");
             }
             System.out.println("\n");
         }
@@ -80,7 +80,7 @@ public class NewCalculator {
     private void compute() {
         switch(operation.getOperationSymbol()) {
             case '+':
-                result = operation.addition(numbers);
+                result = operation.addition(NUMBERS);
                 break;
             case '-':
             case '*':
@@ -121,10 +121,10 @@ public class NewCalculator {
         
         Scanner scanner = new Scanner(System.in);
         
-        while(numberIndex < howManyNumbers) {
+        while(numberIndex < HOW_MANY_NUMBERS) {
             this.requestNumber();
-            numbers[numberIndex] = scanner.nextDouble();
-            this.setNumbers(numberIndex, numbers);
+            NUMBERS[numberIndex] = scanner.nextDouble();
+            this.setNumbers(numberIndex, NUMBERS);
             numberIndex++;
         }
         
