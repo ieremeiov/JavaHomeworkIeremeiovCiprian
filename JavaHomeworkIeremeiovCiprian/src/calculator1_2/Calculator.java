@@ -17,8 +17,6 @@ public class Calculator {
      */
     public static void main(String[] args) {
         
-        
-        
         NewCalculator calculator = new NewCalculator(Calculator.HOW_MANY_NUMBERS);
         calculator.useCalculator();
     }

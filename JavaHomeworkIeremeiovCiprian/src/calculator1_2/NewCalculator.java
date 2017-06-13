@@ -126,6 +126,24 @@ public class NewCalculator {
         }
     }
     
+    
+    private void computeAgain() {
+        numberIndex = 0;
+        Scanner answer = new Scanner(System.in);
+        System.out.println("\n\n");
+        System.out.println("Would you like to calculate some more? y/n");
+        char my_answer = answer.next().charAt(0);
+        if(my_answer == 'y') {
+            this.useCalculator();
+        } else {
+            System.out.println("");
+            System.out.println("|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|");
+            System.out.println(">>> Thank you for using my Calculator <<<");
+            System.out.println("|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|");
+        }
+    }
+    
+    
     /**
      *  You will be requested 2 numbers one after the other. A list of operations will be printed, from which 
      *  you will have to chose the right symbol for the operation you wish to perform
@@ -156,8 +174,8 @@ public class NewCalculator {
         this.compute();
         
         this.printResult();
+        computeAgain();
         
     }
-    
-    
+
 }
