@@ -80,9 +80,9 @@ public class NewCalculator {
                 + "Division: '/'");
         
         System.out.println("");
-        System.out.println(" *************************************************");    
+        System.out.println("@*************************************************@");    
         System.out.println("| I will only consider the first character typed. |");
-        System.out.println(" *************************************************");    
+        System.out.println("@*************************************************@");    
                 
     }
     
@@ -135,9 +135,9 @@ public class NewCalculator {
         
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(" ************************************************************************** ");      
+        System.out.println("@**************************************************************************@");      
         System.out.println("| Make sure you insert a real number, otherwise you will get an Exception. |");
-        System.out.println(" ************************************************************************** "); 
+        System.out.println("@**************************************************************************@"); 
         
         while(numberIndex < HOW_MANY_NUMBERS) {
             this.requestNumber();
