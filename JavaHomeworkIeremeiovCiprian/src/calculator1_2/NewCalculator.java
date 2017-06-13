@@ -1,5 +1,5 @@
 /*
- * Calculator that can only do addition
+ * Calculator that can only perform addition. But you're not supposed to know that yet.
  *   
  */
 package calculator1_2;
@@ -71,6 +71,12 @@ public class NewCalculator {
         System.out.println("Addition: '+'\n"
                 + "Substraction: '-'\nMultiplication: '*'\n"
                 + "Division: '/'");
+        
+        System.out.println("");
+        System.out.println(" *************************************************");    
+        System.out.println("| I will only consider the first character typed. |");
+        System.out.println(" *************************************************");    
+                
     }
     
     private void setOperation(char operatie) {
@@ -85,6 +91,7 @@ public class NewCalculator {
             case '-':
             case '*':
             case '/':
+                System.out.println("!********** WARNING **********!");
                 System.out.println("Unable to compute! You have installed the free Calculator version. \n"
                         + "If you wish to use the rest of the features please buy the Deluxe Version of Calculator.");
                 unableToSolveYet = true;
@@ -99,8 +106,8 @@ public class NewCalculator {
         if(!unableToSolveEver && operation.getKnownOperation()) {
             if(!unableToSolveYet) {
                 System.out.println("Result of " 
-                    + operation.getOperationToString() + " is: " +
-                    result);
+                    + operation.getOperationToString() + " is: >>> [" +
+                    result + "] <<<");
                 System.out.println("Never doubt Java!");
             } else {
                 System.out.println("Mr Pacurar will soon teach me the "
@@ -120,6 +127,10 @@ public class NewCalculator {
     public void useCalculator() {
         
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println(" ************************************************************************** ");      
+        System.out.println("| Make sure you insert a real number, otherwise you will get an Exception. |");
+        System.out.println(" ************************************************************************** "); 
         
         while(numberIndex < HOW_MANY_NUMBERS) {
             this.requestNumber();
