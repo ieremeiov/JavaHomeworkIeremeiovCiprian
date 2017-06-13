@@ -28,11 +28,18 @@ public class NewCalculator {
      */
     public NewCalculator(int howManyNumbers) {
         this.HOW_MANY_NUMBERS = howManyNumbers;
-        printMenu();
+        printWelcome();
     }
     
-    private void printMenu() {
-        System.out.println(" <<< CALCULATOR 1.2 >>>\n");
+    private void printWelcome() {
+        
+        
+        System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        
+        System.out.println("      #  <<< Welcome To CALCULATOR ver1.2 >>>  #");
+        
+        System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("");
     }
     
     private void requestNumber() {
