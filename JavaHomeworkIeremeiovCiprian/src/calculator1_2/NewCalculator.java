@@ -45,16 +45,24 @@ public class NewCalculator {
     private void requestNumber() {
         switch (numberIndex) {
             case 0:
-                System.out.println("Insert the first number: ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                System.out.println("      @ >>>Insert the first number <<< @ ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                 break;
             case 1:
-                System.out.println("Insert the second number: ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                System.out.println("      @ >>>Insert the second number <<< @ ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                 break;
             case 2:
-                System.out.println("Insert the third number");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                System.out.println("      @ >>>Insert the third number <<<@");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                 break;
             default:
-                System.out.println("Insert the " + (numberIndex+1) + "th number: ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                System.out.println("      @ >>>Insert the " + (numberIndex+1) + "th number <<<@ ");
+                System.out.println("      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
                 break;
         }
     }
@@ -74,15 +82,18 @@ public class NewCalculator {
     }
     
     private void requestOperation() {
-        System.out.println("Pick an operation from the list below: ");
-        System.out.println("Addition: '+'\n"
-                + "Substraction: '-'\nMultiplication: '*'\n"
-                + "Division: '/'");
+        System.out.println("@***********************************************@"); 
+        System.out.println("@ >>> Pick an operation from the list below <<< @ ");
+        System.out.println("@***********************************************@"); 
+        System.out.println("\n >>> ADDITION: +\n"
+                + " >>> SUBSTRACTION: -\n >>> MULTIPLICATION: *\n"
+                + " >>> DIVISION: /");
         
         System.out.println("");
         System.out.println("@*************************************************@");    
         System.out.println("| I will only consider the first character typed. |");
-        System.out.println("@*************************************************@");    
+        System.out.println("@*************************************************@");  
+        System.out.print("Operation: ");
                 
     }
     
@@ -99,11 +110,12 @@ public class NewCalculator {
             case '*':
             case '/':
                 System.out.println("!********** WARNING **********!");
-                System.out.println("Unable to compute! You have installed the free Calculator version. \n"
+                System.out.println("  >>> UNABLE TO COMPUTE <<<\nYou have installed the free Calculator version. \n"
                         + "If you wish to use the rest of the features please buy the Deluxe Version of Calculator.");
                 unableToSolveYet = true;
                 break;
             default:
+                
                 unableToSolveEver = true;
                 break;
         }
@@ -121,6 +133,15 @@ public class NewCalculator {
                     +  operation.getOperationToString() + " operation.");
             }
         } else {
+            System.out.println("");
+                
+                System.out.println("      @#########@");
+                System.out.println("      $ WARNING $");
+                
+                System.out.println("@######         ######@");
+                System.out.println("#  INVALID OPERATION  #");
+                System.out.println("@#####################@");
+                System.out.println("");
             System.out.println("I've never heard of >>> " +
                   Character.toString ((char) operation.getUnknownOperation()) + " <<< ");
         }
@@ -159,6 +180,7 @@ public class NewCalculator {
         
         while(numberIndex < HOW_MANY_NUMBERS) {
             this.requestNumber();
+            System.out.print("Number: ");
             NUMBERS[numberIndex] = scanner.nextDouble();
             this.setNumbers(numberIndex, NUMBERS);
             numberIndex++;

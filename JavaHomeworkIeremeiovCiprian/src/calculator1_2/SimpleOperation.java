@@ -31,15 +31,7 @@ public class SimpleOperation {
             } else {
                 knownOperation = false;
                 unknownOperation = requestedOperation;
-                System.out.println("");
                 
-                System.out.println("      ###########");
-                System.out.println("      # WARNING #");
-                
-                System.out.println("#######################");
-                System.out.println("#  INVALID OPERATION  #");
-                System.out.println("#######################");
-                System.out.println("");
                 
             }
     }
