@@ -1,10 +1,10 @@
 /*
- *  Class that controls the input to the Calculator and sets an array of buttons based on your input.
+ *  
  */
 package calculator2_0;
 
 /**
- *
+ * Class that controls the input to the Calculator and sets an array of buttons based on your input.
  * @author Cip
  */
 public class Frame {
@@ -67,6 +67,12 @@ public class Frame {
         return display;
     }
     
+    /**
+     * Resets the index for building a new Array of Buttons.
+     */
+    public void reset() {
+        this.index = 0;
+    }
     
     
     

@@ -1,10 +1,10 @@
 /*
- * Class that handles the chosen operation.
+ * 
  */
 package calculator2_0;
 
 /**
- *
+ * Class that handles the chosen operation.
  * @author Cip
  */
 public class Calculation {
@@ -66,13 +66,6 @@ public class Calculation {
         return multiply(number1, 1/number2);
     }
     
-    /**
-     *
-     * @return The result in String format.
-     */
-    public String getStringResult() {
-        return result.toString();
-    }
 
     /**
      *

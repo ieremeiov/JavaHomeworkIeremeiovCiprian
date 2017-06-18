@@ -1,12 +1,12 @@
 /*
- *  Class that handles your input when you are requested for the elements of your chosen operation a.k.a the Buttons you "Press"
+ *  
  */
 package calculator2_0;
 
 import java.util.Scanner;
 
 /**
- *
+ * Class that handles your input when you are requested for the elements of your chosen operation a.k.a the Buttons you "Press"
  * @author Cip
  */
 public class Button {
@@ -69,8 +69,5 @@ public class Button {
     public void setButtonPressed(String buttonPressed) {
         this.buttonPressed = buttonPressed;
     }
-    
-    
-    
     
 }

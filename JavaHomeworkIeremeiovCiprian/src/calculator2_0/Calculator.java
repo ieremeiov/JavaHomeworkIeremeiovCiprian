@@ -6,7 +6,7 @@
 package calculator2_0;
 
 /**
- *
+ * 
  * @author Cip
  */
 public class Calculator {

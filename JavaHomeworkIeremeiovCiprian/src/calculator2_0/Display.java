@@ -1,10 +1,11 @@
 /*
- * Class that handles the displaying of requests and also the result of the whole calculation on the screen.
+ * 
  */
 package calculator2_0;
 
+
 /**
- *
+ * Class that handles the displaying of requests and also the result of the whole calculation on the screen.
  * @author Cip
  */
 public class Display {
@@ -26,12 +27,11 @@ public class Display {
     }
     
     /**
-     * Displays the result of your operations.
+     * Displays the result of your operations, with 2 decimals.
      * @param calculation The Calculation object whose result you want to display.
      */
     public void displayResult(Calculation calculation) {
-        System.out.print(calculation.getStringResult());
+        System.out.print(String.format("%.2f", calculation.getResult()));
     }
-    
     
 }
