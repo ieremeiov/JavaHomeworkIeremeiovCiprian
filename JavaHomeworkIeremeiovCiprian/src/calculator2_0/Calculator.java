@@ -1,6 +1,6 @@
 /*
  *   Calculator 2.0 can perform basic operations on integers. You can add, substract, multiply and divide numbers. 
- *   It assumes you input the right numbers (as Integer) in the right order and press '=' at the end.
+ *   It assumes you input the right numbers (as Integer) in the right order and press '=' at the end. 
  *
  */
 package calculator2_0;

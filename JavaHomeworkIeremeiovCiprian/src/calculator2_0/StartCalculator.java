@@ -20,7 +20,6 @@ public class StartCalculator {
         Frame frame = new Frame();
         frame.reset();
 
-        
         frame.requestNumber();
         frame.requestOperation();
 
