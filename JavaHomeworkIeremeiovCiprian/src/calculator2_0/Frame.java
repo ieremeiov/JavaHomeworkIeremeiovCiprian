@@ -4,13 +4,13 @@
 package calculator2_0;
 
 /**
- * Class that controls the input to the Calculator and sets an array of buttons based on your input.
+ * Class that controls the input to the ComputerOOP and sets an array of buttons based on your input.
  * @author Cip
  */
 public class Frame {
     
     private final Button button[] = new Button[4];
-    private final Display display = new Display();
+    public final Screen display = new Screen();
     private int index = 0;
     
     /**
@@ -18,39 +18,36 @@ public class Frame {
      */
     public void requestNumber() {
         if(index == 0) {
-            this.display.displayMessage("Insert the first number: ");
+            this.display.display(">>> Message: Insert the first number: ");
         }
         if(index == 2) {
-            this.display.displayMessage("Insert the second number: ");
+            this.display.display(">>> Message: Insert the second number: ");
         }
         button[index] = new Button();
         button[index].pressNumber(this, index);
         index++;
 
-
     }
     
     /**
-     * Method that asks for a character as an operation
+     * Method that asks for an operation as a character.
      */
     public void requestOperation() {
-        this.display.displayMessage("Insert operation ( + , - , * , / ): ");
+        this.display.display(">>> Message: Insert operation ( + , - , * , / ): ");
         button[index] = new Button();
         button[index].pressOperation(this, index);
         index++;
-
     }
     
     /**
      * Asks for the '=' character so that the program knows you want to see the result.
      */
-    public void requestEquals() {
-        this.display.displayMessage("Press ' = ' to compute: ");
+    public void requestConfirmation() {
+        this.display.display(">>> Message: Press ' = ' to compute: ");
         button[index] = new Button();
-        button[index].pressEquals(this, index);
-
+        button[index].compute(this, index);
     }
-
+   
     /**
      *
      * @return An array of Button objects
@@ -63,7 +60,7 @@ public class Frame {
      *
      * @return A Display object
      */
-    public Display getDisplay() {
+    public Screen getDisplay() {
         return display;
     }
     
@@ -72,8 +69,15 @@ public class Frame {
      */
     public void reset() {
         this.index = 0;
+        Screen.clear();
     }
     
-    
+    /**
+     *  
+     * @return the last button pressed in String format
+     */
+    public String currentValue() {
+        return this.button[index-1].getButtonPressed();
+    }
     
 }

@@ -69,7 +69,7 @@ public class Calculation {
 
     /**
      *
-     * @return true if the Calculator is asked to perform division by zero / if Denominator is zero / if the second number is zero.
+     * @return true if the ComputerOOP is asked to perform division by zero / if Denominator is zero / if the second number is zero.
      */
     public boolean isDivisionByZero() {
         return divisionByZero;

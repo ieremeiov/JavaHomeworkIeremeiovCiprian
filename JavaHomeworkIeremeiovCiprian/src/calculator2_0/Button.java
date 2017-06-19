@@ -12,6 +12,8 @@ import java.util.Scanner;
 public class Button {
     
     private String buttonPressed;
+    private boolean confirmed = true;
+    private boolean exit = false;
     
     private Scanner scanner = new Scanner(System.in);
     
@@ -38,10 +40,13 @@ public class Button {
      * @param frame The Frame object that you are using for a set of basic operations.
      * @param index The index of the current input that you need to set in the array of Buttons.
      */
-    public void pressEquals(Frame frame, int index) {
+    public void compute(Frame frame, int index) {
         frame.getButton()[index].setButtonPressed(this.getScanner().next());
+        if(!frame.getButton()[index].getButtonPressed().equals("=")) {
+            confirmed = false;
+        }
     }
-
+   
     /**
      * @return the scanner
      */
@@ -67,7 +72,20 @@ public class Button {
      * @param buttonPressed the buttonPressed to set
      */
     public void setButtonPressed(String buttonPressed) {
-        this.buttonPressed = buttonPressed;
+        if(buttonPressed.toLowerCase() == "x") {
+            this.exit = true;
+        } else {
+            this.buttonPressed = buttonPressed;
+        }
     }
+
+    /**
+     *  
+     * @return true if the character '=' was inserted when requested.
+     */
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
     
 }
