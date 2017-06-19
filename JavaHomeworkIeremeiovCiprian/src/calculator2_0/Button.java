@@ -72,11 +72,7 @@ public class Button {
      * @param buttonPressed the buttonPressed to set
      */
     public void setButtonPressed(String buttonPressed) {
-        if(buttonPressed.toLowerCase() == "x") {
-            this.exit = true;
-        } else {
             this.buttonPressed = buttonPressed;
-        }
     }
 
     /**
