@@ -13,7 +13,6 @@ public class Button {
     
     private String buttonPressed;
     private boolean confirmed = true;
-    private boolean exit = false;
     
     private Scanner scanner = new Scanner(System.in);
     
@@ -55,7 +54,7 @@ public class Button {
     }
 
     /**
-     * @param scanner the scanner to set
+     * @param scanner Set the input
      */
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;

@@ -38,7 +38,7 @@ public class Calculation {
                 if(Integer.parseInt(stringButton[2]) != 0) {
                     result = divide(Double.parseDouble(stringButton[0]), Double.parseDouble(stringButton[2]));
                 } else {
-                    System.out.println(" Division by 0 is impossible!");
+                    System.out.println("\r Division by 0 is impossible!");
                     divisionByZero = true;
                 }
                 break;

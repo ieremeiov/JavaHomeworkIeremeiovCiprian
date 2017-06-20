@@ -11,7 +11,9 @@ public class Frame {
     
     private final Button button[] = new Button[4];
     public final Screen display = new Screen();
-    private int index = 0;
+    private final Calculation calculation = new Calculation();
+
+    private int index;
     
     /**
      *  Method that asks for the first/next integer.
@@ -79,5 +81,11 @@ public class Frame {
     public String currentValue() {
         return this.button[index-1].getButtonPressed();
     }
+
+    public Calculation getCalculation() {
+        return calculation;
+    }
+    
+    
     
 }

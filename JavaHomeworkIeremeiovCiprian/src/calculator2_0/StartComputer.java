@@ -20,6 +20,41 @@ public class StartComputer {
         Frame frame = new Frame();
         frame.reset();
         
+        frameRequest(frame);
+        
+        // if '=' is pressed
+        if (frame.getButton()[3].isConfirmed() == true) {
+
+            //frame.getButton returns the Button array of the frame object
+            frame.getCalculation().calculateOperation(frame.getButton());
+
+            boolean divisionByZero = frame.getCalculation().isDivisionByZero();
+            boolean unknownOperation = frame.getCalculation().isUnknownOperation(); 
+            
+            if (!divisionByZero) {
+                if(!unknownOperation) {
+                    frame.getDisplay().displayAll(frame.getButton());
+                    frame.getDisplay().displayResult(frame.getCalculation());
+                }
+            }
+            if (computeAgain()) {
+            //    frame = null;
+                turnOn();
+            }
+        } else {            // if '=' is not pressed
+            System.out.println("You didn't press '=' ! Please restart.");
+            if(computeAgain()) {
+             //   frame = null;
+                turnOn();
+            }
+        }
+    }
+    
+    
+    
+    
+    // asks for numbers, operation and equals sign.
+    private void frameRequest(Frame frame) {
         frame.requestNumber();
         frame.display.displayCurrent(frame);
         frame.requestOperation();
@@ -28,38 +63,21 @@ public class StartComputer {
         frame.display.displayCurrent(frame);
 
         frame.requestConfirmation();
-
-        Calculation calculation = new Calculation();
-
-        if (frame.getButton()[3].isConfirmed() == true) {
-
-            //frame.getButton returns the Button array of the frame object
-            calculation.calculateOperation(frame.getButton());
-
-            boolean canCalculate = calculation.isDivisionByZero() == false && calculation.isUnknownOperation();
-            if (!canCalculate) {
-                frame.getDisplay().displayAll(frame.getButton());
-                frame.getDisplay().displayResult(calculation);
-            }
-            computeAgain();
-        } else {
-            System.out.println("You didn't press '=' ! Please restart.");
-            computeAgain();
-        }
     }
-    
+        
     
     // asks the user if he wants to Reset the ComputerOOP
-    private void computeAgain() {
+    private boolean computeAgain() {
         Scanner answer = new Scanner(System.in);
         System.out.println("\r\nDo you want to compute again? (y/n)");
         
         char myAnswer = answer.next().toLowerCase().charAt(0);
         
         if(myAnswer == 'y') {
-            turnOn();
+            return true;
         } else {
             System.out.println("Thank You for using my Calculator 2.0");
+            return false;
         }
     }
     
