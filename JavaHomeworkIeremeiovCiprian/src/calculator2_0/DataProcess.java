@@ -38,12 +38,16 @@ public class DataProcess {
                 if(Integer.parseInt(stringButton[2]) != 0) {
                     result = divide(Double.parseDouble(stringButton[0]), Double.parseDouble(stringButton[2]));
                 } else {
-                    System.out.println("\r Division by 0 is impossible!");
+                    if(Calculator.isMessageOn()) {
+                        System.out.println("\r>>> Message: Division by 0 is impossible!");
+                    }
                     divisionByZero = true;
                 }
                 break;
             default:
-                System.out.println("\r Unknown Operation!");
+                if(Calculator.isMessageOn()) {
+                    System.out.println("\r>>> Message: Unknown Operation!");
+        }
                 unknownOperation = true;
                 break;
         }

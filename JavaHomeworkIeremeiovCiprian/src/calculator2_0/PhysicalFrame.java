@@ -21,10 +21,14 @@ public class PhysicalFrame {
      */
     public void requestNumber() {
         if(index == 0) {
-            this.display.display(">>> Message: Insert the first number: ");
+            if(Calculator.isMessageOn()) {
+                this.display.display(">>> Message: Insert the first number: ");
+            }
         }
         if(index == 2) {
-            this.display.display(">>> Message: Insert the second number: ");
+            if(Calculator.isMessageOn()) {
+                this.display.display(">>> Message: Insert the second number: ");
+            }
         }
         button[index] = new Button();
         button[index].pressNumber(this, index);
@@ -36,7 +40,9 @@ public class PhysicalFrame {
      * Method that asks for an operation as a character.
      */
     public void requestOperation() {
-        this.display.display(">>> Message: Insert operation ( + , - , * , / ): ");
+        if(Calculator.isMessageOn()) {
+            this.display.display(">>> Message: Insert operation ( + , - , * , / ): ");
+        }
         button[index] = new Button();
         button[index].pressOperation(this, index);
         index++;
@@ -46,7 +52,9 @@ public class PhysicalFrame {
      * Asks for the '=' character so that the program knows you want to see the result.
      */
     public void requestConfirmation() {
-        this.display.display(">>> Message: Press ' = ' to compute: ");
+        if(Calculator.isMessageOn()) {
+            this.display.display(">>> Message: Press ' = ' to compute: ");
+        }
         button[index] = new Button();
         button[index].compute(this, index);
     }

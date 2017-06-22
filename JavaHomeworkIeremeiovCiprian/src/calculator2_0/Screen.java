@@ -23,7 +23,9 @@ public class Screen {
      * @param button The string of buttons that you have given as input.
      */
     public void displayAll(Button button[]) {
-        display(">>> Message: " + button[0].getButtonPressed() + " " + button[1].getButtonPressed() + " " + button[2].getButtonPressed() + " " + button[3].getButtonPressed() + " ");
+        if(Calculator.isMessageOn()) {
+            display(">>> Message: " + button[0].getButtonPressed() + " " + button[1].getButtonPressed() + " " + button[2].getButtonPressed() + " " + button[3].getButtonPressed() + " ");
+        }
     }
     
     /**

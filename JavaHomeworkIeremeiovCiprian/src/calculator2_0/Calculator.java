@@ -11,6 +11,8 @@ import java.util.Scanner;
  */
 public class Calculator {
     
+    private static boolean messageOn;
+
     /**
      * Turns on the calculator, then asks: first number, then operation, then the second number and finally the equals sign. 
      * Press "Enter" after every input. When asked if you want to make another computation press 'y' or 'Y' for affirmative; press anything else to close the ComputerOOP.
@@ -40,13 +42,15 @@ public class Calculator {
                     frame.getDisplay().displayResult(process);
                 }
             }
-            if (computeAgain()) {
+            if (computeAgain(frame)) {
             //    frame = null;
                 turnOn();
             }
         } else {            // if '=' is not pressed
-            System.out.println("You didn't press '=' ! Please restart.");
-            if(computeAgain()) {
+            if(Calculator.isMessageOn()) {
+                System.out.println(">>> Message: You didn't press '=' ! Please restart.");
+            }
+            if(computeAgain(frame)) {
              //   frame = null;
                 turnOn();
             }
@@ -54,8 +58,16 @@ public class Calculator {
     }
     
     
+    /**
+     * 
+     * Sets the Message display On/Off
+     * @param bool tells the Calculator to display the messages or not
+     */
+    public static void messageOn(boolean bool) {
+        setMessageOn(bool);
+    }
     
-    
+  
     // asks for numbers, operation and equals sign.
     private void frameRequest(PhysicalFrame frame) {
         frame.requestNumber();
@@ -70,18 +82,36 @@ public class Calculator {
         
     
     // asks the user if he wants to Reset the ComputerOOP
-    private boolean computeAgain() {
+    private boolean computeAgain(PhysicalFrame frame) {
         Scanner answer = new Scanner(System.in);
-        System.out.println("\r\nDo you want to compute again? (y/n)");
+        if(Calculator.isMessageOn()) {
+            frame.getDisplay().display("\r\n>>> Message: Do you want to compute again? (y/n)");
+        }
         
         char myAnswer = answer.next().toLowerCase().charAt(0);
         
         if(myAnswer == 'y') {
             return true;
         } else {
-            System.out.println("Thank You for using my Calculator 2.0");
+            if(Calculator.isMessageOn()) {
+                frame.getDisplay().display(">>> Message: Thank You for using my Calculator 2.0\n");
+            }
             return false;
         }
+    }
+
+    /**
+     * @return the messageOn
+     */
+    public static boolean isMessageOn() {
+        return messageOn;
+    }
+
+    /**
+     * @param aMessageOn the messageOn to set
+     */
+    public static void setMessageOn(boolean aMessageOn) {
+        messageOn = aMessageOn;
     }
     
      
