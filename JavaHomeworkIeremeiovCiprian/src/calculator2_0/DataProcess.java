@@ -4,10 +4,10 @@
 package calculator2_0;
 
 /**
- * Class that handles the chosen operation.
+ * Class that performs the required processing of user's input. 
  * @author Cip
  */
-public class Calculation {
+public class DataProcess {
     
     private final String[] stringButton = new String[4];
     private Double result;

@@ -18,28 +18,28 @@ public class Button {
     
     /**
      * Sets the next number in the Buttons array.
-     * @param frame The Frame object that you are using for a set of basic operations.
+     * @param frame The PhysicalFrame object that you are using for a set of basic operations.
      * @param index The index of the current input that you need to set in the array of Buttons.
      */
-    public void pressNumber(Frame frame, int index) {
+    public void pressNumber(PhysicalFrame frame, int index) {
         frame.getButton()[index].setButtonPressed(this.getScanner().next());
     }
     
     /**
      * Sets the operation in the Buttons array.
-     * @param frame The Frame object that you are using for a set of basic operations.
+     * @param frame The PhysicalFrame object that you are using for a set of basic operations.
      * @param index The index of the current input that you need to set in the array of Buttons.
      */
-    public void pressOperation(Frame frame, int index) {
+    public void pressOperation(PhysicalFrame frame, int index) {
         frame.getButton()[index].setButtonPressed(this.getScanner().next());
     }
     
     /**
      * Sets the '=' character in the Buttons array. This is Required in order to be able to see the final result.
-     * @param frame The Frame object that you are using for a set of basic operations.
+     * @param frame The PhysicalFrame object that you are using for a set of basic operations.
      * @param index The index of the current input that you need to set in the array of Buttons.
      */
-    public void compute(Frame frame, int index) {
+    public void compute(PhysicalFrame frame, int index) {
         frame.getButton()[index].setButtonPressed(this.getScanner().next());
         if(!frame.getButton()[index].getButtonPressed().equals("=")) {
             confirmed = false;

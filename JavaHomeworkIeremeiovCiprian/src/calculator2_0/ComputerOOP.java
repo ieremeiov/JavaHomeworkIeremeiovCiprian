@@ -17,7 +17,7 @@ public class ComputerOOP {
      */
     public static void main(String[] args) {
         
-        StartComputer calculator = new StartComputer();
+        Calculator calculator = new Calculator();
         calculator.turnOn();
         
     }

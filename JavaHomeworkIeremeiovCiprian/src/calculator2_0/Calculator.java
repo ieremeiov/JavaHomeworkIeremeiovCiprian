@@ -9,7 +9,7 @@ import java.util.Scanner;
  * This class can Turn On the ComputerOOP.
  * @author Cip
  */
-public class StartComputer {
+public class Calculator {
     
     /**
      * Turns on the calculator, then asks: first number, then operation, then the second number and finally the equals sign. 
@@ -17,24 +17,27 @@ public class StartComputer {
      */
     public void turnOn() {
         
-        Frame frame = new Frame();
+        // phisical layer
+        PhysicalFrame frame = new PhysicalFrame();
+        // logical layer
+        DataProcess process = new DataProcess();
+
         frame.reset();
-        
         frameRequest(frame);
         
         // if '=' is pressed
         if (frame.getButton()[3].isConfirmed() == true) {
 
             //frame.getButton returns the Button array of the frame object
-            frame.getCalculation().calculateOperation(frame.getButton());
+            process.calculateOperation(frame.getButton());
 
-            boolean divisionByZero = frame.getCalculation().isDivisionByZero();
-            boolean unknownOperation = frame.getCalculation().isUnknownOperation(); 
+            boolean divisionByZero = process.isDivisionByZero();
+            boolean unknownOperation = process.isUnknownOperation(); 
             
             if (!divisionByZero) {
                 if(!unknownOperation) {
                     frame.getDisplay().displayAll(frame.getButton());
-                    frame.getDisplay().displayResult(frame.getCalculation());
+                    frame.getDisplay().displayResult(process);
                 }
             }
             if (computeAgain()) {
@@ -54,13 +57,13 @@ public class StartComputer {
     
     
     // asks for numbers, operation and equals sign.
-    private void frameRequest(Frame frame) {
+    private void frameRequest(PhysicalFrame frame) {
         frame.requestNumber();
-        frame.display.displayCurrent(frame);
+        frame.getDisplay().displayCurrent(frame);
         frame.requestOperation();
-        frame.display.displayCurrent(frame);
+        frame.getDisplay().displayCurrent(frame);
         frame.requestNumber();
-        frame.display.displayCurrent(frame);
+        frame.getDisplay().displayCurrent(frame);
 
         frame.requestConfirmation();
     }

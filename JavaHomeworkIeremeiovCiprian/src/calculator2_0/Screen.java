@@ -28,9 +28,9 @@ public class Screen {
     
     /**
      * Displays the result of your operations, with 2 decimals.
-     * @param calculation The Calculation object whose result you want to display.
+     * @param calculation The DataProcess object whose result you want to display.
      */
-    public void displayResult(Calculation calculation) {
+    public void displayResult(DataProcess calculation) {
         String result = String.format("%.2f\n", calculation.getResult());
         display(result);
         display(">>> Display: " + result);
@@ -47,7 +47,7 @@ public class Screen {
      * Sets the display to the last input inserted.
      * @param frame The frame instance whose last button pressed you want to get, in String format.
      */
-    public void displayCurrent(Frame frame) {
+    public void displayCurrent(PhysicalFrame frame) {
         display(">>> Display: " + frame.currentValue() + "\n");
     }
     

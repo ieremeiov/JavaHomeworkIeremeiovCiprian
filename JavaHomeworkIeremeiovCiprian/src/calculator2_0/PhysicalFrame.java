@@ -4,14 +4,15 @@
 package calculator2_0;
 
 /**
- * Class that controls the input to the ComputerOOP and sets an array of buttons based on your input.
+ * Class that controls the input to the ComputerOOP and sets an array of buttons based on your input. 
+ * A button can somehow represent a whole number, not just one digit. 
+ * It represents the physical layer of the computer.
  * @author Cip
  */
-public class Frame {
+public class PhysicalFrame {
     
     private final Button button[] = new Button[4];
-    public final Screen display = new Screen();
-    private final Calculation calculation = new Calculation();
+    private final Screen display = new Screen();
 
     private int index;
     
@@ -81,10 +82,9 @@ public class Frame {
     public String currentValue() {
         return this.button[index-1].getButtonPressed();
     }
+    
+    
 
-    public Calculation getCalculation() {
-        return calculation;
-    }
     
     
     
