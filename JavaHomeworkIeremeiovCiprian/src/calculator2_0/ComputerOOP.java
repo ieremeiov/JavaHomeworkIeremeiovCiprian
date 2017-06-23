@@ -21,7 +21,7 @@ public class ComputerOOP {
         
         
         Calculator calculator = new Calculator();
-        Calculator.messageOn(displayMessage);
+        Calculator.setMessageOn(displayMessage);
         calculator.turnOn();
         
     }

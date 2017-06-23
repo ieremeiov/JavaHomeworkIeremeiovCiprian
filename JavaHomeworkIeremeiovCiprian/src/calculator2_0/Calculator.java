@@ -61,10 +61,11 @@ public class Calculator {
     /**
      * 
      * Sets the Message display On/Off
-     * @param bool tells the Calculator to display the messages or not
+     * @param msgOn tells the Calculator to display the messages or not
+     * 
      */
-    public static void messageOn(boolean bool) {
-        setMessageOn(bool);
+    public static void setMessageOn(boolean msgOn) {
+        messageOn = msgOn;
     }
     
   
@@ -107,13 +108,6 @@ public class Calculator {
         return messageOn;
     }
 
-    /**
-     * @param aMessageOn the messageOn to set
-     */
-    public static void setMessageOn(boolean aMessageOn) {
-        messageOn = aMessageOn;
-    }
-    
      
     
 }
