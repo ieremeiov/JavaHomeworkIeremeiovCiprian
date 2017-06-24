@@ -3,32 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClassesAndInterfaces;
+package ClassesAndInterfaces.manufacturer;
+
+import ClassesAndInterfaces.Rentable;
+import ClassesAndInterfaces.Saleable;
+import ClassesAndInterfaces.manufacturer.Car;
 
 
 /**
  *
  * @author Cip
  */
-public class CarManufacturer {
+public class Manufacturer {
     
     private static final int NUMBER_OF_CARS = 10;
     private static int currentIndex = 0;
     
-    private String manufacturer;
-    private Car[] manufacturedCar = new Car[NUMBER_OF_CARS];
+    private final String manufacturer;
+    private final Car[] manufacturedCar = new Car[NUMBER_OF_CARS];
     
     
-    public CarManufacturer(String name) {
+    public Manufacturer(String name) {
         manufacturer = name;
     }
     
     public void setSalePrice(Saleable car, int price) {
+        Car newCar = (Car)car;
         int index = getCarIndex((Car)car);
         if(index >= 0) {
             manufacturedCar[index].setSalePrice(price);
         } else {
-            System.out.println("This car is not built by this manufacturer.");
+            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
         }
     }
     
@@ -37,7 +42,7 @@ public class CarManufacturer {
         if(index >= 0) {
             manufacturedCar[index].setDailyRentPrice(price);
         } else {
-            System.out.println("This car is not built by this manufacturer.");
+            System.out.printf("%s", "This car is not build by this manufacturer.\n");
         }
     }
     
@@ -65,7 +70,7 @@ public class CarManufacturer {
         return currentIndex;
     }
     
-    public String getName() {
+    private String getName() {
         return manufacturer;
     }
     

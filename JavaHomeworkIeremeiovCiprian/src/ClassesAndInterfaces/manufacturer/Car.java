@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClassesAndInterfaces;
+package ClassesAndInterfaces.manufacturer;
+
+import ClassesAndInterfaces.Rentable;
+import ClassesAndInterfaces.Saleable;
 
 /**
  *
@@ -36,9 +39,9 @@ public class Car implements Saleable, Rentable {
     }
 
     public Car(String carName, short carSpeed, Color carColor) {
-        name = carName;
-        speed = carSpeed;
-        color = carColor;
+        setName(carName);
+        setSpeed(carSpeed);
+        setColor(carColor);
     }
 
     /*get-ers and set-ers*/
@@ -54,15 +57,15 @@ public class Car implements Saleable, Rentable {
         return (speed);
     }
 
-    public void setName(String newName) {
+    private void setName(String newName) {
         name = newName;
     }
 
-    public void setColor(Color newColor) {
+    private void setColor(Color newColor) {
         color = newColor;
     }
 
-    public void setSpeed(short newSpeed) {
+    private void setSpeed(short newSpeed) {
         speed = newSpeed;
     }
 
@@ -115,11 +118,11 @@ public class Car implements Saleable, Rentable {
     }
 
     
-    public void setSalePrice(int price) {
+    void setSalePrice(int price) {
         this.salePrice = price;
     }
     
-    public void setDailyRentPrice(int price) {
+    void setDailyRentPrice(int price) {
         this.dailyRentPrice = price;
     }
 

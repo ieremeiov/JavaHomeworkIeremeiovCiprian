@@ -5,6 +5,9 @@
  */
 package ClassesAndInterfaces;
 
+import ClassesAndInterfaces.manufacturer.Manufacturer;
+import ClassesAndInterfaces.manufacturer.Car;
+
 /**
  *
  * @author Cip
@@ -16,11 +19,11 @@ public class Cars {
      */
     public static void main(String[] args) {
 
-       Car ferrari = new Car("ferrari", (short)180, Car.Color.GREEN);
+       Car ferrari = new Car("Ferrari", (short)180, Car.Color.GREEN);
         
         
 
-        CarManufacturer manufacturer = new CarManufacturer("Dacia");
+        Manufacturer manufacturer = new Manufacturer("Dacia");
         Car logan = new Car("Logan", (short)160, Car.Color.WHITE);
         Car mercedes = new Car("Mercedes", (short)230, Car.Color.YELLOW);
         Car bmw = new Car("BMW", (short)220, Car.Color.BLACK);
@@ -39,12 +42,12 @@ public class Cars {
         manufacturer.setDailyRentPrice(logan, 200);
         manufacturer.setDailyRentPrice(mercedes, 500);
         
-        System.out.println(logan.getSalePrice());
-        System.out.println(mercedes.getSalePrice());
+        System.out.println("Logan's sale price is: " + logan.getSalePrice());
+        System.out.println("Mercedes' daily rent price is: " + mercedes.getDailyRentPrice());
+        
         
         manufacturer.printCars();
         
-
         
     }
     
