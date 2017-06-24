@@ -1,32 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *   
+ *
  */
 package ClassesAndInterfaces.manufacturer;
 
 import ClassesAndInterfaces.Rentable;
 import ClassesAndInterfaces.Saleable;
-import ClassesAndInterfaces.manufacturer.Car;
 
 
 /**
- *
+ * Manufacturer Class that has a list of cars that he is manufacturing and a name;
  * @author Cip
  */
 public class Manufacturer {
     
+    //NUMBER_OF_CARS is the maximum number of cars that the manufacturer can build
     private static final int NUMBER_OF_CARS = 10;
-    private static int currentIndex = 0;
+    private static int lastIndex = 0;
     
     private final String manufacturer;
     private final Car[] manufacturedCar = new Car[NUMBER_OF_CARS];
     
-    
+    /**
+     * Constructor for Manufacturer
+     * @param name sets the name for the Manufacturer
+     */
     public Manufacturer(String name) {
         manufacturer = name;
     }
     
+    /**
+     *
+     * @param car the car whose sell price you want to set
+     * @param price the sell price you want to set for the car
+     */
     public void setSalePrice(Saleable car, int price) {
         Car newCar = (Car)car;
         int index = getCarIndex((Car)car);
@@ -37,6 +44,11 @@ public class Manufacturer {
         }
     }
     
+    /**
+     *
+     * @param car car the car whose daily rent price you want to set
+     * @param price the daily rent price you want to set for the car
+     */
     public void setDailyRentPrice(Rentable car, int price) {
         int index = getCarIndex((Car)car);
         if(index >= 0) {
@@ -46,12 +58,15 @@ public class Manufacturer {
         }
     }
     
+    /**
+     * Prints a table with the Manufacturer's cars and their properties
+     */
     public void printCars() {
         System.out.print("\n      #Manufacturer: " + manufacturer );
         System.out.println("\n----------------------------------------------------------");
         System.out.printf("|%-13s|%-12s|%-18s|%-10s|\n", "Name", "Sale Price", "Daily Rent Price",  "Color" );
 
-        for(int i = 0; i < currentIndex; i++) {
+        for(int i = 0; i < lastIndex; i++) {
             System.out.printf("|%-13s|%-12d|%-18d|%-10s|\n",
                     manufacturedCar[i].getName(), 
                     manufacturedCar[i].getSalePrice(),
@@ -61,22 +76,31 @@ public class Manufacturer {
         System.out.println("----------------------------------------------------------");
     }
     
+    /**
+     *
+     * @param car the Car you want to add to this manufacturer's Car list
+     */
     public void addCar(Car car) {
-        manufacturedCar[currentIndex] = car;
-        currentIndex++;
+        manufacturedCar[lastIndex] = car;
+        lastIndex++;
     }
     
-    public static int getCurrentIndex() {
-        return currentIndex;
+    /**
+     * 
+     * @return the index of the last car in the array of cars
+     */
+    public static int getLastIndex() {
+        return lastIndex;
     }
     
     private String getName() {
         return manufacturer;
     }
     
+    // returns the car's index in the array of cars if it exists, otherwise it returns -1
     private int getCarIndex(Car car) {
 
-        for(int i = 0; i < currentIndex; i++) {
+        for(int i = 0; i < lastIndex; i++) {
             if(manufacturedCar[i].getName().equals(car.getName())) {
                 return i;
             }

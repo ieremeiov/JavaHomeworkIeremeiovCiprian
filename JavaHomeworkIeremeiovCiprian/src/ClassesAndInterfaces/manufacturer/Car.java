@@ -18,7 +18,12 @@ public class Car implements Saleable, Rentable {
      * @enum enumeration of accepted car colors
      */
     public enum Color {
-        WHITE, RED, YELLOW, GREEN, GRAY, BLACK
+        WHITE,
+        RED,
+        YELLOW,
+        GREEN,
+        GRAY,
+        BLACK
     };
     /**
      * Internal hidden fields / attributes
@@ -38,6 +43,12 @@ public class Car implements Saleable, Rentable {
         speed = 90;
     }
 
+    /**
+     *
+     * @param carName
+     * @param carSpeed
+     * @param carColor
+     */
     public Car(String carName, short carSpeed, Color carColor) {
         setName(carName);
         setSpeed(carSpeed);
@@ -45,14 +56,28 @@ public class Car implements Saleable, Rentable {
     }
 
     /*get-ers and set-ers*/
+
+    /**
+     *
+     * @return
+     */
+
     public String getName() {
         return (name);
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getColor() {
         return (color);
     }
 
+    /**
+     *
+     * @return the car's current speed
+     */
     public short getSpeed() {
         return (speed);
     }
@@ -117,11 +142,12 @@ public class Car implements Saleable, Rentable {
         return dailyRentPrice;
     }
 
-    
+    // method used by the manufacturer to set the Sale Price
     void setSalePrice(int price) {
         this.salePrice = price;
     }
     
+    // method used by the manufacturer to set the Daily Rent Price
     void setDailyRentPrice(int price) {
         this.dailyRentPrice = price;
     }

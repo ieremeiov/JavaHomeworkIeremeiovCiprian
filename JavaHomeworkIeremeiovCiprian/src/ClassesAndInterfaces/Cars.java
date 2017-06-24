@@ -9,7 +9,10 @@ import ClassesAndInterfaces.manufacturer.Manufacturer;
 import ClassesAndInterfaces.manufacturer.Car;
 
 /**
- *
+ * Manufacturer has a list of Cars that are Rentable and Saleable.
+ * The Cars have attributes like Name, Speed, Color, Sale Price, Daily Rent Price.
+ * 
+ * 
  * @author Cip
  */
 public class Cars {
