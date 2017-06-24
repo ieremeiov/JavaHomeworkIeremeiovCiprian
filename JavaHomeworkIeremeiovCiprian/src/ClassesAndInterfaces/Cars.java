@@ -49,7 +49,6 @@ public class Cars {
         System.out.println("Logan's sale price is: " + logan.getSalePrice());
         System.out.println("Mercedes' daily rent price is: " + mercedes.getDailyRentPrice());
         
-        
         manufacturer.printCars();
         
         

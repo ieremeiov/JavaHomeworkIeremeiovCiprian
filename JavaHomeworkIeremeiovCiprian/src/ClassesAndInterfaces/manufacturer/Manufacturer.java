@@ -50,11 +50,12 @@ public class Manufacturer {
      * @param price the daily rent price you want to set for the car
      */
     public void setDailyRentPrice(Rentable car, int price) {
+        Car newCar = (Car)car;
         int index = getCarIndex((Car)car);
         if(index >= 0) {
             manufacturedCar[index].setDailyRentPrice(price);
         } else {
-            System.out.printf("%s", "This car is not build by this manufacturer.\n");
+            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
         }
     }
     
@@ -78,13 +79,19 @@ public class Manufacturer {
     }
     
     /**
-     *
+     * Adds a car to the car list, only if the list is not already full.
      * @param car the Car you want to add to this manufacturer's Car list
      */
     public void addCar(Car car) {
-        manufacturedCar[lastIndex] = car;
-        lastIndex++;
+        if(lastIndex < (NUMBER_OF_CARS-1)) {
+            manufacturedCar[lastIndex] = car;
+            lastIndex++;
+        } else {
+            System.out.printf("%s has reached the maximum number of built cars!", manufacturer);
+        }
     }
+    
+    
     
     /**
      * 
