@@ -30,7 +30,7 @@ public class Manufacturer {
     }
     
     /**
-     *
+     * Can set SalePrice for any Saleable car.
      * @param car the car whose sell price you want to set
      * @param price the sell price you want to set for the car
      */
@@ -45,7 +45,7 @@ public class Manufacturer {
     }
     
     /**
-     *
+     * Can set DailyRentPrice for any Rentable car.
      * @param car car the car whose daily rent price you want to set
      * @param price the daily rent price you want to set for the car
      */
@@ -63,17 +63,18 @@ public class Manufacturer {
      */
     public void printCars() {
         System.out.print("\n      #Manufacturer: " + manufacturer );
-        System.out.println("\n----------------------------------------------------------");
-        System.out.printf("|%-13s|%-12s|%-18s|%-10s|\n", "Name", "Sale Price", "Daily Rent Price",  "Color" );
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.printf("|%9s    |  %10s | %14s   | %6s   |\n", "Name", "Sale Price", "D_Rent Price",  "Color" );
+        System.out.println("-----------------------------------------------------------");
 
         for(int i = 0; i < lastIndex; i++) {
-            System.out.printf("|%-13s|%-12d|%-18d|%-10s|\n",
+            System.out.printf("| %-12s|%,13d$|%,18d$| %-7s|\n",
                     manufacturedCar[i].getName(), 
                     manufacturedCar[i].getSalePrice(),
                     manufacturedCar[i].getDailyRentPrice(), 
                     manufacturedCar[i].getColor() );
         }
-        System.out.println("----------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------");
     }
     
     /**

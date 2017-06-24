@@ -22,7 +22,7 @@ public class Cars {
      */
     public static void main(String[] args) {
 
-       Car ferrari = new Car("Ferrari", (short)180, Car.Color.GREEN);
+        Car ferrari = new Car("Ferrari", (short)180, Car.Color.GREEN);
         
         
 
@@ -35,10 +35,11 @@ public class Cars {
         manufacturer.addCar(logan);
         manufacturer.addCar(mercedes);
 
+        // set the price for a car that is not in the list?
+        manufacturer.setSalePrice(ferrari, 56000);
         
         manufacturer.setSalePrice(logan, 8000);
         manufacturer.setSalePrice(mercedes, 28000);
-        manufacturer.setSalePrice(ferrari, 56000);
         manufacturer.setSalePrice(bmw, 26000);
 
         
