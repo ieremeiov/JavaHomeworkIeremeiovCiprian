@@ -27,6 +27,7 @@ public class Manufacturer {
      */
     public Manufacturer(String name) {
         manufacturer = name;
+        System.out.printf("%s: There's a new manufacturer in town!\n", manufacturer);
     }
     
     /**
@@ -64,18 +65,18 @@ public class Manufacturer {
      */
     public void printCars() {
         System.out.print("\n      #Manufacturer: " + manufacturer );
-        System.out.println("\n-----------------------------------------------------------");
-        System.out.printf("|%9s    |  %10s | %14s   | %6s   |\n", "Name", "Sale Price", "D_Rent Price",  "Color" );
-        System.out.println("-----------------------------------------------------------");
+        System.out.println("\n---------------------------------------------------------");
+        System.out.printf("|%9s    |  %10s  | %14s  | %6s |\n", "Name", "Sale Price", "D_Rent Price",  "Color" );
+        System.out.println("---------------------------------------------------------");
 
         for(int i = 0; i < lastIndex; i++) {
-            System.out.printf("| %-12s|%,13d$|%,18d$| %-7s|\n",
+            System.out.printf("| %-12s|%,13d$|%,16d$| %-7s|\n",
                     manufacturedCar[i].getName(), 
                     manufacturedCar[i].getSalePrice(),
                     manufacturedCar[i].getDailyRentPrice(), 
                     manufacturedCar[i].getColor() );
         }
-        System.out.println("-----------------------------------------------------------");
+        System.out.println("---------------------------------------------------------");
     }
     
     /**
@@ -86,6 +87,7 @@ public class Manufacturer {
         if(lastIndex < (NUMBER_OF_CARS-1)) {
             manufacturedCar[lastIndex] = car;
             lastIndex++;
+            System.out.printf("%s can now build %s\n",manufacturer, car.getName());
         } else {
             System.out.printf("%s has reached the maximum number of built cars!", manufacturer);
         }
