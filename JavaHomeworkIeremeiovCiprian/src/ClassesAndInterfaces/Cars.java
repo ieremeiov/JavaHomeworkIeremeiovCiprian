@@ -48,7 +48,7 @@ public class Cars {
         System.out.println("Mercedes' daily rent price is: " + mercedes.getDailyRentPrice());
         
         manufacturer.printCars();
-        
+        System.out.println("NOTE: Table says I can rent BMW for free. I have  to fix this.");
         
     }
     
