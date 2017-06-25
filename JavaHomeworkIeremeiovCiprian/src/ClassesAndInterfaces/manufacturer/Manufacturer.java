@@ -70,10 +70,10 @@ public class Manufacturer {
         System.out.println("---------------------------------------------------------");
 
         for(int i = 0; i < lastIndex; i++) {
-            System.out.printf("| %-12s|%,13d$|%,16d$| %-7s|\n",
+            System.out.printf("| %-12s|%14s|%17s| %-7s|\n",
                     manufacturedCar[i].getName(), 
-                    manufacturedCar[i].getSalePrice(),
-                    manufacturedCar[i].getDailyRentPrice(), 
+                    (manufacturedCar[i].getSalePrice() > 0 )? (Integer.toString(manufacturedCar[i].getSalePrice()) + "$") : "NOT_SET",
+                    (manufacturedCar[i].getDailyRentPrice() > 0) ? (Integer.toString(manufacturedCar[i].getDailyRentPrice()) + "$") : "NOT_SET",
                     manufacturedCar[i].getColor() );
         }
         System.out.println("---------------------------------------------------------");

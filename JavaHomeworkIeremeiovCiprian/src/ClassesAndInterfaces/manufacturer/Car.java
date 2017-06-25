@@ -31,8 +31,8 @@ public class Car implements Saleable, Rentable {
     private Color color;
     private String name;
     private short speed;
-    private int salePrice;
-    private int dailyRentPrice;
+    private int salePrice = -1;
+    private int dailyRentPrice = -1;
     
     
     /**
@@ -128,7 +128,11 @@ public class Car implements Saleable, Rentable {
      */
     @Override
     public int getSalePrice() {
-        return salePrice;
+        if(salePrice > 0) {
+            return salePrice;
+        } else {
+            return -1;
+        }
     }
 
     /**
@@ -139,7 +143,11 @@ public class Car implements Saleable, Rentable {
      */
     @Override
     public int getDailyRentPrice() {
-        return dailyRentPrice;
+        if(dailyRentPrice > 0) {
+            return dailyRentPrice;
+        } else {
+            return -1;
+        }
     }
 
     // method used by the manufacturer to set the Sale Price
