@@ -5,14 +5,16 @@
 package ClassesAndInterfaces.manufacturer;
 
 import ClassesAndInterfaces.Rentable;
+import ClassesAndInterfaces.Renter;
 import ClassesAndInterfaces.Saleable;
+import ClassesAndInterfaces.Seller;
 
 /**
  * CarDealer Class that has a list of cars that he is manufacturing and a name;
  *
  * @author Cip
  */
-public class CarDealer {
+public class CarDealer implements Seller, Renter{
 
     //NUMBER_OF_CARS is the maximum number of cars that the carDealer can build
     private static int number_of_manufacturers;
@@ -48,7 +50,7 @@ public class CarDealer {
         if (manIndex >= 0) {
             int carIndex = manufacturer.getCarIndex((Car) car);
             if (carIndex >= 0) {
-                manufacturerList[manIndex].getCarList()[carIndex].setSalePrice(price);
+                manufacturerList[manIndex].getCar(carIndex).setSalePrice(price);
             } else {
                 System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
             }
@@ -71,7 +73,7 @@ public class CarDealer {
         if (manIndex >= 0) {
             int carIndex = manufacturer.getCarIndex((Car) car);
             if (carIndex >= 0) {
-                manufacturerList[manIndex].getCarList()[carIndex].setDailyRentPrice(price);
+                manufacturerList[manIndex].getCar(carIndex).setDailyRentPrice(price);
             } else {
                 System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
             }

@@ -80,11 +80,5 @@ public class Manufacturer {
     public int getLastIndex() {
         return lastIndex;
     }
-
-    public Car[] getCarList() {
-        return carList;
-    }
-    
-
     
 }
