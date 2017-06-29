@@ -150,6 +150,8 @@ public class Car implements Saleable, Rentable {
         }
     }
 
+    
+    
     // method used by the manufacturer to set the Sale Price
     void setSalePrice(int price) {
         this.salePrice = price;

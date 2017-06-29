@@ -1,123 +1,90 @@
 /*
- *   
- *
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ClassesAndInterfaces.manufacturer;
 
-import ClassesAndInterfaces.Rentable;
-import ClassesAndInterfaces.Saleable;
-
-
 /**
- * Manufacturer Class that has a list of cars that he is manufacturing and a name;
+ *
  * @author Cip
  */
 public class Manufacturer {
     
-    //NUMBER_OF_CARS is the maximum number of cars that the manufacturer can build
-    private static final int NUMBER_OF_CARS = 10;
-    private static int lastIndex = 0;
+    private static int number_of_cars;
     
-    private final String manufacturer;
-    private final Car[] manufacturedCar = new Car[NUMBER_OF_CARS];
+    private int lastIndex = 0;
+    private final Car[] carList;
+    private final String name;
     
-    /**
-     * Constructor for Manufacturer
-     * @param name sets the name for the Manufacturer
-     */
-    public Manufacturer(String name) {
-        manufacturer = name;
-        System.out.printf("%s: There's a new manufacturer in town!\n", manufacturer);
+    
+    public Manufacturer(String name, int number) {
+        carList = new Car[number];
+        number_of_cars = number;
+        this.name = name;
+        System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
     }
     
-    /**
-     * Can set SalePrice for any Saleable car.
-     * @param car the car whose sell price you want to set
-     * @param price the sell price you want to set for the car
-     */
-    public void setSalePrice(Saleable car, int price) {
-        Car newCar = (Car)car;
-        int index = getCarIndex((Car)car);
-        if(index >= 0) {
-            manufacturedCar[index].setSalePrice(price);
+    public void produceCar(Car car) {
+        if(lastIndex < (number_of_cars-1)) {
+            carList[lastIndex] = car;
+            System.out.printf("%s can now build %s\n",name, carList[lastIndex].getName());
+            lastIndex++;
         } else {
-            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
+            System.out.printf("%s has reached the maximum number of built cars!", name);
         }
     }
     
     /**
-     * Can set DailyRentPrice for any Rentable car.
-     * @param car car the car whose daily rent price you want to set
-     * @param price the daily rent price you want to set for the car
-     */
-    public void setDailyRentPrice(Rentable car, int price) {
-        Car newCar = (Car)car;
-        int index = getCarIndex((Car)car);
-        if(index >= 0) {
-            manufacturedCar[index].setDailyRentPrice(price);
-        } else {
-            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
-        }
-    }
-    
-    /**
-     * Prints a table with the Manufacturer's cars and their properties
+     * Prints a table with the CarDealer's cars and their properties
      */
     public void printCars() {
-        System.out.print("\n      #Manufacturer: " + manufacturer );
+        System.out.print("\n      #Manufacturer: " + name );
         System.out.println("\n---------------------------------------------------------");
         System.out.printf("|%9s    |  %10s  | %14s  | %6s |\n", "Name", "Sale Price", "D_Rent Price",  "Color" );
         System.out.println("---------------------------------------------------------");
 
         for(int i = 0; i < lastIndex; i++) {
             System.out.printf("| %-12s|%14s|%17s| %-7s|\n",
-                    manufacturedCar[i].getName(), 
-                    (manufacturedCar[i].getSalePrice() > 0 )? (Integer.toString(manufacturedCar[i].getSalePrice()) + "$") : "NOT_SET",
-                    (manufacturedCar[i].getDailyRentPrice() > 0) ? (Integer.toString(manufacturedCar[i].getDailyRentPrice()) + "$") : "NOT_SET",
-                    manufacturedCar[i].getColor() );
+                    carList[i].getName(), 
+                    (carList[i].getSalePrice() > 0 )? (Integer.toString(carList[i].getSalePrice()) + "$") : "NOT_SET",
+                    (carList[i].getDailyRentPrice() > 0) ? (Integer.toString(carList[i].getDailyRentPrice()) + "$") : "NOT_SET",
+                    carList[i].getColor() );
         }
         System.out.println("---------------------------------------------------------");
     }
-    
-    /**
-     * Adds a car to the car list, only if the list is not already full.
-     * @param car the Car you want to add to this manufacturer's Car list
-     */
-    public void addCar(Car car) {
-        if(lastIndex < (NUMBER_OF_CARS-1)) {
-            manufacturedCar[lastIndex] = car;
-            lastIndex++;
-            System.out.printf("%s can now build %s\n",manufacturer, car.getName());
-        } else {
-            System.out.printf("%s has reached the maximum number of built cars!", manufacturer);
-        }
-    }
-    
-    
-    
-    /**
-     * 
-     * @return the index of the last car in the array of cars
-     */
-    public static int getLastIndex() {
-        return lastIndex;
-    }
-    
-    private String getName() {
-        return manufacturer;
-    }
-    
+
     // returns the car's index in the array of cars if it exists, otherwise it returns -1
-    private int getCarIndex(Car car) {
+    public int getCarIndex(Car car) {
 
         for(int i = 0; i < lastIndex; i++) {
-            if(manufacturedCar[i].getName().equals(car.getName())) {
+            if(carList[i].getName().equals(car.getName())) {
                 return i;
             }
         }          
         return -1;
     }
     
+    public Car getCar(Car car) {
+        return carList[getCarIndex(car)];
+    }
     
+    public Car getCar(int i) {
+        return carList[i];
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getLastIndex() {
+        return lastIndex;
+    }
+
+    public Car[] getCarList() {
+        return carList;
+    }
+    
+
     
 }

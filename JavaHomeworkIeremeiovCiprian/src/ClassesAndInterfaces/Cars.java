@@ -3,11 +3,12 @@
  */
 package ClassesAndInterfaces;
 
-import ClassesAndInterfaces.manufacturer.Manufacturer;
 import ClassesAndInterfaces.manufacturer.Car;
+import ClassesAndInterfaces.manufacturer.CarDealer;
+import ClassesAndInterfaces.manufacturer.Manufacturer;
 
 /**
- * Manufacturer has a list of Cars that are Rentable and Saleable.
+ * CarDealer has a list of Cars that are Rentable and Saleable.
  * The Cars have attributes like Name, Speed, Color, Sale Price, Daily Rent Price.
  * 
  * 
@@ -20,35 +21,36 @@ public class Cars {
      */
     public static void main(String[] args) {
 
-        Car ferrari = new Car("Ferrari", (short)180, Car.Color.GREEN);
         
+        CarDealer dealer1 = new CarDealer("Dealer1", 5);
+        Manufacturer manufacturer1 = new Manufacturer("Manufacturer1", 4);
+        Manufacturer manufacturer2 = new Manufacturer("Manufacturer2", 4);
+        Car car1 = new Car("Car1", (short)230, Car.Color.YELLOW);
+        Car car2 = new Car("Car2", (short)230, Car.Color.YELLOW);
+        Car car3 = new Car("Car3", (short)230, Car.Color.RED);
         
+        manufacturer1.produceCar(car1);
+        manufacturer1.produceCar(car2);
+        manufacturer2.produceCar(car3);
+        
+        dealer1.addManufacturer(manufacturer1);
+        dealer1.addManufacturer(manufacturer2);
+        
+        dealer1.setSalePrice(manufacturer1, car1, 20000);
+        dealer1.setDailyRentPrice(manufacturer1, car1, 100);
+        dealer1.setSalePrice(manufacturer1, car2, 25000);
+        dealer1.setSalePrice(manufacturer2, car3, 30000);
+       
+        dealer1.setSalePrice(manufacturer2, car2, 30000); // not in list
+       
 
-        Manufacturer manufacturer = new Manufacturer("Dacia");
-        Car logan = new Car("Logan", (short)160, Car.Color.WHITE);
-        Car mercedes = new Car("Mercedes", (short)230, Car.Color.YELLOW);
-        Car bmw = new Car("BMW", (short)220, Car.Color.BLACK);
+        manufacturer1.printCars();
+        manufacturer2.printCars();
         
-        manufacturer.addCar(bmw);
-        manufacturer.addCar(logan);
-        manufacturer.addCar(mercedes);
+        dealer1.printManufacturers();
 
-        // set the price for a car that is not in the list?
-        manufacturer.setSalePrice(ferrari, 56000);
-        
-        manufacturer.setSalePrice(logan, 8000);
-        manufacturer.setSalePrice(mercedes, 28000);
-        manufacturer.setSalePrice(bmw, 26000);
+        dealer1.printCars();
 
-        
-        manufacturer.setDailyRentPrice(logan, 200);
-        manufacturer.setDailyRentPrice(mercedes, 500);
-        
-        System.out.println("Logan's sale price is: " + logan.getSalePrice());
-        System.out.println("Mercedes' daily rent price is: " + mercedes.getDailyRentPrice());
-        
-        manufacturer.printCars();
-        System.out.println("NOTE: Table says I can rent BMW for free. I have  to fix this.");
         
     }
     
