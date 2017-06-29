@@ -5,8 +5,8 @@
  */
 package ClassesAndInterfaces.manufacturer;
 
-import ClassesAndInterfaces.Rentable;
-import ClassesAndInterfaces.Saleable;
+import ClassesAndInterfaces.Interfaces.Rentable;
+import ClassesAndInterfaces.Interfaces.Saleable;
 
 /**
  *

@@ -4,10 +4,10 @@
  */
 package ClassesAndInterfaces.manufacturer;
 
-import ClassesAndInterfaces.Rentable;
-import ClassesAndInterfaces.Renter;
-import ClassesAndInterfaces.Saleable;
-import ClassesAndInterfaces.Seller;
+import ClassesAndInterfaces.Interfaces.Rentable;
+import ClassesAndInterfaces.Interfaces.Renter;
+import ClassesAndInterfaces.Interfaces.Saleable;
+import ClassesAndInterfaces.Interfaces.Seller;
 
 /**
  * CarDealer Class that has a list of cars that he is manufacturing and a name;
@@ -121,18 +121,12 @@ public class CarDealer implements Seller, Renter{
     
     public void printCars() {
         
-        System.out.printf("\n Dealer <%s> is selling/renting:\n", carDealer);
+        System.out.printf("\nDealer <%s> is selling/renting:\n", carDealer);
         for(int i=0; i < lastIndex; i++) { 
-            System.out.printf(" <%s> : ", manufacturerList[i].getName() );
-            System.out.printf("<%s: %s/%s> \n", manufacturerList[i].getCar(0).getName(), 
-                                                  (manufacturerList[i].getCar(0).getSalePrice() > 0) ? Integer.toString(manufacturerList[i].getCar(0).getSalePrice()) : "NOT_SET", 
-                                                  (manufacturerList[i].getCar(0).getDailyRentPrice()> 0) ? Integer.toString(manufacturerList[i].getCar(0).getDailyRentPrice()) : "NOT_SET"
-                                                  );
-            for(int j = 1; j < manufacturerList[i].getLastIndex(); j++) {
-                for(int space = 0; space < (manufacturerList[i].getName().length() + 6); space++) {
-                    System.out.print(" ");
-                }
-                System.out.printf("<%s: %s/%s> \n", manufacturerList[i].getCar(j).getName(), 
+            System.out.printf("     <%s> : \n", manufacturerList[i].getName() );
+
+            for(int j = 0; j < manufacturerList[i].getLastIndex(); j++) {
+                System.out.printf("          <%s: %s/%s> \n", manufacturerList[i].getCar(j).getName(), 
                                                   (manufacturerList[i].getCar(j).getSalePrice() > 0) ? Integer.toString(manufacturerList[i].getCar(j).getSalePrice()) : "NOT_SET", 
                                                   (manufacturerList[i].getCar(j).getDailyRentPrice()> 0) ? Integer.toString(manufacturerList[i].getCar(j).getDailyRentPrice()) : "NOT_SET"
                                                   );
