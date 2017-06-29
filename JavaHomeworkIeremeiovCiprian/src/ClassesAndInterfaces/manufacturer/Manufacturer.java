@@ -11,8 +11,7 @@ package ClassesAndInterfaces.manufacturer;
  */
 public class Manufacturer {
     
-    private static int number_of_cars;
-    
+    private final int noOfCars;
     private int lastIndex = 0;
     private final Car[] carList;
     private final String name;
@@ -20,16 +19,17 @@ public class Manufacturer {
     
     public Manufacturer(String name, int number) {
         carList = new Car[number];
-        number_of_cars = number;
+        noOfCars = number;
         this.name = name;
         System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
     }
     
     public void produceCar(Car car) {
-        if(lastIndex < (number_of_cars-1)) {
+        if(lastIndex < (noOfCars)) {
             carList[lastIndex] = car;
             System.out.printf("%s can now build %s\n",name, carList[lastIndex].getName());
             lastIndex++;
+            //System.out.println("Produced car: " + lastIndex);
         } else {
             System.out.printf("%s has reached the maximum number of built cars!", name);
         }
@@ -79,6 +79,10 @@ public class Manufacturer {
     
     public int getLastIndex() {
         return lastIndex;
+    }
+    
+    public int getNoOfCars() {
+        return noOfCars;
     }
     
 }

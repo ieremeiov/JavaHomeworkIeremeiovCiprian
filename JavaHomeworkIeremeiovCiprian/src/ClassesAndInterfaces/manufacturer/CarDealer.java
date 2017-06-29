@@ -18,7 +18,7 @@ public class CarDealer implements Seller, Renter{
 
     //NUMBER_OF_CARS is the maximum number of cars that the carDealer can build
     private static int number_of_manufacturers;
-    
+
     private int lastIndex = 0;
     private final String carDealer;
     private final Manufacturer[] manufacturerList;
