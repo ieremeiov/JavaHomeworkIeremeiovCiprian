@@ -10,14 +10,13 @@ import ClassesAndInterfaces.Interfaces.Saleable;
 import ClassesAndInterfaces.Interfaces.Seller;
 
 /**
- * CarDealer Class that has a list of cars that he is manufacturing and a name;
+ * CarDealer Class that has a list of manufacturers with cars for sale/rent;
  *
  * @author Cip
  */
 public class CarDealer implements Seller, Renter{
 
-    //NUMBER_OF_CARS is the maximum number of cars that the carDealer can build
-    private static int number_of_manufacturers;
+    private static int numberOfManufacturers;
 
     private int lastIndex = 0;
     private final String carDealer;
@@ -26,23 +25,24 @@ public class CarDealer implements Seller, Renter{
     /**
      * Constructor for Manufacturer
      *
-     * @param name sets the name for the Manufacturer
-     * @param number
+     * @param name sets the name for the Car Dealer
+     * @param number sets the maximum number of manufacturers for that specific Car Dealer
      */
     public CarDealer(String name, int number) {
         carDealer = name;
-        number_of_manufacturers = number;
+        numberOfManufacturers = number;
         manufacturerList = new Manufacturer[number];
         System.out.printf("%s: There's a new Car Dealer in town!\n", carDealer);
     }
 
     /**
-     * Can set SalePrice for any Saleable car.
+     * Can set SalePrice for any Saleable car built by a specific manufacturer.
      *
      * @param manufacturer
      * @param car the car whose sell price you want to set
      * @param price the sell price you want to set for the car
      */
+    @Override
     public void setSalePrice(Manufacturer manufacturer, Saleable car, int price) {
         Car newCar = (Car) car;
         
@@ -60,12 +60,13 @@ public class CarDealer implements Seller, Renter{
     }
 
     /**
-     * Can set DailyRentPrice for any Rentable car.
+     * Can set DailyRentPrice for any Rentable car built by a specific manufacturer.
      *
      * @param manufacturer
-     * @param car car the car whose daily rent price you want to set
+     * @param car the car whose daily rent price you want to set
      * @param price the daily rent price you want to set for the car
      */
+    @Override
     public void setDailyRentPrice(Manufacturer manufacturer, Rentable car, int price) {
         Car newCar = (Car) car;
         
@@ -83,17 +84,17 @@ public class CarDealer implements Seller, Renter{
     }
 
     /**
-     * Adds a car to the car list, only if the list is not already full.
+     * Adds a manufacturer to the manufacturer list, only if the list is not already full.
      *
-     * @param manufacturer
+     * @param manufacturer manufacturer to add
      */
     public void addManufacturer(Manufacturer manufacturer) {
-        if (lastIndex < (number_of_manufacturers - 1)) {
+        if (lastIndex < (numberOfManufacturers)) {
             manufacturerList[lastIndex] = manufacturer;
             lastIndex++;
             System.out.printf("%s can now sell cars for %s\n", carDealer, manufacturer.getName());
         } else {
-            System.out.printf("%s has reached the maximum number of manufacturers.", carDealer);
+            System.out.printf("%s has reached the maximum number of manufacturers.\n", carDealer);
         }
     }
 
@@ -105,6 +106,10 @@ public class CarDealer implements Seller, Renter{
         return lastIndex;
     }
 
+    /**
+     *
+     * @return name of the car dealer
+     */
     public String getName() {
         return carDealer;
     }
@@ -119,6 +124,9 @@ public class CarDealer implements Seller, Renter{
         return -1;
     }
     
+    /**
+     * Prints a list of cars for each manufacturer in the dealer's list, alongside with the car's selling/renting price if it exists.
+     */
     public void printCars() {
         
         System.out.printf("\nDealer <%s> is selling/renting:\n", carDealer);
@@ -135,6 +143,9 @@ public class CarDealer implements Seller, Renter{
         System.out.println("");
     }
 
+    /**
+     * Prints a list of manufacturers that the dealer is selling for.
+     */
     public void printManufacturers() {
         
         System.out.print("\n" + this.getName() + " is selling cars for ");

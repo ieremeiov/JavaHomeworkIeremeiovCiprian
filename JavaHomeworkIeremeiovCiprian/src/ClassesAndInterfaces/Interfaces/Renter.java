@@ -13,7 +13,16 @@ import ClassesAndInterfaces.manufacturer.Manufacturer;
  */
 public interface Renter {
     
+    /**
+     *
+     */
     public static final boolean IS_RENTER = true;
     
+    /**
+     *
+     * @param manufacturer
+     * @param car
+     * @param price
+     */
     public void setDailyRentPrice(Manufacturer manufacturer, Rentable car, int price);
 }

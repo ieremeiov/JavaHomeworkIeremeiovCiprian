@@ -16,7 +16,11 @@ public class Manufacturer {
     private final Car[] carList;
     private final String name;
     
-    
+    /**
+     *
+     * @param name Manufacturer's name
+     * @param number maximum number of cars
+     */
     public Manufacturer(String name, int number) {
         carList = new Car[number];
         noOfCars = number;
@@ -24,19 +28,24 @@ public class Manufacturer {
         System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
     }
     
+    /**
+     *
+     * @param car Car to be produced (has name, speed and color)
+     */
     public void produceCar(Car car) {
+        
         if(lastIndex < (noOfCars)) {
             carList[lastIndex] = car;
             System.out.printf("%s can now build %s\n",name, carList[lastIndex].getName());
             lastIndex++;
             //System.out.println("Produced car: " + lastIndex);
         } else {
-            System.out.printf("%s has reached the maximum number of built cars!", name);
+            System.out.printf("%s has reached the maximum number of built cars!\n", name);
         }
     }
     
     /**
-     * Prints a table with the CarDealer's cars and their properties
+     * Prints a table with the Manufacturer's cars with their name, color and the sale price/rent price set by their contracted Car Dealer.
      */
     public void printCars() {
         System.out.print("\n      #Manufacturer: " + name );
@@ -55,7 +64,13 @@ public class Manufacturer {
     }
 
     // returns the car's index in the array of cars if it exists, otherwise it returns -1
-    public int getCarIndex(Car car) {
+
+    /**
+     *
+     * @param car
+     * @return
+     */
+    int getCarIndex(Car car) {
 
         for(int i = 0; i < lastIndex; i++) {
             if(carList[i].getName().equals(car.getName())) {
@@ -65,23 +80,45 @@ public class Manufacturer {
         return -1;
     }
     
-    public Car getCar(Car car) {
+    /**
+     *
+     * @param car
+     * @return
+     */
+    Car getCar(Car car) {
         return carList[getCarIndex(car)];
     }
     
-    public Car getCar(int i) {
+    /**
+     *
+     * @param i
+     * @return
+     */
+    Car getCar(int i) {
         return carList[i];
     }
     
-    public String getName() {
+    /**
+     *
+     * @return
+     */
+    String getName() {
         return name;
     }
     
-    public int getLastIndex() {
+    /**
+     *
+     * @return
+     */
+    int getLastIndex() {
         return lastIndex;
     }
     
-    public int getNoOfCars() {
+    /**
+     *
+     * @return
+     */
+    int getNoOfCars() {
         return noOfCars;
     }
     
