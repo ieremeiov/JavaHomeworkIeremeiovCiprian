@@ -30,9 +30,16 @@ public class Manufacturer {
     
     /**
      *
-     * @param car Car to be produced (has name, speed and color)
+     * @param carName name of the Car to be produced
+     * @param carSpeed 
+     * @param carColor 
      */
-    public void produceCar(Car car) {
+    public void produceCar(String carName, short carSpeed, Car.Color carColor) {
+        Car car =  new Car(carName, carSpeed, carColor);
+        addCar(car);
+    }
+        
+    private void addCar(Car car) {
         
         if(lastIndex < (noOfCars)) {
             carList[lastIndex] = car;
@@ -67,13 +74,28 @@ public class Manufacturer {
 
     /**
      *
-     * @param car
-     * @return
+     * @param car the Car object to search for
+     * @return the index of the car in the manufacturer's carList
      */
     int getCarIndex(Car car) {
 
         for(int i = 0; i < lastIndex; i++) {
             if(carList[i].getName().equals(car.getName())) {
+                return i;
+            }
+        }          
+        return -1;
+    }
+    
+    /**
+     *
+     * @param car the name of the Car object to search for
+     * @return the index of the car in the manufacturer's carList
+     */
+    int getCarIndex(String car) {
+
+        for(int i = 0; i < lastIndex; i++) {
+            if(carList[i].getName().equals(car)) {
                 return i;
             }
         }          
@@ -92,7 +114,7 @@ public class Manufacturer {
     /**
      *
      * @param i
-     * @return
+     * @return the car at index i in the carList of manufacturer
      */
     Car getCar(int i) {
         return carList[i];

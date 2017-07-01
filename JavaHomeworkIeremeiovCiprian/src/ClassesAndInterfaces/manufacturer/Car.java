@@ -18,11 +18,35 @@ public class Car implements Saleable, Rentable {
      * @enum enumeration of accepted car colors
      */
     public enum Color {
+
+        /**
+         *
+         */
         WHITE,
+
+        /**
+         *
+         */
         RED,
+
+        /**
+         *
+         */
         YELLOW,
+
+        /**
+         *
+         */
         GREEN,
+
+        /**
+         *
+         */
         GRAY,
+
+        /**
+         *
+         */
         BLACK
     };
     /**

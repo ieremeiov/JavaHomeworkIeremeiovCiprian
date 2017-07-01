@@ -26,31 +26,24 @@ public class Cars {
         CarDealer dealer1 = new CarDealer("Dealer1", 1);
         Manufacturer manufacturer1 = new Manufacturer("Manufacturer1", 4);
         Manufacturer manufacturer2 = new Manufacturer("Manufacturer2", 3);
-        Car car1 = new Car("Car1", (short)230, Car.Color.YELLOW);
-        Car car2 = new Car("Car2", (short)230, Car.Color.YELLOW);
-        Car car3 = new Car("Car3", (short)230, Car.Color.RED);
-        Car car4 = new Car("Car4", (short)230, Car.Color.YELLOW);
-        Car car5 = new Car("Car5", (short)230, Car.Color.YELLOW);
         
-        Car car41 = new Car("Car41", (short)230, Car.Color.YELLOW);
+        manufacturer1.produceCar("Car1", (short)230, Car.Color.YELLOW);
+        manufacturer1.produceCar("Car2", (short)230, Car.Color.YELLOW);
+        manufacturer1.produceCar("Car3", (short)230, Car.Color.RED);
+        manufacturer1.produceCar("Car4", (short)230, Car.Color.YELLOW);
+        manufacturer1.produceCar("Car41", (short)230, Car.Color.YELLOW); // Car List is already full
         
-        manufacturer1.produceCar(car1);
-        manufacturer1.produceCar(car2);
-        manufacturer1.produceCar(car3);
-        manufacturer1.produceCar(car4);
-        manufacturer1.produceCar(car41); // Car List is already full
-        
-        manufacturer2.produceCar(car5);
+        manufacturer2.produceCar("Car5", (short)230, Car.Color.YELLOW);
         
         dealer1.addManufacturer(manufacturer1);
         dealer1.addManufacturer(manufacturer2);
         
-        dealer1.setSalePrice(manufacturer1, car1, 20000);
-        dealer1.setDailyRentPrice(manufacturer1, car1, 100);
-        dealer1.setSalePrice(manufacturer1, car2, 25000);
-        dealer1.setSalePrice(manufacturer2, car5, 30000);
+        dealer1.setSalePrice(manufacturer1, "Car1", 20000);
+        dealer1.setDailyRentPrice(manufacturer1, "Car1", 100);
+        dealer1.setSalePrice(manufacturer1, "Car2", 25000);
+        dealer1.setSalePrice(manufacturer2, "Car5", 30000);
        
-        dealer1.setSalePrice(manufacturer2, car2, 30000); // not in car list of manufacturer
+        dealer1.setSalePrice(manufacturer2, "Car2", 30000); // not in car list of manufacturer
        
         manufacturer1.printCars();
         manufacturer2.printCars();

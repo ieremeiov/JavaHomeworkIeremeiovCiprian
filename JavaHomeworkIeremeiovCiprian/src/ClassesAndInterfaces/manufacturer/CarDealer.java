@@ -4,17 +4,12 @@
  */
 package ClassesAndInterfaces.manufacturer;
 
-import ClassesAndInterfaces.Interfaces.Rentable;
-import ClassesAndInterfaces.Interfaces.Renter;
-import ClassesAndInterfaces.Interfaces.Saleable;
-import ClassesAndInterfaces.Interfaces.Seller;
-
 /**
  * CarDealer Class that has a list of manufacturers with cars for sale/rent;
  *
  * @author Cip
  */
-public class CarDealer implements Seller, Renter{
+public class CarDealer {
 
     private static int numberOfManufacturers;
 
@@ -39,23 +34,21 @@ public class CarDealer implements Seller, Renter{
      * Can set SalePrice for any Saleable car built by a specific manufacturer.
      *
      * @param manufacturer
-     * @param car the car whose sell price you want to set
+     * @param carName
      * @param price the sell price you want to set for the car
      */
-    @Override
-    public void setSalePrice(Manufacturer manufacturer, Saleable car, int price) {
-        Car newCar = (Car) car;
+    public void setSalePrice(Manufacturer manufacturer, String carName, int price) {
         
         int manIndex = getManufacturerIndex(manufacturer);
         if (manIndex >= 0) {
-            int carIndex = manufacturer.getCarIndex((Car) car);
+            int carIndex = manufacturer.getCarIndex(carName);
             if (carIndex >= 0) {
                 manufacturerList[manIndex].getCar(carIndex).setSalePrice(price);
             } else {
                 System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
             }
         } else {
-            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
+            System.out.printf("%s is not built by %s\n", carName, manufacturer);
         }
     }
 
@@ -63,23 +56,21 @@ public class CarDealer implements Seller, Renter{
      * Can set DailyRentPrice for any Rentable car built by a specific manufacturer.
      *
      * @param manufacturer
-     * @param car the car whose daily rent price you want to set
+     * @param carName
      * @param price the daily rent price you want to set for the car
      */
-    @Override
-    public void setDailyRentPrice(Manufacturer manufacturer, Rentable car, int price) {
-        Car newCar = (Car) car;
+    public void setDailyRentPrice(Manufacturer manufacturer, String carName, int price) {
         
         int manIndex = getManufacturerIndex(manufacturer);
         if (manIndex >= 0) {
-            int carIndex = manufacturer.getCarIndex((Car) car);
+            int carIndex = manufacturer.getCarIndex(carName);
             if (carIndex >= 0) {
                 manufacturerList[manIndex].getCar(carIndex).setDailyRentPrice(price);
             } else {
                 System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
             }
         } else {
-            System.out.printf("%s is not built by %s\n", newCar.getName(), manufacturer);
+            System.out.printf("%s is not built by %s\n", carName, manufacturer);
         }
     }
 
