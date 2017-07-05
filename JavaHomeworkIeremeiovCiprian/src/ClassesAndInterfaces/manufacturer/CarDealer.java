@@ -14,7 +14,7 @@ public class CarDealer {
     private static int numberOfManufacturers;
 
     private int lastIndex = 0;
-    private final String carDealer;
+    private final String name;
     private final Manufacturer[] manufacturerList;
 
     /**
@@ -23,11 +23,15 @@ public class CarDealer {
      * @param name sets the name for the Car Dealer
      * @param number sets the maximum number of manufacturers for that specific Car Dealer
      */
-    public CarDealer(String name, int number) {
-        carDealer = name;
+    private CarDealer(String name, int number) {
+        this.name = name;
         numberOfManufacturers = number;
         manufacturerList = new Manufacturer[number];
-        System.out.printf("%s: There's a new Car Dealer in town!\n", carDealer);
+        System.out.printf("%s: There's a new Car Dealer in town!\n", this.name);
+    }
+    
+    public static CarDealer createCarDealer(String name, int noManufacturers) {
+        return new CarDealer(name, noManufacturers);
     }
 
     /**
@@ -45,7 +49,7 @@ public class CarDealer {
             if (carIndex >= 0) {
                 manufacturerList[manIndex].getCar(carIndex).setSalePrice(price);
             } else {
-                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
+                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), name);
             }
         } else {
             System.out.printf("%s is not built by %s\n", carName, manufacturer);
@@ -67,7 +71,7 @@ public class CarDealer {
             if (carIndex >= 0) {
                 manufacturerList[manIndex].getCar(carIndex).setDailyRentPrice(price);
             } else {
-                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), carDealer);
+                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), name);
             }
         } else {
             System.out.printf("%s is not built by %s\n", carName, manufacturer);
@@ -83,9 +87,9 @@ public class CarDealer {
         if (lastIndex < (numberOfManufacturers)) {
             manufacturerList[lastIndex] = manufacturer;
             lastIndex++;
-            System.out.printf("%s can now sell cars for %s\n", carDealer, manufacturer.getName());
+            System.out.printf("%s can now sell cars for %s\n", name, manufacturer.getName());
         } else {
-            System.out.printf("%s has reached the maximum number of manufacturers.\n", carDealer);
+            System.out.printf("%s has reached the maximum number of manufacturers.\n", name);
         }
     }
 
@@ -102,7 +106,7 @@ public class CarDealer {
      * @return name of the car dealer
      */
     public String getName() {
-        return carDealer;
+        return name;
     }
 
     private int getManufacturerIndex(Manufacturer manufacturer) {
@@ -120,7 +124,7 @@ public class CarDealer {
      */
     public void printCars() {
         
-        System.out.printf("\nDealer <%s> is selling/renting:\n", carDealer);
+        System.out.printf("\nDealer <%s> is selling/renting:\n", name);
         for(int i=0; i < lastIndex; i++) { 
             System.out.printf("     <%s> : \n", manufacturerList[i].getName() );
 

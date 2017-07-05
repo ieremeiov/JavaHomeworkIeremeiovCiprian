@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ClassesAndInterfaces.manufacturer;
 
 /**
@@ -21,11 +17,15 @@ public class Manufacturer {
      * @param name Manufacturer's name
      * @param number maximum number of cars
      */
-    public Manufacturer(String name, int number) {
+    private Manufacturer(String name, int number) {
         carList = new Car[number];
         noOfCars = number;
         this.name = name;
         System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
+    }
+    
+    public static Manufacturer createManufacturer(String name, int noCars) {
+        return new Manufacturer(name, noCars);
     }
     
     /**
