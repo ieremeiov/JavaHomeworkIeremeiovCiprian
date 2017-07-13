@@ -35,16 +35,19 @@ public class Label {
     private boolean isSold = false;
     private boolean isRented = false;
     
+    
     public Label() {
         name = "Default Car Name";
         maxSpeed = 90;
     }
+    
     
     public Label(String manufacturer, String name) {
         this.manufacturer = manufacturer;
         this.name = name;
         maxSpeed = 90;
     }
+    
     
     public Label(String manufacturer, String name, Color color) {
         this.manufacturer = manufacturer;
@@ -53,84 +56,101 @@ public class Label {
         maxSpeed = 90;
     }
     
+    
      public String getManufacturer() {
         return manufacturer;
     }
 
+     
     public void setIsSold(boolean isSold) {
         this.isSold = isSold;
     }
 
+    
     public void setIsRented(boolean isRented) {
         this.isRented = isRented;
     }
 
+    
     public boolean isSold() {
         return isSold;
     }
 
+    
     public boolean isRented() {
         return isRented;
     }
-    
     
     
     public Color getColor() {
         return color;
     }
 
+    
     public String getName() {
         return name;
     }
 
+    
     public short getMaxSpeed() {
         return maxSpeed;
     }
 
+    
     public int getSalePrice() {
         return salePrice;
     }
 
+    
     public int getDailyRentPrice() {
         return dailyRentPrice;
     }
+    
     
     public void setColor(Color color) {
         this.color = color;
     }
 
+    
     public void setName(String name) {
         this.name = name;
     }
 
+    
     public void setMaxSpeed(short maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
+    
     public void setSalePrice(int salePrice) {
         this.salePrice = salePrice;
     }
 
+    
     public void setDailyRentPrice(int dailyRentPrice) {
         this.dailyRentPrice = dailyRentPrice;
     }
+    
     
     public void setPaintPrice(int paintPrice) {
         this.paintPrice = paintPrice;
     }
     
+    
     public int getPaintPrice() {
         return paintPrice;
     }
     
-    
-    
 
     @Override
     public String toString() {
+        String strSalePrice = String.format("$%s", Integer.toString(getSalePrice()));
+        String strRentPrice = String.format("$%s", Integer.toString(getDailyRentPrice()));
+        String strPaintPrice = String.format("$%s", Integer.toString(getPaintPrice()));
+        
         return String.format(
-                " brand%11s %20s \n model%11s %20s \n color%11s %20s \n maxSpeed%8s %20s \n "
-                        + "salePrice%7s %20s \n dailyRentPrice %s %20s \n paintPrice%6s %20s \n SOLD%12s %20s\n RENTED%10s %20s\n",
+                " BRAND%11s %16s \n MODEL%11s %16s \n COLOR%11s %16s \n MAX_SPEED%7s %16s \n "
+                        + "SALE_PRICE%6s %16s \n RENT_PRICE%6s %16s \n PAINT_PRICE%5s %16s \n SOLD%12s %16s\n RENTED%10s %16s\n",
                 
                 ":", 
                 manufacturer, 
@@ -140,32 +160,13 @@ public class Label {
                 color, 
                 ":", 
                 maxSpeed, 
-                ":", ((getSalePrice() > 0) ? Integer.toString(getSalePrice()) : "NOT_SET"),
-                ":", ((getDailyRentPrice() > 0) ? Integer.toString(getDailyRentPrice()) : "NOT_SET"),
-                ":", ((getPaintPrice() > 0) ? Integer.toString(getPaintPrice()) : "NOT_SET"),
+                ":", ((salePrice > 0) ? strSalePrice : "NOT_SET"),
+                ":", ((dailyRentPrice > 0) ? strRentPrice : "NOT_SET"),
+                ":", ((paintPrice > 0) ? strPaintPrice : "NOT_SET"),
                 ":", isSold ? "TRUE" : "FALSE",
                 ":", isRented ? "TRUE" : "FALSE"
         ); 
     }
-    
-//    @Override
-//    public String toString() {
-//        return "{" 
-//                + "brand: " + manufacturer + ", "
-//                + "model: " + name + ", "
-//                + "color: " + color + ", "
-//                + "maxSpeed: " + maxSpeed + ", "
-//                + "salePrice: " + ((getSalePrice() > 0) ? Integer.toString(getSalePrice()) : "NOT_SET") + ", "
-//                + "dailyRentPrice: " + ((getDailyRentPrice() > 0) ? Integer.toString(getDailyRentPrice()) : "NOT_SET") + ", "
-//                + "paintPrice: " + ((getPaintPrice() > 0) ? Integer.toString(getPaintPrice()) : "NOT_SET") + " }";
-//    }
-
-
-    
-    
-    
-    
-    
     
     
 }

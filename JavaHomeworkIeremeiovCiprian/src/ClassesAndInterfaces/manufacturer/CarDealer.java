@@ -13,13 +13,10 @@ public class CarDealer {
 
     private static int numberOfManufacturers;
 
-    public static int getNumberOfManufacturers() {
-        return numberOfManufacturers;
-    }
-
     private final String name;
     private ParkingLot parking;
 
+    
     /**
      * Constructor for Manufacturer
      *
@@ -28,12 +25,17 @@ public class CarDealer {
      */
     private CarDealer(String name, int number) {
         this.name = name;
-        parking = new ParkingLot(number);
+        buildParkingLot(number);
         System.out.printf("%s: There's a new Car Dealer in town!\n", this.name);
     }
     
+    
     public static CarDealer createCarDealer(String name, int noManufacturers) {
         return new CarDealer(name, noManufacturers);
+    }
+    
+    private void buildParkingLot(int number) {
+        parking = new ParkingLot(number);
     }
 
    
@@ -42,6 +44,7 @@ public class CarDealer {
         car.setSalePrice(price);
         
     }
+    
     
     public void setPaintPrice(String carName, int price) {
         Car car = getCar(carName);
@@ -52,9 +55,9 @@ public class CarDealer {
     public void setDailyRentPrice(String carName, int price) {
         Car car = getCar(carName);
         car.setDailyRentPrice(price);
-        
     }
    
+    
     public void requestCar(Manufacturer manufacturer, String car, Label.Color color) {
         if (manufacturer != null) {
             Car newCar = manufacturer.getCar(car, color);
@@ -69,6 +72,7 @@ public class CarDealer {
         }
     }
 
+    
     private void parkCar(Car car) {
         parking.addCar(name, car);
     }
@@ -86,6 +90,7 @@ public class CarDealer {
         return -1;
     }
 
+    
     /**
      *
      * @return name of the car dealer
@@ -96,9 +101,9 @@ public class CarDealer {
 
    
     public void printCarLabel() {
-        System.out.printf("\nDEALER <%s> HAS: \n", name);
+        System.out.printf("\nDEALER <%s> CAR LABELS: \n", name);
         for(int i=0; i < parking.getLastIndex(); i++) { 
-            System.out.println("#" + (i+1));
+            System.out.println("<Car #" + (i+1) + ">");
                 Car car = parking.getCar(i);
                 System.out.println(car.printLabel());
         }
@@ -115,6 +120,7 @@ public class CarDealer {
         }
     }
     
+    
     public void rentCar(String car) {
         Car carToRent = getCar(car);
         if(carToRent != null) {
@@ -124,11 +130,15 @@ public class CarDealer {
         }
     }
     
+    
     public void paintCar(String car, Label.Color color) {
         Car carToPaint = getCar(car);
         carToPaint.paintCar(color);
     }
     
     
+    public static int getNumberOfManufacturers() {
+        return numberOfManufacturers;
+    }
     
 }

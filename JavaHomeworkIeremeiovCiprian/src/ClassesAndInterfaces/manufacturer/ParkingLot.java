@@ -15,11 +15,13 @@ public class ParkingLot {
     private int lastIndex;
     private Car[] carList;
     
+    
     public ParkingLot(int number) {
         noOfCars = number;
         carList = new Car[noOfCars];
         lastIndex = 0;
     }
+    
     
     void addCar(String name, Car car) {
         if(lastIndex < noOfCars) {
@@ -32,30 +34,35 @@ public class ParkingLot {
         }
     }
     
+    
     public int getNoOfCars() {
         return noOfCars;
     }
 
+    
     public int getLastIndex() {
         return lastIndex;
     }
 
+    
     public Car getCar(int i) {
         return carList[i];
     }
 
+    
     public void setNoOfCars(int noOfCars) {
         this.noOfCars = noOfCars;
     }
 
+    
     public void setLastIndex(int lastIndex) {
         this.lastIndex = lastIndex;
     }
 
+    
     public void setCarList(Car[] carList) {
         this.carList = carList;
     }
-    
     
     
 }

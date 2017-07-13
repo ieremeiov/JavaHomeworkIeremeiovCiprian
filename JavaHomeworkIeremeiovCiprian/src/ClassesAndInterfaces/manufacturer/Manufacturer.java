@@ -10,20 +10,22 @@ public class Manufacturer {
     private ParkingLot parking;
     private final String name;
     
+    
     /**
      *
      * @param name Manufacturer's name
      * @param number maximum number of cars
      */
     private Manufacturer(String name, int number) {
-        parking = new ParkingLot(number);
         this.name = name;
+        buildParkingLot(number);
         System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
     }
     
     public static Manufacturer createManufacturer(String name, int noCars) {
         return new Manufacturer(name, noCars);
     }
+    
     
     /**
      *
@@ -36,22 +38,29 @@ public class Manufacturer {
         parkCar(car);
         return car;
     }
-        
+    
+    
+    private void buildParkingLot(int number) {
+        parking = new ParkingLot(number);
+    }
+    
+    
     private void parkCar(Car car) {
         parking.addCar(name, car);
     }
     
+    
     /**
      * Prints a table with the Manufacturer's cars with their name, color and the sale price/rent price set by their contracted Car Dealer.
      */
-    public void printCars() {
+    public void printCarSpecs() {
         System.out.print("\n      #Manufacturer: " + name );
         System.out.println("\n------------------------------------------------");
-        System.out.printf("|%9s    |  %10s  |   %8s      |\n", "Name", "Max Speed",  "Color" );
+        System.out.printf("|%9s    |  %10s  |   %8s      |\n", "Model", "Max Speed",  "Color" );
         System.out.println("------------------------------------------------");
 
         for(int i = 0; i < parking.getLastIndex(); i++) {
-            System.out.printf("| %-12s|%-14s|%-17s|\n",
+            System.out.printf("| %-12s| %-13s| %-16s|\n",
                     parking.getCar(i).getName(), 
                     Short.toString(parking.getCar(i).getMaxSpeed()),
                     parking.getCar(i).getColor() );
@@ -69,6 +78,7 @@ public class Manufacturer {
         return -1;
     }
     
+    
     int getCarIndex(String car, Label.Color color) {
         for(int i = 0; i < parking.getLastIndex(); i++) {
             Car searchCar = parking.getCar(i);
@@ -79,6 +89,7 @@ public class Manufacturer {
         return -1;
     }
    
+    
     Car getCar(String car) {
         int index = getCarIndex(car);
         if(index != -1) {
@@ -87,6 +98,7 @@ public class Manufacturer {
             return null;
         }
     }
+    
     
      Car getCar(String car, Label.Color color) {
         int index = getCarIndex(car, color);
@@ -97,6 +109,7 @@ public class Manufacturer {
         }
     }
     
+     
     /**
      *
      * @param i
@@ -106,6 +119,7 @@ public class Manufacturer {
         return parking.getCar(i);
     }
     
+    
     /**
      *
      * @return
@@ -114,6 +128,7 @@ public class Manufacturer {
         return name;
     }
     
+    
     /**
      *
      * @return
@@ -121,6 +136,7 @@ public class Manufacturer {
     int getLastIndex() {
         return parking.getLastIndex();
     }
+    
     
     /**
      *

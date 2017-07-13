@@ -52,7 +52,7 @@ public class CarChallenge {
         dealer1.setPaintPrice("CAR1", 220);
         dealer1.setPaintPrice("CAR2", 250);
        
-       manufacturer1.printCars();
+       manufacturer1.printCarSpecs();
       //  System.out.println("----------------------------------------------------");
      //  manufacturer2.printCars();
      //   System.out.println("----------------------------------------------------");

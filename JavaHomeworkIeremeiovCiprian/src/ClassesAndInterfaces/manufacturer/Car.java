@@ -24,14 +24,17 @@ public class Car implements Saleable, Rentable, Paintable {
         label = new Label();
     }
 
+    
     public Car(String manufacturer, String carName) {
         label = new Label(manufacturer, carName);
     }
 
+    
     public Car(String manufacturer, String name, Label.Color color) {
         label = new Label(manufacturer, name, color);
     }
 
+    
     /**
      *
      * @return
@@ -48,6 +51,7 @@ public class Car implements Saleable, Rentable, Paintable {
         return label.getColor();
     }
 
+    
     /**
      *
      * @return the car's current speed
@@ -56,10 +60,12 @@ public class Car implements Saleable, Rentable, Paintable {
         return label.getMaxSpeed();
     }
 
+    
     public void paintCar(Label.Color color) {
         label.setColor(color);
     }
 
+    
     public void sellCar() {
         if (label.isRented()) {
             System.out.println("Car is rented at this moment");
@@ -70,6 +76,7 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
+    
     public void rentCar() {
         if (label.isSold()) {
             System.out.println("Car is sold");
@@ -80,18 +87,21 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
+    
     public void tuneUp(short newSpeed) {
         if (newSpeed > label.getMaxSpeed()) {
             label.setMaxSpeed(newSpeed);
         }
     }
 
+    
     public void tuneDown(short newSpeed) {
         if (newSpeed < label.getMaxSpeed()) {
             label.setMaxSpeed(newSpeed);
         }
     }
 
+    
     /**
      * Abstract method defined in Saleable interface implemented by class car is
      * implemented here.
@@ -107,6 +117,7 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
+    
     /**
      * Abstract method defined in Rentable interface implemented by class car is
      * implemented here.
@@ -122,24 +133,29 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
+    
     // method used by the manufacturer to set the Sale Price
     void setSalePrice(int price) {
         label.setSalePrice(price);
     }
 
+    
     // method used by the manufacturer to set the Daily Rent Price
     void setDailyRentPrice(int price) {
         label.setDailyRentPrice(price);
     }
 
+    
     void setPaintPrice(int price) {
         label.setPaintPrice(price);
     }
 
+    
     public int getPaintPrice() {
         return label.getPaintPrice();
     }
 
+    
     public String printLabel() {
         return label.toString();
     }
