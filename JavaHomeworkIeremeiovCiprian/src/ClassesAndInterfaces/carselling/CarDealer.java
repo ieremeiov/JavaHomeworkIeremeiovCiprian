@@ -2,16 +2,14 @@
  *   
  *
  */
-package ClassesAndInterfaces.manufacturer;
+package ClassesAndInterfaces.carselling;
 
 /**
- * CarDealer Class that has a list of manufacturers with cars for sale/rent;
+ * CarDealer Class that can have a ParkingLot built, can set prices and modify Cars, and also sell/rent them
  *
  * @author Cip
  */
 public class CarDealer {
-
-    private static int numberOfManufacturers;
 
     private final String name;
     private ParkingLot parking;
@@ -29,35 +27,57 @@ public class CarDealer {
         System.out.printf("%s: There's a new Car Dealer in town!\n", this.name);
     }
     
-    
-    public static CarDealer createCarDealer(String name, int noManufacturers) {
-        return new CarDealer(name, noManufacturers);
+    /**
+     *
+     * @param name the name of the Car Dealer
+     * @param noCars the number of cars in the dealer's parking lot
+     * @return the specified Car Dealer
+     */
+    public static CarDealer createCarDealer(String name, int noCars) {
+        return new CarDealer(name, noCars);
     }
     
     private void buildParkingLot(int number) {
         parking = new ParkingLot(number);
     }
 
-   
+    /**
+     *
+     * @param carName model of the Car 
+     * @param price the Sale Price to set
+     */
     public void setSalePrice(String carName, int price) {
         Car car = getCar(carName);
         car.setSalePrice(price);
         
     }
     
-    
+    /**
+     *
+     * @param carName model of the Car
+     * @param price the repainting price to set
+     */
     public void setPaintPrice(String carName, int price) {
         Car car = getCar(carName);
         car.setPaintPrice(price);
     }
 
-    
+    /**
+     *
+     * @param carName model of the Car
+     * @param price the Daily Rent Price to set
+     */
     public void setDailyRentPrice(String carName, int price) {
         Car car = getCar(carName);
         car.setDailyRentPrice(price);
     }
    
-    
+    /**
+     *
+     * @param manufacturer the manufacturer that you send the request to
+     * @param car the Car you wish to get from the manufacturer
+     * @param color the color of the Car 
+     */
     public void requestCar(Manufacturer manufacturer, String car, Label.Color color) {
         if (manufacturer != null) {
             Car newCar = manufacturer.getCar(car, color);
@@ -77,6 +97,11 @@ public class CarDealer {
         parking.addCar(name, car);
     }
     
+    /**
+     *
+     * @param car
+     * @return
+     */
     public Car getCar(String car) {
         return parking.getCar(getCarIndex(car));
     }
@@ -99,7 +124,9 @@ public class CarDealer {
         return name;
     }
 
-   
+    /**
+     * prints the Labels of every Car in the Dealer's ParkingLot
+     */
     public void printCarLabel() {
         System.out.printf("\nDEALER <%s> CAR LABELS: \n", name);
         for(int i=0; i < parking.getLastIndex(); i++) { 
@@ -110,7 +137,10 @@ public class CarDealer {
         System.out.println("");
     }
 
-    
+    /**
+     *
+     * @param car the Car to sell
+     */
     public void sellCar(String car) {
         Car carToSell = getCar(car);
         if(carToSell != null) {
@@ -120,7 +150,10 @@ public class CarDealer {
         }
     }
     
-    
+    /**
+     *
+     * @param car the Car to rent
+     */
     public void rentCar(String car) {
         Car carToRent = getCar(car);
         if(carToRent != null) {
@@ -130,15 +163,15 @@ public class CarDealer {
         }
     }
     
-    
-    public void paintCar(String car, Label.Color color) {
+    /**
+     *
+     * @param car the Car to repaint
+     * @param newColor the new color you want for the car
+     */
+    public void paintCar(String car, Label.Color newColor) {
         Car carToPaint = getCar(car);
-        carToPaint.paintCar(color);
+        carToPaint.paintCar(newColor);
     }
-    
-    
-    public static int getNumberOfManufacturers() {
-        return numberOfManufacturers;
-    }
+   
     
 }

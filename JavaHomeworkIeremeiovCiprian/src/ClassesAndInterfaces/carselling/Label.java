@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClassesAndInterfaces.manufacturer;
+package ClassesAndInterfaces.carselling;
 
 /**
  *
@@ -11,9 +11,7 @@ package ClassesAndInterfaces.manufacturer;
  */
 public class Label {
 
-   
-
-    
+  
     public enum Color {
         WHITE,
         RED,
@@ -35,113 +33,171 @@ public class Label {
     private boolean isSold = false;
     private boolean isRented = false;
     
-    
-    public Label() {
+    /**
+     *
+     */
+    Label() {
         name = "Default Car Name";
         maxSpeed = 90;
     }
     
-    
-    public Label(String manufacturer, String name) {
+    /**
+     *
+     * @param manufacturer Brand's name
+     * @param name Car Model
+     */
+    Label(String manufacturer, String name) {
         this.manufacturer = manufacturer;
         this.name = name;
         maxSpeed = 90;
     }
     
-    
-    public Label(String manufacturer, String name, Color color) {
+    /**
+     *
+     * @param manufacturer Brand's name
+     * @param name Car Model
+     * @param color car's Color
+     */
+    Label(String manufacturer, String name, Color color) {
         this.manufacturer = manufacturer;
         this.name = name;
         this.color = color;
         maxSpeed = 90;
     }
     
-    
-     public String getManufacturer() {
-        return manufacturer;
-    }
 
-     
-    public void setIsSold(boolean isSold) {
+    /**
+     *
+     * @param isSold true if the Car is going to be sold
+     */
+    void setIsSold(boolean isSold) {
         this.isSold = isSold;
     }
 
-    
-    public void setIsRented(boolean isRented) {
+    /**
+     *
+     * @param isRented true if the Car is going to be Rented
+     */
+    void setIsRented(boolean isRented) {
         this.isRented = isRented;
     }
 
-    
-    public boolean isSold() {
+    /**
+     *
+     * @return if the Car is sold
+     */
+    boolean isSold() {
         return isSold;
     }
 
-    
-    public boolean isRented() {
+    /**
+     *
+     * @return if the Car is rented
+     */
+    boolean isRented() {
         return isRented;
     }
     
-    
-    public Color getColor() {
+    /**
+     *
+     * @return Car's current color
+     */
+    Color getColor() {
         return color;
     }
 
-    
-    public String getName() {
+    /**
+     *
+     * @return Car Model
+     */
+    String getName() {
         return name;
     }
 
-    
-    public short getMaxSpeed() {
+    /**
+     *
+     * @return Car's maximum speed
+     */
+    short getMaxSpeed() {
         return maxSpeed;
     }
 
-    
-    public int getSalePrice() {
+    /**
+     *
+     * @return Car's Sale Price
+     */
+    int getSalePrice() {
         return salePrice;
     }
 
-    
-    public int getDailyRentPrice() {
+    /**
+     *
+     * @return Car's Daily Rent Price
+     */
+    int getDailyRentPrice() {
         return dailyRentPrice;
     }
     
-    
-    public void setColor(Color color) {
+    /**
+     *
+     * @param color 
+     */
+    void setColor(Color color) {
         this.color = color;
     }
 
-    
-    public void setName(String name) {
+    /**
+     *
+     * @param name
+     */
+    void setName(String name) {
         this.name = name;
     }
 
-    
-    public void setMaxSpeed(short maxSpeed) {
+    /**
+     *
+     * @param maxSpeed
+     */
+    void setMaxSpeed(short maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
-    
-    public void setSalePrice(int salePrice) {
+    /**
+     *
+     * @param salePrice
+     */
+    void setSalePrice(int salePrice) {
         this.salePrice = salePrice;
     }
 
-    
-    public void setDailyRentPrice(int dailyRentPrice) {
+    /**
+     *
+     * @param dailyRentPrice
+     */
+    void setDailyRentPrice(int dailyRentPrice) {
         this.dailyRentPrice = dailyRentPrice;
     }
     
-    
-    public void setPaintPrice(int paintPrice) {
+    /**
+     *
+     * @param paintPrice
+     */
+    void setPaintPrice(int paintPrice) {
         this.paintPrice = paintPrice;
     }
     
-    
-    public int getPaintPrice() {
+    /**
+     *
+     * @return
+     */
+    int getPaintPrice() {
         return paintPrice;
     }
     
-
+    /**
+     *
+     * @return the Label's parameters and their values in String format
+     */
     @Override
     public String toString() {
         String strSalePrice = String.format("$%s", Integer.toString(getSalePrice()));

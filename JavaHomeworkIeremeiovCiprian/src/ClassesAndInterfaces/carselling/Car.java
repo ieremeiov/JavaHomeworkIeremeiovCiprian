@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClassesAndInterfaces.manufacturer;
+package ClassesAndInterfaces.carselling;
 
 import ClassesAndInterfaces.Interfaces.Paintable;
 import ClassesAndInterfaces.Interfaces.Rentable;
@@ -20,17 +20,26 @@ public class Car implements Saleable, Rentable, Paintable {
     /**
      * Constructors
      */
-    public Car() {
+    Car() {
         label = new Label();
     }
 
-    
-    public Car(String manufacturer, String carName) {
+    /**
+     *
+     * @param manufacturer
+     * @param carName
+     */
+    Car(String manufacturer, String carName) {
         label = new Label(manufacturer, carName);
     }
 
-    
-    public Car(String manufacturer, String name, Label.Color color) {
+    /**
+     *
+     * @param manufacturer
+     * @param name
+     * @param color
+     */
+    Car(String manufacturer, String name, Label.Color color) {
         label = new Label(manufacturer, name, color);
     }
 
@@ -39,7 +48,7 @@ public class Car implements Saleable, Rentable, Paintable {
      *
      * @return
      */
-    public String getName() {
+    String getName() {
         return label.getName();
     }
 
@@ -56,17 +65,20 @@ public class Car implements Saleable, Rentable, Paintable {
      *
      * @return the car's current speed
      */
-    public short getMaxSpeed() {
+    short getMaxSpeed() {
         return label.getMaxSpeed();
     }
 
-    
-    public void paintCar(Label.Color color) {
+    /**
+     *
+     * @param color
+     */
+    void paintCar(Label.Color color) {
         label.setColor(color);
     }
 
-    
-    public void sellCar() {
+   
+    void sellCar() {
         if (label.isRented()) {
             System.out.println("Car is rented at this moment");
         } else if(label.isSold()) {
@@ -76,8 +88,8 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
-    
-    public void rentCar() {
+   
+    void rentCar() {
         if (label.isSold()) {
             System.out.println("Car is sold");
         } else if(label.isRented()) {
@@ -87,14 +99,20 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
-    
+    /**
+     *
+     * @param newSpeed the Car's Max Speed that you want to increase to
+     */
     public void tuneUp(short newSpeed) {
         if (newSpeed > label.getMaxSpeed()) {
             label.setMaxSpeed(newSpeed);
         }
     }
 
-    
+    /**
+     *
+     * @param newSpeed the Car's Max Speed that you want to decrease to
+     */
     public void tuneDown(short newSpeed) {
         if (newSpeed < label.getMaxSpeed()) {
             label.setMaxSpeed(newSpeed);
@@ -150,13 +168,21 @@ public class Car implements Saleable, Rentable, Paintable {
         label.setPaintPrice(price);
     }
 
-    
+    /**
+     * Abstract method defined in Paintable interface implemented by class car is
+     * implemented here.
+     *
+     * @override Paintable.PaintPrice() method
+     */
     public int getPaintPrice() {
         return label.getPaintPrice();
     }
 
-    
-    public String printLabel() {
+    /**
+     *
+     * @return
+     */
+    String printLabel() {
         return label.toString();
     }
 

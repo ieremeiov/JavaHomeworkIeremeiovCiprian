@@ -3,9 +3,9 @@
  */
 package ClassesAndInterfaces;
 
-import ClassesAndInterfaces.manufacturer.CarDealer;
-import ClassesAndInterfaces.manufacturer.Label;
-import ClassesAndInterfaces.manufacturer.Manufacturer;
+import ClassesAndInterfaces.carselling.CarDealer;
+import ClassesAndInterfaces.carselling.Label;
+import ClassesAndInterfaces.carselling.Manufacturer;
 
 /**
  * Car Dealer has a list of CarChallenge that are Rentable and Saleable. They set the Sale Price and Daily Rent Price of cars.

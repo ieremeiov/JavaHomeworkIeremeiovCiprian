@@ -5,7 +5,7 @@
  */
 package ClassesAndInterfaces.Interfaces;
 
-import ClassesAndInterfaces.manufacturer.Label;
+import ClassesAndInterfaces.carselling.Label;
 
 /**
  *
@@ -13,8 +13,15 @@ import ClassesAndInterfaces.manufacturer.Label;
  */
 public interface Paintable {
     
+    /**
+     *
+     */
     public static final boolean PAINTABLE = true;
     
+    /**
+     *
+     * @return
+     */
     public Label.Color getColor();
 
     

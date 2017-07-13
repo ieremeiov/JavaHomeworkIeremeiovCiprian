@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClassesAndInterfaces.manufacturer;
+package ClassesAndInterfaces.carselling;
 
 /**
  *
@@ -15,7 +15,10 @@ public class ParkingLot {
     private int lastIndex;
     private Car[] carList;
     
-    
+    /**
+     *
+     * @param number number of Car spots in the Parking Lot that is being created
+     */
     public ParkingLot(int number) {
         noOfCars = number;
         carList = new Car[noOfCars];
@@ -34,35 +37,20 @@ public class ParkingLot {
         }
     }
     
-    
-    public int getNoOfCars() {
+   
+    int getNoOfCars() {
         return noOfCars;
     }
 
     
-    public int getLastIndex() {
+    int getLastIndex() {
         return lastIndex;
     }
 
     
-    public Car getCar(int i) {
+    Car getCar(int i) {
         return carList[i];
     }
 
-    
-    public void setNoOfCars(int noOfCars) {
-        this.noOfCars = noOfCars;
-    }
-
-    
-    public void setLastIndex(int lastIndex) {
-        this.lastIndex = lastIndex;
-    }
-
-    
-    public void setCarList(Car[] carList) {
-        this.carList = carList;
-    }
-    
     
 }

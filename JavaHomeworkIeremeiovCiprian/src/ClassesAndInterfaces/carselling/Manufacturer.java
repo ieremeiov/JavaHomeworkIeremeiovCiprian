@@ -1,8 +1,8 @@
 
-package ClassesAndInterfaces.manufacturer;
+package ClassesAndInterfaces.carselling;
 
 /**
- *
+ * the Manufacturer builds the cars with a name, max speed and color; these specs can be chosen by them or by the CarDealer
  * @author Cip
  */
 public class Manufacturer {
@@ -11,26 +11,28 @@ public class Manufacturer {
     private final String name;
     
     
-    /**
-     *
-     * @param name Manufacturer's name
-     * @param number maximum number of cars
-     */
     private Manufacturer(String name, int number) {
         this.name = name;
         buildParkingLot(number);
         System.out.printf("%s: There's a new manufacturer in town!\n", this.name);
     }
     
+    /**
+     *
+     * @param name brand's name
+     * @param noCars maximum number of cars in the ParkingLot
+     * @return a a new Manufacturer with specified name and number of spots in the parking lot.
+     */
     public static Manufacturer createManufacturer(String name, int noCars) {
         return new Manufacturer(name, noCars);
     }
     
     
     /**
-     *
+     * After production, the Car is parked in the Manufacturer's ParkingLot
      * @param carName name of the Car to be produced
      * @param carColor 
+     * @return  
      */
     public Car produceCar(String carName, Label.Color carColor) {
         Car car =  new Car(this.name, carName, carColor);
@@ -51,7 +53,7 @@ public class Manufacturer {
     
     
     /**
-     * Prints a table with the Manufacturer's cars with their name, color and the sale price/rent price set by their contracted Car Dealer.
+     * Prints a table with the Manufacturer's cars with their Specs.
      */
     public void printCarSpecs() {
         System.out.print("\n      #Manufacturer: " + name );
@@ -131,27 +133,12 @@ public class Manufacturer {
     
     /**
      *
-     * @return
-     */
-    int getLastIndex() {
-        return parking.getLastIndex();
-    }
-    
-    
-    /**
-     *
-     * @return
+     * @return number of cars in the Parking Lot
      */
     int getNoOfCars() {
         return parking.getNoOfCars();
     }
 
 
-    /**
-     * @param parking the parking to set
-     */
-    public void setParking(ParkingLot parking) {
-        this.parking = parking;
-    }
     
 }
