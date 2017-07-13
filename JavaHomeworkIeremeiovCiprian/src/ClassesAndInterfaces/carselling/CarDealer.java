@@ -97,16 +97,11 @@ public class CarDealer {
         parking.addCar(name, car);
     }
     
-    /**
-     *
-     * @param car
-     * @return
-     */
-    public Car getCar(String car) {
+    private Car getCar(String car) {
         return parking.getCar(getCarIndex(car));
     }
      
-    int getCarIndex(String car) {
+    private int getCarIndex(String car) {
         for(int i = 0; i < parking.getLastIndex(); i++) {
             if(parking.getCar(i).getName().equals(car)) {
                 return i;
@@ -115,14 +110,6 @@ public class CarDealer {
         return -1;
     }
 
-    
-    /**
-     *
-     * @return name of the car dealer
-     */
-    public String getName() {
-        return name;
-    }
 
     /**
      * prints the Labels of every Car in the Dealer's ParkingLot

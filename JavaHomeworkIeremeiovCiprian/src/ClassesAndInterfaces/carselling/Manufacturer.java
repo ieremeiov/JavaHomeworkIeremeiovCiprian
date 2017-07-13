@@ -71,7 +71,7 @@ public class Manufacturer {
     }
 
    
-    int getCarIndex(String car) {
+    private int getCarIndex(String car) {
         for(int i = 0; i < parking.getLastIndex(); i++) {
             if(parking.getCar(i).getName().equals(car)) {
                 return i;
@@ -81,7 +81,7 @@ public class Manufacturer {
     }
     
     
-    int getCarIndex(String car, Label.Color color) {
+    private int getCarIndex(String car, Label.Color color) {
         for(int i = 0; i < parking.getLastIndex(); i++) {
             Car searchCar = parking.getCar(i);
             if(searchCar.getName().equals(car) && searchCar.getColor().equals(color)) {
@@ -91,18 +91,18 @@ public class Manufacturer {
         return -1;
     }
    
+// Useless at this momens
+//    private Car getCar(String car) {
+//        int index = getCarIndex(car);
+//        if(index != -1) {
+//            return parking.getCar(index);
+//        } else {
+//            return null;
+//        }
+//    }
     
-    Car getCar(String car) {
-        int index = getCarIndex(car);
-        if(index != -1) {
-            return parking.getCar(index);
-        } else {
-            return null;
-        }
-    }
     
-    
-     Car getCar(String car, Label.Color color) {
+    Car getCar(String car, Label.Color color) {
         int index = getCarIndex(car, color);
         if(index != -1) {
             return parking.getCar(index);
@@ -112,15 +112,11 @@ public class Manufacturer {
     }
     
      
-    /**
-     *
-     * @param i
-     * @return the car at index i in the carList of manufacturer
-     */
-    Car getCar(int i) {
-        return parking.getCar(i);
-    }
-    
+    //Useless at this moment
+//    Car getCar(int i) {
+//        return parking.getCar(i);
+//    }
+//    
     
     /**
      *
@@ -130,15 +126,5 @@ public class Manufacturer {
         return name;
     }
     
-    
-    /**
-     *
-     * @return number of cars in the Parking Lot
-     */
-    int getNoOfCars() {
-        return parking.getNoOfCars();
-    }
-
-
     
 }
