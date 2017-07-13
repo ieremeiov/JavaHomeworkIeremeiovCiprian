@@ -5,6 +5,7 @@
  */
 package ClassesAndInterfaces.manufacturer;
 
+import ClassesAndInterfaces.Interfaces.Paintable;
 import ClassesAndInterfaces.Interfaces.Rentable;
 import ClassesAndInterfaces.Interfaces.Saleable;
 
@@ -12,135 +13,82 @@ import ClassesAndInterfaces.Interfaces.Saleable;
  *
  * @author Cip
  */
-public class Car implements Saleable, Rentable {
+public class Car implements Saleable, Rentable, Paintable {
 
-    /**
-     * @enum enumeration of accepted car colors
-     */
-    public enum Color {
+    private Label label;
 
-        /**
-         *
-         */
-        WHITE,
-
-        /**
-         *
-         */
-        RED,
-
-        /**
-         *
-         */
-        YELLOW,
-
-        /**
-         *
-         */
-        GREEN,
-
-        /**
-         *
-         */
-        GRAY,
-
-        /**
-         *
-         */
-        BLACK
-    };
-    /**
-     * Internal hidden fields / attributes
-     */
-    private Color color;
-    private String name;
-    private short speed;
-    private int salePrice = -1;
-    private int dailyRentPrice = -1;
-    
-    
     /**
      * Constructors
      */
     public Car() {
-        name = "Default car name";
-        speed = 90;
+        label = new Label();
     }
 
-    /**
-     *
-     * @param carName
-     * @param carSpeed
-     * @param carColor
-     */
-    public Car(String carName, short carSpeed, Color carColor) {
-        setName(carName);
-        setSpeed(carSpeed);
-        setColor(carColor);
+    public Car(String manufacturer, String carName) {
+        label = new Label(manufacturer, carName);
     }
 
-    /*get-ers and set-ers*/
+    public Car(String manufacturer, String name, Label.Color color) {
+        label = new Label(manufacturer, name, color);
+    }
 
     /**
      *
      * @return
      */
-
     public String getName() {
-        return (name);
+        return label.getName();
     }
 
     /**
      *
      * @return
      */
-    public Color getColor() {
-        return (color);
+    public Label.Color getColor() {
+        return label.getColor();
     }
 
     /**
      *
      * @return the car's current speed
      */
-    public short getSpeed() {
-        return (speed);
+    public short getMaxSpeed() {
+        return label.getMaxSpeed();
     }
 
-    private void setName(String newName) {
-        name = newName;
+    public void paintCar(Label.Color color) {
+        label.setColor(color);
     }
 
-    private void setColor(Color newColor) {
-        color = newColor;
-    }
-
-    private void setSpeed(short newSpeed) {
-        speed = newSpeed;
-    }
-
-    /**
-     * The method increase actual speed of Car until final speed specified.
-     *
-     * @param newSpeed is new speed
-     */
-    public void increaseSpeed(short newSpeed) {
-        if (newSpeed > speed) {
-            speed = newSpeed;
-        } else if (newSpeed < speed) {
-            decreaseSpeed(newSpeed);
+    public void sellCar() {
+        if (label.isRented()) {
+            System.out.println("Car is rented at this moment");
+        } else if(label.isSold()) {
+            System.out.println("Car is already Sold");
+        } else {
+            label.setIsSold(true);
         }
     }
 
-    /**
-     * The method decrease actual speed of Car until final speed specified.
-     *
-     * @param newSpeed is new speed
-     */
-    public void decreaseSpeed(short newSpeed) {
-        if (newSpeed < speed) {
-            speed = newSpeed;
-        } else if (newSpeed < speed) {
-            increaseSpeed(newSpeed);
+    public void rentCar() {
+        if (label.isSold()) {
+            System.out.println("Car is sold");
+        } else if(label.isRented()) {
+            System.out.println("Car is already Rented");
+        } else {
+            label.setIsRented(true);
+        }
+    }
+
+    public void tuneUp(short newSpeed) {
+        if (newSpeed > label.getMaxSpeed()) {
+            label.setMaxSpeed(newSpeed);
+        }
+    }
+
+    public void tuneDown(short newSpeed) {
+        if (newSpeed < label.getMaxSpeed()) {
+            label.setMaxSpeed(newSpeed);
         }
     }
 
@@ -152,8 +100,8 @@ public class Car implements Saleable, Rentable {
      */
     @Override
     public int getSalePrice() {
-        if(salePrice > 0) {
-            return salePrice;
+        if (label.getSalePrice() > 0) {
+            return label.getSalePrice();
         } else {
             return -1;
         }
@@ -167,23 +115,33 @@ public class Car implements Saleable, Rentable {
      */
     @Override
     public int getDailyRentPrice() {
-        if(dailyRentPrice > 0) {
-            return dailyRentPrice;
+        if (label.getDailyRentPrice() > 0) {
+            return label.getDailyRentPrice();
         } else {
             return -1;
         }
     }
 
-    
-    
     // method used by the manufacturer to set the Sale Price
     void setSalePrice(int price) {
-        this.salePrice = price;
+        label.setSalePrice(price);
     }
-    
+
     // method used by the manufacturer to set the Daily Rent Price
     void setDailyRentPrice(int price) {
-        this.dailyRentPrice = price;
+        label.setDailyRentPrice(price);
+    }
+
+    void setPaintPrice(int price) {
+        label.setPaintPrice(price);
+    }
+
+    public int getPaintPrice() {
+        return label.getPaintPrice();
+    }
+
+    public String printLabel() {
+        return label.toString();
     }
 
 }

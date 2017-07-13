@@ -13,9 +13,12 @@ public class CarDealer {
 
     private static int numberOfManufacturers;
 
-    private int lastIndex = 0;
+    public static int getNumberOfManufacturers() {
+        return numberOfManufacturers;
+    }
+
     private final String name;
-    private final Manufacturer[] manufacturerList;
+    private ParkingLot parking;
 
     /**
      * Constructor for Manufacturer
@@ -25,8 +28,7 @@ public class CarDealer {
      */
     private CarDealer(String name, int number) {
         this.name = name;
-        numberOfManufacturers = number;
-        manufacturerList = new Manufacturer[number];
+        parking = new ParkingLot(number);
         System.out.printf("%s: There's a new Car Dealer in town!\n", this.name);
     }
     
@@ -34,71 +36,54 @@ public class CarDealer {
         return new CarDealer(name, noManufacturers);
     }
 
-    /**
-     * Can set SalePrice for any Saleable car built by a specific manufacturer.
-     *
-     * @param manufacturer
-     * @param carName
-     * @param price the sell price you want to set for the car
-     */
-    public void setSalePrice(Manufacturer manufacturer, String carName, int price) {
+   
+    public void setSalePrice(String carName, int price) {
+        Car car = getCar(carName);
+        car.setSalePrice(price);
         
-        int manIndex = getManufacturerIndex(manufacturer);
-        if (manIndex >= 0) {
-            int carIndex = manufacturer.getCarIndex(carName);
-            if (carIndex >= 0) {
-                manufacturerList[manIndex].getCar(carIndex).setSalePrice(price);
+    }
+    
+    public void setPaintPrice(String carName, int price) {
+        Car car = getCar(carName);
+        car.setPaintPrice(price);
+    }
+
+    
+    public void setDailyRentPrice(String carName, int price) {
+        Car car = getCar(carName);
+        car.setDailyRentPrice(price);
+        
+    }
+   
+    public void requestCar(Manufacturer manufacturer, String car, Label.Color color) {
+        if (manufacturer != null) {
+            Car newCar = manufacturer.getCar(car, color);
+            System.out.printf("%s requested %s for %s painted in %s \n", name, manufacturer.getName(), car, color);
+            if (newCar != null) {
+                parkCar(newCar);
             } else {
-                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), name);
+                parkCar(manufacturer.produceCar(car, color));
             }
         } else {
-            System.out.printf("%s is not built by %s\n", carName, manufacturer);
+            System.out.println("Unknown manufacturer!");
         }
     }
 
-    /**
-     * Can set DailyRentPrice for any Rentable car built by a specific manufacturer.
-     *
-     * @param manufacturer
-     * @param carName
-     * @param price the daily rent price you want to set for the car
-     */
-    public void setDailyRentPrice(Manufacturer manufacturer, String carName, int price) {
-        
-        int manIndex = getManufacturerIndex(manufacturer);
-        if (manIndex >= 0) {
-            int carIndex = manufacturer.getCarIndex(carName);
-            if (carIndex >= 0) {
-                manufacturerList[manIndex].getCar(carIndex).setDailyRentPrice(price);
-            } else {
-                System.out.printf("%s is not in %s's list.\n", manufacturer.getName(), name);
+    private void parkCar(Car car) {
+        parking.addCar(name, car);
+    }
+    
+    public Car getCar(String car) {
+        return parking.getCar(getCarIndex(car));
+    }
+     
+    int getCarIndex(String car) {
+        for(int i = 0; i < parking.getLastIndex(); i++) {
+            if(parking.getCar(i).getName().equals(car)) {
+                return i;
             }
-        } else {
-            System.out.printf("%s is not built by %s\n", carName, manufacturer);
-        }
-    }
-
-    /**
-     * Adds a manufacturer to the manufacturer list, only if the list is not already full.
-     *
-     * @param manufacturer manufacturer to add
-     */
-    public void addManufacturer(Manufacturer manufacturer) {
-        if (lastIndex < (numberOfManufacturers)) {
-            manufacturerList[lastIndex] = manufacturer;
-            lastIndex++;
-            System.out.printf("%s can now sell cars for %s\n", name, manufacturer.getName());
-        } else {
-            System.out.printf("%s has reached the maximum number of manufacturers.\n", name);
-        }
-    }
-
-    /**
-     *
-     * @return the index of the last car in the array of cars
-     */
-    public int getLastIndex() {
-        return lastIndex;
+        }          
+        return -1;
     }
 
     /**
@@ -109,46 +94,41 @@ public class CarDealer {
         return name;
     }
 
-    private int getManufacturerIndex(Manufacturer manufacturer) {
-
-        for (int i = 0; i < lastIndex; i++) {
-            if (manufacturerList[i].getName().equals(manufacturer.getName())) {
-                return i;
-            }
+   
+    public void printCarLabel() {
+        System.out.printf("\nDEALER <%s> HAS: \n", name);
+        for(int i=0; i < parking.getLastIndex(); i++) { 
+            System.out.println("#" + (i+1));
+                Car car = parking.getCar(i);
+                System.out.println(car.printLabel());
         }
-        return -1;
+        System.out.println("");
+    }
+
+    
+    public void sellCar(String car) {
+        Car carToSell = getCar(car);
+        if(carToSell != null) {
+            carToSell.sellCar();
+        } else {
+            System.out.println("Car not found");
+        }
     }
     
-    /**
-     * Prints a list of cars for each manufacturer in the dealer's list, alongside with the car's selling/renting price if it exists.
-     */
-    public void printCars() {
-        
-        System.out.printf("\nDealer <%s> is selling/renting:\n", name);
-        for(int i=0; i < lastIndex; i++) { 
-            System.out.printf("     <%s> : \n", manufacturerList[i].getName() );
-
-            for(int j = 0; j < manufacturerList[i].getLastIndex(); j++) {
-                System.out.printf("          <%s: %s/%s> \n", manufacturerList[i].getCar(j).getName(), 
-                                                  (manufacturerList[i].getCar(j).getSalePrice() > 0) ? Integer.toString(manufacturerList[i].getCar(j).getSalePrice()) : "NOT_SET", 
-                                                  (manufacturerList[i].getCar(j).getDailyRentPrice()> 0) ? Integer.toString(manufacturerList[i].getCar(j).getDailyRentPrice()) : "NOT_SET"
-                                                  );
-            }
+    public void rentCar(String car) {
+        Car carToRent = getCar(car);
+        if(carToRent != null) {
+            carToRent.rentCar();
+        } else {
+            System.out.println("Car not found");
         }
-        System.out.println("");
     }
-
-    /**
-     * Prints a list of manufacturers that the dealer is selling for.
-     */
-    public void printManufacturers() {
-        
-        System.out.print("\n" + this.getName() + " is selling cars for ");
-        for(int i = 0; i < lastIndex; i++) {
-            System.out.printf("<%s> ", manufacturerList[i].getName());
-        }
-        System.out.println("");
-        
+    
+    public void paintCar(String car, Label.Color color) {
+        Car carToPaint = getCar(car);
+        carToPaint.paintCar(color);
     }
+    
+    
     
 }

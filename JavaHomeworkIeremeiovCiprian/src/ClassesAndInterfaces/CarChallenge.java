@@ -3,8 +3,8 @@
  */
 package ClassesAndInterfaces;
 
-import ClassesAndInterfaces.manufacturer.Car;
 import ClassesAndInterfaces.manufacturer.CarDealer;
+import ClassesAndInterfaces.manufacturer.Label;
 import ClassesAndInterfaces.manufacturer.Manufacturer;
 
 /**
@@ -23,33 +23,46 @@ public class CarChallenge {
     public static void main(String[] args) {
 
         
-        CarDealer dealer1 = CarDealer.createCarDealer("Dealer1", 2);
-        Manufacturer manufacturer1 = Manufacturer.createManufacturer("Manufacturer1", 4);
-        Manufacturer manufacturer2 = Manufacturer.createManufacturer("Manufacturer2", 3);
+        CarDealer dealer1 = CarDealer.createCarDealer("DEALER_1", 7);
+        Manufacturer manufacturer1 = Manufacturer.createManufacturer("MANUFACTURER_1", 6);
+        Manufacturer manufacturer2 = Manufacturer.createManufacturer("MANUFACTURER_2", 3);
+        System.out.println("----------------------------------------------------");
         
-        manufacturer1.produceCar("Car1", (short)230, Car.Color.YELLOW);
-        manufacturer1.produceCar("Car2", (short)230, Car.Color.YELLOW);
-        manufacturer1.produceCar("Car3", (short)230, Car.Color.RED);
-        manufacturer1.produceCar("Car4", (short)230, Car.Color.YELLOW);
-        manufacturer1.produceCar("Car41", (short)230, Car.Color.YELLOW); // Car List is already full
+        manufacturer1.produceCar("CAR1", Label.Color.YELLOW);
+//        manufacturer1.produceCar("CAR2", Label.Color.GREEN);
+//        manufacturer1.produceCar("CAR3", Label.Color.RED);
+//        manufacturer1.produceCar("CAR4", Label.Color.YELLOW);
+//        manufacturer1.produceCar("CAR41", Label.Color.YELLOW); // Car List is already full
+//        
+//        manufacturer2.produceCar("CAR5", Label.Color.YELLOW);
         
-        manufacturer2.produceCar("Car5", (short)230, Car.Color.YELLOW);
+        System.out.println("----------------------------------------------------");
         
-        dealer1.addManufacturer(manufacturer1);
-        dealer1.addManufacturer(manufacturer2);
+        dealer1.requestCar(manufacturer1, "CAR1", Label.Color.YELLOW);
+        System.out.println("----------------------------------------------------");
+        dealer1.requestCar(manufacturer1, "CAR2", Label.Color.GREEN);
+        dealer1.requestCar(manufacturer2, "CAR6", Label.Color.WHITE);
         
-        dealer1.setSalePrice(manufacturer1, "Car1", 20000);
-        dealer1.setDailyRentPrice(manufacturer1, "Car1", 100);
-        dealer1.setSalePrice(manufacturer1, "Car2", 25000);
-        dealer1.setSalePrice(manufacturer2, "Car5", 30000);
+        dealer1.setSalePrice("CAR1", 20000);
+        dealer1.setDailyRentPrice("CAR1", 100);
+        dealer1.setSalePrice("CAR2", 25000);
+        dealer1.setDailyRentPrice("CAR2", 150);
+      //  dealer1.setSalePrice("CAR5", 30000);
+        
+        dealer1.setPaintPrice("CAR1", 220);
+        dealer1.setPaintPrice("CAR2", 250);
        
-        dealer1.setSalePrice(manufacturer2, "Car2", 30000); // not in car list of manufacturer
-       
-        manufacturer1.printCars();
-        manufacturer2.printCars();
+       manufacturer1.printCars();
+      //  System.out.println("----------------------------------------------------");
+     //  manufacturer2.printCars();
+     //   System.out.println("----------------------------------------------------");
+     
+        dealer1.sellCar("CAR1");
+        dealer1.rentCar("CAR2");
+        dealer1.rentCar("CAR6");
+        dealer1.paintCar("CAR6", Label.Color.BLACK);
         
-        dealer1.printManufacturers();
-        dealer1.printCars();
+        dealer1.printCarLabel();
 
     }
     

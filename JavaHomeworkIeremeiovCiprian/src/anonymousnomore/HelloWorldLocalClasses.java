@@ -36,20 +36,7 @@ public class HelloWorldLocalClasses {
      */
     public static void sayHelloIn(Language language) {
 
-        switch (language) {
-            case ENGLISH:
-                HelloWorld englishGreeting = new EnglishGreeting();
-                englishGreeting.greet();
-                break;
-            case FRENCH:
-                HelloWorld frenchGreeting = new FrenchGreeting();
-                frenchGreeting.greet();
-                break;
-            case SPANISH:
-                HelloWorld spanishGreeting = new SpanishGreeting();
-                spanishGreeting.greet();
-                break;
-        }
+        sayHelloToIn("world", language);
     }
     
     /**
