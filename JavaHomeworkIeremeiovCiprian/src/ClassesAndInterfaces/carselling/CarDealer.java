@@ -135,7 +135,7 @@ public class CarDealer {
     public void sellCar(String car) {
         Saleable carToSell = getCar(car);
         if(carToSell != null) {
-            carToSell.sellCar();
+            carToSell.getSold();
         } else {
             System.out.println("Car not found");
         }
@@ -148,7 +148,7 @@ public class CarDealer {
     public void rentCar(String car) {
         Rentable carToRent = getCar(car);
         if(carToRent != null) {
-            carToRent.rentCar();
+            carToRent.getRented();
         } else {
             System.out.println("Car not found");
         }
@@ -161,7 +161,7 @@ public class CarDealer {
      */
     public void paintCar(String car, Label.Color newColor) {
         Paintable carToPaint = getCar(car);
-        carToPaint.paintCar(newColor);
+        carToPaint.getPainted(newColor);
     }
    
     

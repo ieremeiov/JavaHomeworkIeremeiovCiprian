@@ -74,13 +74,13 @@ public class Car implements Saleable, Rentable, Paintable {
      * @param color
      */
     @Override
-    public void paintCar(Label.Color color) {
+    public void getPainted(Label.Color color) {
         label.setColor(color);
     }
 
    
     @Override
-    public void sellCar() {
+    public void getSold() {
         if (label.isRented()) {
             System.out.println("Car is rented at this moment");
         } else if(label.isSold()) {
@@ -92,7 +92,7 @@ public class Car implements Saleable, Rentable, Paintable {
 
    
     @Override
-    public void rentCar() {
+    public void getRented() {
         if (label.isSold()) {
             System.out.println("Car is sold");
         } else if(label.isRented()) {
