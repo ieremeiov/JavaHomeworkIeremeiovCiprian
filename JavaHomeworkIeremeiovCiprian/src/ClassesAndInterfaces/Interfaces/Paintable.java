@@ -23,6 +23,7 @@ public interface Paintable {
      * @return
      */
     public Label.Color getColor();
+    public void paintCar(Label.Color color);
 
     
 }

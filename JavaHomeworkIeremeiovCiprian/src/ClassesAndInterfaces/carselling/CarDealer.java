@@ -4,6 +4,10 @@
  */
 package ClassesAndInterfaces.carselling;
 
+import ClassesAndInterfaces.Interfaces.Paintable;
+import ClassesAndInterfaces.Interfaces.Rentable;
+import ClassesAndInterfaces.Interfaces.Saleable;
+
 /**
  * CarDealer Class that can have a ParkingLot built, can set prices and modify Cars, and also sell/rent them
  *
@@ -129,7 +133,7 @@ public class CarDealer {
      * @param car the Car to sell
      */
     public void sellCar(String car) {
-        Car carToSell = getCar(car);
+        Saleable carToSell = getCar(car);
         if(carToSell != null) {
             carToSell.sellCar();
         } else {
@@ -142,7 +146,7 @@ public class CarDealer {
      * @param car the Car to rent
      */
     public void rentCar(String car) {
-        Car carToRent = getCar(car);
+        Rentable carToRent = getCar(car);
         if(carToRent != null) {
             carToRent.rentCar();
         } else {
@@ -156,7 +160,7 @@ public class CarDealer {
      * @param newColor the new color you want for the car
      */
     public void paintCar(String car, Label.Color newColor) {
-        Car carToPaint = getCar(car);
+        Paintable carToPaint = getCar(car);
         carToPaint.paintCar(newColor);
     }
    
