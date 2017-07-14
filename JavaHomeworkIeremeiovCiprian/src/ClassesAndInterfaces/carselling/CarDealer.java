@@ -121,11 +121,15 @@ public class CarDealer {
     public void printCarLabel() {
         System.out.printf("\nDEALER <%s> CAR LABELS: \n", name);
         for(int i=0; i < parking.getLastIndex(); i++) { 
-            System.out.println("<Car #" + (i+1) + ">");
-                Car car = parking.getCar(i);
-                System.out.println(car.printLabel());
+            printCarLabel(i);
         }
         System.out.println("");
+    }
+    
+    private void printCarLabel(int i) {
+        System.out.println("<Car #" + (i+1) + ">");
+        Car car = parking.getCar(i);
+        System.out.println(car.printLabel());
     }
 
     /**
