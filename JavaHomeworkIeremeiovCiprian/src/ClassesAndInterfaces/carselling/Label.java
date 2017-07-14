@@ -205,17 +205,20 @@ public class Label {
         String strPaintPrice = String.format("$%s", Integer.toString(getPaintPrice()));
         
         return String.format(
-                " BRAND%11s %16s \n MODEL%11s %16s \n COLOR%11s %16s \n MAX_SPEED%7s %16s \n "
-                        + "SALE_PRICE%6s %16s \n RENT_PRICE%6s %16s \n PAINT_PRICE%5s %16s \n SOLD%12s %16s\n RENTED%10s %16s\n",
+                " BRAND%11s %16s \n"
+                        + " MODEL%11s %16s \n"
+                        + " COLOR%11s %16s \n "
+                        + "MAX_SPEED%7s %16s \n "
+                        + "SALE_PRICE%6s %16s \n "
+                        + "RENT_PRICE%6s %16s \n "
+                        + "PAINT_PRICE%5s %16s \n "
+                        + "SOLD%12s %16s\n "
+                        + "RENTED%10s %16s\n",
                 
-                ":", 
-                manufacturer, 
-                ":", 
-                name, 
-                ":", 
-                color, 
-                ":", 
-                maxSpeed, 
+                ":",manufacturer, 
+                ":", name, 
+                ":", color, 
+                ":", maxSpeed, 
                 ":", ((salePrice > 0) ? strSalePrice : "NOT_SET"),
                 ":", ((dailyRentPrice > 0) ? strRentPrice : "NOT_SET"),
                 ":", ((paintPrice > 0) ? strPaintPrice : "NOT_SET"),
