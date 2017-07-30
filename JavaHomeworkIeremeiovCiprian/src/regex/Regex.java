@@ -5,6 +5,9 @@
  */
 package regex;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,12 +56,11 @@ public class Regex {
             int month = Integer.parseInt(date.substring(1, 3));
             int day = Integer.parseInt(date.substring(3, 5));
             int year = Integer.parseInt(date.substring(5, 9));
-            
+
             System.out.println("Month is: " + month);
             System.out.println("Day is: " + day);
             System.out.println("Year is: " + year);
 
-            
             if (isValidDate(date)) {
                 System.out.println("--------------------------------------");
                 System.out.println("Valid CNP: " + matcher.group());
@@ -72,11 +74,8 @@ public class Regex {
 
     }
 
-    //            21091988345345
-    //    
     public static String CNPregex() {
-
-        String CNP = "[1-2]\\d{14}";
+        String CNP = "[12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d\\d[0-9]{6}";
 
         return CNP;
     }
@@ -130,6 +129,23 @@ public class Regex {
                 daysInMonth = 30;
         }
         return daysInMonth;
+    }
+
+// Unused Date Validator?
+    public Date validateDateFormat(String dateToValdate) {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HHmmss");
+        //To make strict date format validation
+        formatter.setLenient(false);
+        Date parsedDate = null;
+        try {
+            parsedDate = formatter.parse(dateToValdate);
+            System.out.println("++validated DATE TIME ++" + formatter.format(parsedDate));
+
+        } catch (ParseException e) {
+            //Handle exception
+        }
+        return parsedDate;
     }
 
 }
