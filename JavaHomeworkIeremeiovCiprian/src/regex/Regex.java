@@ -49,6 +49,7 @@ public class Regex {
             System.out.println(result);
             found = true;
 
+            // Testing
             int month = Integer.parseInt(date.substring(1, 3));
             int day = Integer.parseInt(date.substring(3, 5));
             int year = Integer.parseInt(date.substring(5, 9));
@@ -57,11 +58,13 @@ public class Regex {
             System.out.println("Day is: " + day);
             System.out.println("Year is: " + year);
 
+            
             if (isValidDate(date)) {
                 System.out.println("--------------------------------------");
                 System.out.println("Valid CNP: " + matcher.group());
                 System.out.println("--------------------------------------");
             }
+            // Finished Testing
         }
         if (!found) {
             System.out.println("No match found!");
