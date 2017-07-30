@@ -12,10 +12,18 @@ public class Rectangle {
     private int width;
     private int height;
 
+    /**
+     *
+     * @return
+     */
     public int area() {
         return (this.width * this.height);
     }
 
+    /**
+     *
+     * @param width
+     */
     public void setWidth(int width) {
         if (width > 0) {
             this.width = width;
@@ -24,6 +32,10 @@ public class Rectangle {
         }
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(int height) {
         if (height > 0) {
             this.height = height;

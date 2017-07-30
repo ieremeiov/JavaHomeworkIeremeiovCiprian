@@ -6,24 +6,27 @@
 package calculator2_0;
 
 /**
- *  
+ *
  * @author Cip
  */
 public class ComputerOOP {
-    
+
     /**
-     * you can turn off the Messages by manually changing the displayMessage parameter to 'false'.
+     * you can turn off the Messages by manually changing the displayMessage
+     * parameter to 'false'.
+     *
      * @param args Does not take any arguments.
      */
     public static void main(String[] args) {
         
         boolean displayMessage = true;
-        
-        
+
         Calculator calculator = new Calculator();
         Calculator.setMessageOn(displayMessage);
-        calculator.turnOn();
         
-    }
+        calculator.turnOn(); 
     
+    
+    }
+
 }

@@ -11,13 +11,39 @@ package ClassesAndInterfaces.carselling;
  */
 public class Label {
 
-  
+    /**
+     *
+     */
     public enum Color {
+
+        /**
+         *
+         */
         WHITE,
+
+        /**
+         *
+         */
         RED,
+
+        /**
+         *
+         */
         YELLOW,
+
+        /**
+         *
+         */
         GREEN,
+
+        /**
+         *
+         */
         GRAY,
+
+        /**
+         *
+         */
         BLACK
     };
     /**

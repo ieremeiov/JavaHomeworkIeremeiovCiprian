@@ -22,6 +22,10 @@ interface.
 @return method returns price for sale
 */
 public int getSalePrice();
-public void getSold();
+
+    /**
+     *
+     */
+    public void getSold();
 
 }

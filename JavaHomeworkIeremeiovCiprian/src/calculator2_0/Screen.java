@@ -9,7 +9,6 @@ package calculator2_0;
  * @author Cip
  */
 public class Screen {
-    
     /**
      * Displays the message that you've entered as a parameter.
      * @param message The message that you want to print on the screen.

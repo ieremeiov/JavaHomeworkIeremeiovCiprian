@@ -15,6 +15,11 @@ public class MealAnnotation {
     private String meal;
     private String mainDish;
     
+    /**
+     *
+     * @param meal
+     * @param mainDish
+     */
     public MealAnnotation(String meal, String mainDish) {
         this.meal = meal;
         this.mainDish = mainDish;
@@ -24,11 +29,24 @@ public class MealAnnotation {
     // The value of the @Repeatable meta-annotation, in parentheses, is the type of the container annotation that the Java compiler generates to store repeating annotations.
     // In this example, the containing annotation type is MealContainer, so repeating @Meal annotations is stored in an @MealContainer annotation.
     // Applying the same annotation to a declaration without first declaring it to be repeatable results in a compile-time error.
+
+    /**
+     *
+     */
     
     @Repeatable(MealContainer.class)
     public @interface Meal {
 
+        /**
+         *
+         * @return
+         */
         String meal() default "snack";
+
+        /**
+         *
+         * @return
+         */
         String mainDish() default "bread and water";
          
     }
@@ -36,11 +54,22 @@ public class MealAnnotation {
     // The containing annotation type must have a value element with an array type.
     // The component type of the array type must be the repeatable annotation type. 
     // The declaration for the MealContainer containing annotation type is the following:
+
+    /**
+     *
+     */
     public @interface MealContainer {
+
+        /**
+         *
+         * @return
+         */
         Meal[] value();
     }
     
-    
+    /**
+     *
+     */
     @Meal(meal="breakfast", mainDish="cereal")
     @Meal(meal="lunch", mainDish="pizza")
     @Meal(meal="dinner", mainDish="salad")

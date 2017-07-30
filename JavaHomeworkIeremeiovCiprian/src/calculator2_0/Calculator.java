@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author Cip
  */
 public class Calculator {
-
+    
     private static boolean messageOn;
 
     /**
@@ -76,6 +76,7 @@ public class Calculator {
 
     // asks for numbers, operation and equals sign.
     private void frameRequest(PhysicalFrame frame) {
+        
         frame.requestNumber();
         frame.getDisplay().displayCurrent(frame);
         frame.requestOperation();
@@ -84,6 +85,7 @@ public class Calculator {
         frame.getDisplay().displayCurrent(frame);
 
         frame.requestConfirmation();
+        
     }
 
     // asks the user if he wants to Reset the ComputerOOP

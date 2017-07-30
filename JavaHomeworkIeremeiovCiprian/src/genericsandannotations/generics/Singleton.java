@@ -4,6 +4,12 @@
 package genericsandannotations.generics;
 
 // -------------------------------------------------------------------------
+
+/**
+ *
+ * @author Cip
+ * @param <T>
+ */
 public class Singleton<T> {
     
     // parameter T cannot be static. 
@@ -11,7 +17,10 @@ public class Singleton<T> {
     private T instance = null;
     private final Algorithm outer;
     
-    
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public T getInstance() {
         if (instance == null) {
@@ -20,7 +29,10 @@ public class Singleton<T> {
         return instance;
     }
     
-
+    /**
+     *
+     * @param outer
+     */
     public Singleton(final Algorithm outer) {
         this.outer = outer;
     }

@@ -6,7 +6,19 @@ package anonymousnomore;
  * @author Cip
  */
 public enum Language {
+
+    /**
+     *
+     */
     ENGLISH,
+
+    /**
+     *
+     */
     FRENCH,
+
+    /**
+     *
+     */
     SPANISH
     }

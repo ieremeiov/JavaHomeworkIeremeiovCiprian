@@ -16,12 +16,33 @@ public class MyHouse implements House {
                                                                                                             // so I've chosen to leave that out for this example
     
     // @SuppressWarnings("deprecation") // for some other reason with @SuppressWarning I still have a warning on open() being deprecated
+
+    /**
+     *
+     * @deprecated
+     */
     @Override
     @Deprecated
     public void open() {}
+
+    /**
+     *
+     */
     @Override
     public void openFrontDoor() {}
+
+    /**
+     *
+     */
     @Override
     public void openBackDoor() {}
+    
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        
+    }
     
 }

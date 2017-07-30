@@ -23,6 +23,11 @@ public interface Paintable {
      * @return
      */
     public Label.Color getColor();
+
+    /**
+     *
+     * @param color
+     */
     public void getPainted(Label.Color color);
 
     

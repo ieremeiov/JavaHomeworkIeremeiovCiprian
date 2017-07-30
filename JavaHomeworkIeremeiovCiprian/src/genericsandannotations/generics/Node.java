@@ -12,6 +12,11 @@ package genericsandannotations.generics;
  */
 public class Node<T> implements Comparable<T> {
 
+    /**
+     *
+     * @param t
+     * @return
+     */
     @Override
     public int compareTo(T t) {
         return 1; // Whatever

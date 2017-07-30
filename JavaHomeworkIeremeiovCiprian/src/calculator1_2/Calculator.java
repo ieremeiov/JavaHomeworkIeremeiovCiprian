@@ -10,6 +10,9 @@ package calculator1_2;
  */
 public class Calculator {
     
+    /**
+     *
+     */
     public static final int HOW_MANY_NUMBERS = 2; // We can only compute two numbers
 
     /**

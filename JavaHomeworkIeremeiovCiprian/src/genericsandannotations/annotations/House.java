@@ -14,8 +14,21 @@ public interface House {
     // Some OTHER people who have already solved the problem would sugest that "The documentation should reflect why open is deprecated and what to use instead."
     // So they actually sugested that I should add @deprecated in Javadoc
 
+    /**
+     *
+     * @deprecated
+     */
+
     @Deprecated
     public void open();
+
+    /**
+     *
+     */
     public void openFrontDoor();
+
+    /**
+     *
+     */
     public void openBackDoor();
 }

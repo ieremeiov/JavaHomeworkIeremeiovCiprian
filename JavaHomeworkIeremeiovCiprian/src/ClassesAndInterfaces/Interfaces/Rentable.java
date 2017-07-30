@@ -22,6 +22,10 @@ interface.
 @return method returns price for daily rent
 */
 public int getDailyRentPrice();
-public void getRented();
+
+    /**
+     *
+     */
+    public void getRented();
 
 }

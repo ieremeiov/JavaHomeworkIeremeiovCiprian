@@ -78,7 +78,9 @@ public class Car implements Saleable, Rentable, Paintable {
         label.setColor(color);
     }
 
-   
+    /**
+     *
+     */
     @Override
     public void getSold() {
         if (label.isRented()) {
@@ -90,7 +92,9 @@ public class Car implements Saleable, Rentable, Paintable {
         }
     }
 
-   
+    /**
+     *
+     */
     @Override
     public void getRented() {
         if (label.isSold()) {
@@ -175,6 +179,7 @@ public class Car implements Saleable, Rentable, Paintable {
      * Abstract method defined in Paintable interface implemented by class car is
      * implemented here.
      *
+     * @return 
      * @override Paintable.PaintPrice() method
      */
     public int getPaintPrice() {

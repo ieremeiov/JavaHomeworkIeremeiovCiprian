@@ -30,7 +30,8 @@ public class Strings {
         
         // Question3
         String substring = "Was it a car or a cat I saw?".substring(9, 12);
-        System.out.println("Question3:\n\tSubstring is: \"" + substring + "\" the space after \"car\" is not captured");
+        System.out.println("Question3:\n\tSubstring is: \"" + substring + "\" the space after \"car\" is not captured\n\t"
+                + "The String returned begins at index 9 and ends at index (12-1)");
         System.out.println("\tSubstring's length is: " + substring.length());
         
        // System.out.println("A test from Oracle's Java Tutorials that can be ignored: ");
