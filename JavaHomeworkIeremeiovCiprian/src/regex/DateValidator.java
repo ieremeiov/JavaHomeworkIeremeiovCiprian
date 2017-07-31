@@ -26,7 +26,6 @@ public class DateValidator {
         }
         
         int date;
-        
         // regex makes sure exception does not occur anyway
         try {
         date = Integer.parseInt(dateString);
@@ -34,9 +33,12 @@ public class DateValidator {
             return false;
         }
         
+        int sex = date / 100000000;
         int year = (date % 10000);
         int month = (date % 100000000) / 1000000;
         int day = (date % 1000000) / 10000;
+        
+        printUntestedCNPinfo(sex, month, day, year);
         
         /*
         int year;
@@ -61,6 +63,7 @@ public class DateValidator {
         return (yearOk && monthOk && dayOk);
     }
 
+    
     private static int daysInMonth(int year, int month) {
         int daysInMonth;
         switch (month) {
@@ -87,6 +90,16 @@ public class DateValidator {
         return daysInMonth;
     }
 
-    
+    private static void printUntestedCNPinfo(int sex, int month, int day, int year) {
+         // Testing
+            
+            
+            // regex makes sure it's 1 or 2
+            System.out.println((sex == 1) ? "MALE" : "FEMALE");
+            System.out.println("Month is: " + month);
+            System.out.println("Day is: " + day);
+            System.out.println("Year is: " + year);
+            
+    }
     
 }

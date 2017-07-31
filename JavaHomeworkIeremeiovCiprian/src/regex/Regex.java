@@ -50,21 +50,6 @@ public class Regex {
                     matcher.group(), matcher.start(), matcher.end());
             System.out.println(result);
             found = true;
-
-            // Testing
-            char firstChar = date.charAt(0);
-            
-            int sex = Integer.parseInt(String.valueOf(firstChar));
-            int month = Integer.parseInt(date.substring(1, 3));
-            int day = Integer.parseInt(date.substring(3, 5));
-            int year = Integer.parseInt(date.substring(5, 9));
-            
-            // regex makes sure it's 1 or 2
-            System.out.println((sex == 1) ? "MALE" : "FEMALE");
-            System.out.println("Month is: " + month);
-            System.out.println("Day is: " + day);
-            System.out.println("Year is: " + year);
-            
             
             DateValidator validator = DateValidator.create();
             
@@ -82,10 +67,9 @@ public class Regex {
     }
 
     
-    public static String CNPregex() {
+        public static String CNPregex() {
         String CNP = "[12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d\\d[0-9]{6}";    
         return CNP;
     }
 
-    
 }
