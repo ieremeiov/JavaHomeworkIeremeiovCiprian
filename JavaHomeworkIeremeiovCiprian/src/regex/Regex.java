@@ -6,8 +6,6 @@
 package regex;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,9 +15,10 @@ import java.util.regex.Pattern;
  * @author Cip
  */
 public class Regex {
-
+    // MMDDYYYY
     // MM: 09 / DD: 21  / YYYY: 1988
-    public static String source = "xx109211988345346999xxx113202002999989xxxx213212988345346999";
+    public static String source = "xx109211988345346999xxx113202002999989xxxx"
+                            + "213212988345346999xxx1210919881111119999   x sdf 2111120023456346";
 
     /**
      * @param args the command line arguments
@@ -53,15 +52,23 @@ public class Regex {
             found = true;
 
             // Testing
+            char firstChar = date.charAt(0);
+            
+            int sex = Integer.parseInt(String.valueOf(firstChar));
             int month = Integer.parseInt(date.substring(1, 3));
             int day = Integer.parseInt(date.substring(3, 5));
             int year = Integer.parseInt(date.substring(5, 9));
-
+            
+            // regex makes sure it's 1 or 2
+            System.out.println((sex == 1) ? "MALE" : "FEMALE");
             System.out.println("Month is: " + month);
             System.out.println("Day is: " + day);
             System.out.println("Year is: " + year);
-
-            if (isValidDate(date)) {
+            
+            
+            DateValidator validator = DateValidator.create();
+            
+            if (validator.isValidDate(date)) {
                 System.out.println("--------------------------------------");
                 System.out.println("Valid CNP: " + matcher.group());
                 System.out.println("--------------------------------------");
@@ -74,78 +81,11 @@ public class Regex {
 
     }
 
+    
     public static String CNPregex() {
-        String CNP = "[12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d\\d[0-9]{6}";
-
+        String CNP = "[12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d\\d[0-9]{6}";    
         return CNP;
     }
 
-    public static boolean isValidDate(String dateString) {
-        if (dateString == null || dateString.length() != "SMMddyyyy".length()) {
-            return false;
-        }
-
-        int year;
-        int month;
-        int day;
-        try {
-            month = Integer.parseInt(dateString.substring(1, 3));
-            day = Integer.parseInt(dateString.substring(3, 5));
-            year = Integer.parseInt(dateString.substring(5, 9));
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        // leap years calculation not valid before 1581
-        boolean yearOk = (year >= 1581) && (year <= 2017);
-        boolean monthOk = (month >= 1) && (month <= 12);
-        boolean dayOk = (day >= 1) && (day <= daysInMonth(year, month));
-
-        return (yearOk && monthOk && dayOk);
-    }
-
-    private static int daysInMonth(int year, int month) {
-        int daysInMonth;
-        switch (month) {
-            case 1: // fall through
-            case 3: // fall through
-            case 5: // fall through
-            case 7: // fall through
-            case 8: // fall through
-            case 10: // fall through
-            case 12:
-                daysInMonth = 31;
-                break;
-            case 2:
-                if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
-                    daysInMonth = 29;
-                } else {
-                    daysInMonth = 28;
-                }
-                break;
-            default:
-                // returns 30 even for nonexistant months 
-                daysInMonth = 30;
-        }
-        return daysInMonth;
-    }
-
-// Unused Date Validator?
-    public Date validateDateFormat(String dateToValdate) {
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HHmmss");
-        //To make strict date format validation
-        formatter.setLenient(false);
-        Date parsedDate = null;
-        try {
-            parsedDate = formatter.parse(dateToValdate);
-            System.out.println("++validated DATE TIME ++" + formatter.format(parsedDate));
-
-        } catch (ParseException e) {
-            //Handle exception
-        }
-        return parsedDate;
-    }
-
+    
 }
