@@ -17,8 +17,12 @@ import java.util.regex.Pattern;
 public class Regex {
     // MMDDYYYY
     // MM: 09 / DD: 21  / YYYY: 1988
-    public static String source = "xx109211988345346999xxx113202002999989xxxx"
-                            + "213212988345346999xxx1210919881111119999   x sdf 2111120023456346";
+    public static String source1 = "2xvalid10921198811111211112002123456" // all valid
+            + "invalid11320200211111xxxx" // invalid month 13
+            + "invalid213212988111111" // invalid year 2988
+            + "invalid12109198811111 " // invalid format DDMMYYYY
+            + "1xvalid1xnotfound 2111120021092119881111"; // intersected
+    public static String source2 = " 21111200210921198811112222xxxx"; // 2 x CNP intersected
 
     /**
      * @param args the command line arguments
@@ -36,12 +40,14 @@ public class Regex {
         //System.out.println("Insert source string: ");
         //String source = scannerSourceString.next();
         System.out.println("Regex is: " + regex);
-        System.out.println("Source is: " + source);
+        System.out.println("Source is: " + source2);
 
-        Matcher matcher = pattern.matcher(source);
+        Matcher matcher = pattern.matcher(source2);
         boolean found = false;
-
-        while (matcher.find()) {
+        
+        int start = 1;
+        
+        while (matcher.find(start)) {
 
             String date = matcher.group().substring(0, 9);
 
@@ -59,6 +65,7 @@ public class Regex {
                 System.out.println("--------------------------------------");
             }
             // Finished Testing
+            start = matcher.start() + 1; // index for the next search
         }
         if (!found) {
             System.out.println("No match found!");
@@ -68,7 +75,7 @@ public class Regex {
 
     
         public static String CNPregex() {
-        String CNP = "[12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d\\d[0-9]{6}";    
+        String CNP = "([12](0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(19|20)\\d{6})";    
         return CNP;
     }
 
