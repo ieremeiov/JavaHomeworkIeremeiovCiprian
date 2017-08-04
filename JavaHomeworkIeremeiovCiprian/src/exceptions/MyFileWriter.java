@@ -35,7 +35,7 @@ public class MyFileWriter {
     // it will only throw other exceptions if you manually add more dangerous methods inside the body of writeFile() 
     public static void writeFile(String outputFileName, String stringToWrite) throws Exception {
 
-        FileWriter file = null;
+        FileWriter file;
         PrintWriter writer = null;
 
         try {
@@ -45,7 +45,6 @@ public class MyFileWriter {
             writer = new PrintWriter(file);
 
             writer.println(stringToWrite);
-            writer.close();
 
         } catch (IOException e) {
 
