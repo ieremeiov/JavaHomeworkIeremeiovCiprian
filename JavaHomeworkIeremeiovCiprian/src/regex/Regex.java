@@ -37,6 +37,7 @@ public class Regex {
         System.out.println("### SEARCHING IN SOURCE1 ...");
         System.out.println("############################");
         
+        // first boolean is for findOverlap, second boolean is for CNP info
         CNPfinder cnpFinder1 = new CNPfinder(CNPfinder.CNPregex(), source1, false, false);
         cnpFinder1.find();
         

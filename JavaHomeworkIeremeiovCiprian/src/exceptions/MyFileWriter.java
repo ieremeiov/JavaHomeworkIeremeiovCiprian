@@ -18,6 +18,7 @@ public class MyFileWriter {
      */
     public static void main(String[] args) {
 
+        
         String text = "Hello, my name is Ciprian";
         String outputFile = "Write_here.txt";
 
