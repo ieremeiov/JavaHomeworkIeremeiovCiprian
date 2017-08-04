@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class that validates if a String is a valid Date in MMDDYYYY format and is eligible for a CNP
  */
 package regex;
+
 
 /**
  *
@@ -16,6 +15,10 @@ public class DateValidator {
     private DateValidator() {
     }
     
+    /**
+     * Factory Method, returns a DateValidator's default constructor
+     * @return a new DateValidator object
+     */
     public static DateValidator create() {
         return new DateValidator();
     }
@@ -33,29 +36,13 @@ public class DateValidator {
             return false;
         }
         
-        int sex = date / 100000000;
         int year = (date % 10000);
         int month = (date % 100000000) / 1000000;
         int day = (date % 1000000) / 10000;
         
-        printUntestedCNPinfo(sex, month, day, year);
-        
-        /*
-        int year;
-        int month;
-        int day;
-        
-        try {
-            month = Integer.parseInt(dateString.substring(1, 3));
-            day = Integer.parseInt(dateString.substring(3, 5));
-            year = Integer.parseInt(dateString.substring(5, 9));
 
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        */
-        
         // leap years calculation not valid before 1581
+        // but year cannot be less than 1900 because of the CNPregex 
         boolean yearOk = (year >= 1581) && (year <= 2017);
         boolean monthOk = (month >= 1) && (month <= 12);
         boolean dayOk = (day >= 1) && (day <= daysInMonth(year, month));
@@ -90,16 +77,5 @@ public class DateValidator {
         return daysInMonth;
     }
 
-    private static void printUntestedCNPinfo(int sex, int month, int day, int year) {
-         // Testing
-            
-            
-            // regex makes sure it's 1 or 2
-            System.out.println((sex == 1) ? "MALE" : "FEMALE");
-            System.out.println("Month is: " + month);
-            System.out.println("Day is: " + day);
-            System.out.println("Year is: " + year);
-            
-    }
-    
+
 }

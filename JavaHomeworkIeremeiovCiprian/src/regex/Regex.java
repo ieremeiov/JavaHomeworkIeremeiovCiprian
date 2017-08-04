@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Pattern finding
  */
 package regex;
 
@@ -14,13 +12,13 @@ package regex;
 public class Regex {
     // MMDDYYYY
     // MM: 09 / DD: 21  / YYYY: 1988
-    public static String source1 = "2xvalid10921198811111211112002123456" // all valid
+    private static String source1 = "2xvalid10921198811111211112002123456" // both valid
             + "invalid11320200211111xxxx" // invalid month 13
             + "invalid213212988111111" // invalid year 2988
             + "invalid12109198811111 " // invalid format DDMMYYYY
-            + "?? 2111120021092119881111"; // intersected
+            + "2xoverlapped 2111120021092119881111"; // intersected
     
-    public static String source2 = " 21111200210921198811112222xxxx"; // 2 x CNP intersected
+    private static String source2 = " 21111200210921198811112222overlapped"; // 2 x CNP intersected
 
     /**
      * @param args the command line arguments
@@ -35,8 +33,19 @@ public class Regex {
         //System.out.println("Insert source string: ");
         //String source = scannerSourceString.next();
         
-        CNPfinder cnpFinder = new CNPfinder(CNPfinder.CNPregex(), source1);
-        cnpFinder.find();
+        System.out.println("############################");
+        System.out.println("### SEARCHING IN SOURCE1 ...");
+        System.out.println("############################");
+        
+        CNPfinder cnpFinder1 = new CNPfinder(CNPfinder.CNPregex(), source1, false, false);
+        cnpFinder1.find();
+        
+        System.out.println("############################");
+        System.out.println("### SEARCHING IN SOURCE2 ...");
+        System.out.println("############################");
+        
+        CNPfinder cnpFinder2 = new CNPfinder(CNPfinder.CNPregex(), source2, true, true);
+        cnpFinder2.find();
         
 
     }
