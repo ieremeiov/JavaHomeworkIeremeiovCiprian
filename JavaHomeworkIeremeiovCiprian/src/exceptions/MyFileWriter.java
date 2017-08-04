@@ -32,18 +32,18 @@ public class MyFileWriter {
     // can throw exceptionsother than IOException depending on what other methods are being invoked inside the try block 
     // although bad practice, I've chosen to throw the exception further so that the exception will be handled in main() in this case
     // it will only throw other exceptions if you manually add more dangerous methods inside the body of writeFile() 
-    public static void writeFile(String outputFile, String textToWrite) throws Exception {
+    public static void writeFile(String outputFileName, String stringToWrite) throws Exception {
 
         FileWriter file = null;
         PrintWriter writer = null;
 
         try {
 
-            file = new FileWriter(outputFile); // can throw IOException if file cannot be created
+            file = new FileWriter(outputFileName); // can throw IOException if file cannot be created
 
             writer = new PrintWriter(file);
 
-            writer.println(textToWrite);
+            writer.println(stringToWrite);
             writer.close();
 
         } catch (IOException e) {
