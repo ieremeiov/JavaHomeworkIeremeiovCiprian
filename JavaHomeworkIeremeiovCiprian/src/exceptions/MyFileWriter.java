@@ -13,13 +13,13 @@ import java.io.PrintWriter;
  */
 public class MyFileWriter {
 
+    private static String text1 = "public FileWriter(String string) throws IOException";
+    private static String text2 = "public PrintWriter(Writer writer)";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        String text1 = "public FileWriter(String string) throws IOException";
-        String text2 = "public PrintWriter(Writer writer)";
 
         String outputFile1 = "Write_here1.txt";
         String outputFile2 = "";
@@ -41,7 +41,7 @@ public class MyFileWriter {
     // can throw exceptions other than IOException depending on what other methods are being invoked inside the try block 
     // although bad practice, I've chosen to throw the exception further so that the exception will be handled in main() in this case
     // it will only throw other exceptions if you manually add more dangerous methods inside the body of writeFile() 
-    public static void writeFile(String outputFileName, String stringToWrite1, String stringToWrite2) throws Exception {
+    public static void writeFile(String outputFileName, String stringToWrite1, String stringToWrite2) throws Exception { 
 
         FileWriter file;
         PrintWriter writer = null;
@@ -60,7 +60,7 @@ public class MyFileWriter {
 
             System.err.println("IOException: " + e.getMessage());
 
-        } catch (Exception e) {
+        } catch (Exception e) { // should not be reached in this example
 
             throw e;
 
