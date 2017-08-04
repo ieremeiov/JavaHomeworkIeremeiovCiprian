@@ -1,0 +1,2 @@
+public FileWriter(String string) throws IOException
+public PrintWriter(Writer writer)

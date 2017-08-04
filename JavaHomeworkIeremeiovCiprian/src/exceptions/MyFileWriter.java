@@ -18,33 +18,43 @@ public class MyFileWriter {
      */
     public static void main(String[] args) {
 
-        
-        String text = "Hello, my name is Ciprian";
-        String outputFile = "Write_here.txt";
+        String text1 = "public FileWriter(String string) throws IOException";
+        String text2 = "public PrintWriter(Writer writer)";
+
+        String outputFile1 = "Write_here1.txt";
+        String outputFile2 = "";
 
         try {
-            writeFile(outputFile, text);
+            writeFile(outputFile1, text1, text2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            writeFile(outputFile2, "Hello", null);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
 
-    // can throw exceptionsother than IOException depending on what other methods are being invoked inside the try block 
+    // can throw exceptions other than IOException depending on what other methods are being invoked inside the try block 
     // although bad practice, I've chosen to throw the exception further so that the exception will be handled in main() in this case
     // it will only throw other exceptions if you manually add more dangerous methods inside the body of writeFile() 
-    public static void writeFile(String outputFileName, String stringToWrite) throws Exception {
+    public static void writeFile(String outputFileName, String stringToWrite1, String stringToWrite2) throws Exception {
 
         FileWriter file;
         PrintWriter writer = null;
 
         try {
 
-            file = new FileWriter(outputFileName); // can throw IOException if file cannot be created
+            file = new FileWriter(outputFileName); // can throw the checked exception IOException if file cannot be created
 
-            writer = new PrintWriter(file);
+            writer = new PrintWriter(file); // if PrintWriter's Constructor would have taken a String filename, 
+            // it could have thrown the checked exception FileNotFoundException
 
-            writer.println(stringToWrite);
+            writer.println(stringToWrite1);
+            writer.println(stringToWrite2);
 
         } catch (IOException e) {
 
