@@ -25,17 +25,15 @@ public class MyFileWriter {
         String outputFile2 = null; // Ooops - NullPointerException
         String outputFile3 = ""; // will cause IOException but will be handled
 
-            writeFile(outputFile1, text1, text2);
-
-            writeFile(outputFile2, "Ciprian", "Ieremeiov");
-            
-            writeFile(outputFile3, "Hello", null);
+        writeFile(outputFile1, text1, text2);
+        writeFile(outputFile3, "Hello", null);
+        writeFile(outputFile2, "Ciprian", "Ieremeiov");
 
     }
 
     // can throw exceptions other than IOException depending on what other methods are being invoked inside the try block 
     // NullPointerException if the file name points to a null pointer.
-    public static void writeFile(String outputFileName, String stringToWrite1, String stringToWrite2) { 
+    public static void writeFile(String outputFileName, String stringToWrite1, String stringToWrite2) throws NullPointerException {
 
         FileWriter file;
         PrintWriter writer = null;
@@ -43,9 +41,9 @@ public class MyFileWriter {
         try {
 
             file = new FileWriter(outputFileName); // can throw the checked exception IOException if file cannot be created
-                                                    
+
             writer = new PrintWriter(file); // if PrintWriter's Constructor would have taken a String filename, 
-            // it could have thrown the checked exception FileNotFoundException
+                                            // it could have thrown the checked exception FileNotFoundException
 
             writer.println(stringToWrite1);
             writer.println(stringToWrite2);
@@ -55,8 +53,7 @@ public class MyFileWriter {
             System.err.println("IOException: " + e.getMessage());
 
         } catch (NullPointerException e) { // 
-            
-            System.err.println("NullPointerException: " + e.getMessage());
+            System.err.println("A file name is 'null'");
 
         } finally {
 
