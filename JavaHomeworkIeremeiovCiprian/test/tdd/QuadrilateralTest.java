@@ -26,7 +26,17 @@ public class QuadrilateralTest {
         String actualDefinition = patrulater.getDefinition();
         String expectedDefinition = "Two dimensional geometric shape defined by 4 sides ";
         assertEquals(expectedDefinition, actualDefinition);
+    }
 
+    /**
+     * Test of getDefinition method, of class Quadrilateral.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable patrulater = new Quadrilateral();
+        String actualDefinition = patrulater.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
     }
 
 }

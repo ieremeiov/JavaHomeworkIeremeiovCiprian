@@ -15,34 +15,34 @@ public class DisplayShapes {
     public static Map<Definable, String> definitions = new LinkedHashMap<>();
     public static String[] definitionsArray = null;
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String[] args) {
-//
-//        Definable segment = new SegmentDeDreapta();
-//        Definable romb = new Romb();
-//        Definable patrat = new Patrat();
-//        Definable cerc = new Cerc();
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+//        Definable segment = new LineSegment();
+//        Definable romb = new Diamond();
+//        Definable patrat = new Square();
+//        Definable cerc = new Circle();
 //
 //        definitions.put(segment, segment.getDefinition());
 //        definitions.put(romb, romb.getDefinition());
 //        definitions.put(patrat, patrat.getDefinition());
-//        definitions.put(new Cerc(), cerc.getDefinition());
-//
-////        for (Iterator<Definibila> it = definitions.keySet().iterator(); it.hasNext(); ) {
-////            String definitie = definitions.get(it.next());
-////            System.out.println(definitie);
-////        }
-//// init + display
-//        definitionsArray = new String[definitions.values().size()];
-//        DisplayShapes.setDefinitionsArray(definitionsArray);
-//
-//        for (String s : definitionsArray) {
-//            System.out.println(s);
+//        definitions.put(new Circle(), cerc.getDefinition());
+
+//        for (Iterator<Definibila> it = definitions.keySet().iterator(); it.hasNext(); ) {
+//            String definitie = definitions.get(it.next());
+//            System.out.println(definitie);
 //        }
-//
-//    }
+// init + display
+        definitionsArray = new String[definitions.values().size()];
+        DisplayShapes.setDefinitionsArray(definitionsArray);
+
+        for (String s : definitionsArray) {
+            System.out.println(s);
+        }
+
+    }
 
     public static void setDefinitionsArray(String[] def) {
         int i = 0;

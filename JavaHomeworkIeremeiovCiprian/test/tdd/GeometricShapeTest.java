@@ -28,4 +28,15 @@ public class GeometricShapeTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class GeometricShape.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable figura = new GeometricShape();
+        String actualDefinition = figura.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

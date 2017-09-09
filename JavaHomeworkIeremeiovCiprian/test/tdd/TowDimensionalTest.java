@@ -28,4 +28,15 @@ public class TowDimensionalTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class TwoDimensional.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable twoDimensional = new TwoDimensional();
+        String actualDefinition = twoDimensional.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

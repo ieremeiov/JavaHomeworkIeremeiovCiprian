@@ -28,4 +28,15 @@ public class TriangleTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class Triangle.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable triunghi = new Triangle();
+        String actualDefinition = triunghi.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

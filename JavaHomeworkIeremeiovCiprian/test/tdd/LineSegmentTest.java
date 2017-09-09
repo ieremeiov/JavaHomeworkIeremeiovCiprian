@@ -29,4 +29,15 @@ public class LineSegmentTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class LineSegment.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable segment = new LineSegment();
+        String actualDefinition = segment.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

@@ -28,4 +28,15 @@ public class SquareTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class Square.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable patrat = new Square();
+        String actualDefinition = patrat.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

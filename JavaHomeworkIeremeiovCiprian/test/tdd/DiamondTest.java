@@ -29,4 +29,15 @@ public class DiamondTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class Diamond.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable romb = new Diamond();
+        String actualDefinition = romb.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

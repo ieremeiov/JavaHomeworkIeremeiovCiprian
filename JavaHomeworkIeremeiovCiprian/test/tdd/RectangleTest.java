@@ -28,4 +28,15 @@ public class RectangleTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
 
+    /**
+     * Test of getDefinition method, of class Rectangle.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable dreptunghi = new Rectangle();
+        String actualDefinition = dreptunghi.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+
 }

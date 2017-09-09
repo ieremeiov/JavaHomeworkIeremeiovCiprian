@@ -29,4 +29,15 @@ public class CircleTest {
         assertEquals(expectedDefinition, actualDefinition);
     }
     
+     /**
+     * Test of getDefinition method, of class Circle.
+     */
+    @Test
+    public void testGetDefinition2() {
+        Definable cerc = new Circle();
+        String actualDefinition = cerc.getDefinition();
+        String expectedDefinition = "anything else";
+        assertFalse(expectedDefinition.equals(actualDefinition));
+    }
+    
 }
