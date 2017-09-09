@@ -9,16 +9,17 @@ package tdd;
  *
  * @author Cip
  */
-public class Romb extends Patrulater implements Definibila {
+public class Quadrilateral extends TwoDimensional implements Definable {
     
     private String definition;
 
     
     @Override
     public String getDefinition() {
-        definition = super.getDefinition() + "cu laturile opuse paralele si congruente";
+        this.definition = super.getDefinition() + "defined by 4 sides ";
         return definition;
     }
+    
     
     
 }

@@ -12,19 +12,20 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class PlanaTest {
+public class DiamondTest {
 
-    public PlanaTest() {
+    public DiamondTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Plana.
+     * Test of getDefinition method, of class Diamond.
      */
     @Test
     public void testGetDefinition() {
-        Definibila plana = new Plana();
-        String actualDefinition = plana.getDefinition();
-        String expectedDefinition = "Figura geometrica plana ";
+        Definable romb = new Diamond();
+        String actualDefinition = romb.getDefinition();
+        String expectedDefinition = "Two dimensional geometric shape defined by 4 sides of "
+                + "equal length forming two opposite acute angles and two opposite obtuse angles.";
         assertEquals(expectedDefinition, actualDefinition);
     }
 

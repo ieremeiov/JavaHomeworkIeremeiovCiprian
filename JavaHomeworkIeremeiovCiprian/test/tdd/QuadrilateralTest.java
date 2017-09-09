@@ -12,19 +12,19 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class PatrulaterTest {
+public class QuadrilateralTest {
 
-    public PatrulaterTest() {
+    public QuadrilateralTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Patrulater.
+     * Test of getDefinition method, of class Quadrilateral.
      */
     @Test
     public void testGetDefinition() {
-        Definibila patrulater = new Patrulater();
+        Definable patrulater = new Quadrilateral();
         String actualDefinition = patrulater.getDefinition();
-        String expectedDefinition = "Figura geometrica plana patrulaterul ";
+        String expectedDefinition = "Two dimensional geometric shape defined by 4 sides ";
         assertEquals(expectedDefinition, actualDefinition);
 
     }

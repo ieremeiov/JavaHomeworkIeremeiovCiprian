@@ -12,20 +12,20 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class CercTest {
-    
-    public CercTest() {
+public class SquareTest {
+
+    public SquareTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Cerc.
+     * Test of getDefinition method, of class Square.
      */
     @Test
     public void testGetDefinition() {
-        Definibila cerc = new Cerc();
-        String actualDefinition = cerc.getDefinition();
-        String expectedDefinition = "Figura geometrica plana formata din multimea tuturor punctelor egal departate de un punct fix";
+        Definable patrat = new Square();
+        String actualDefinition = patrat.getDefinition();
+        String expectedDefinition = "Two dimensional geometric shape defined by 4 equal sides and 4 right angles.";
         assertEquals(expectedDefinition, actualDefinition);
     }
-    
+
 }

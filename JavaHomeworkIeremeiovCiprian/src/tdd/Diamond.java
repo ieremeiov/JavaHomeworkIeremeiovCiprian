@@ -9,17 +9,16 @@ package tdd;
  *
  * @author Cip
  */
-public class Dreptunghi extends Patrulater  implements Definibila {
-
+public class Diamond extends Quadrilateral implements Definable {
+    
     private String definition;
 
     
     @Override
     public String getDefinition() {
-        definition = super.getDefinition() + "cu toate unghiurile drepte";
+        definition = super.getDefinition() + "of equal length forming two opposite acute angles and two opposite obtuse angles.";
         return definition;
     }
     
     
-
 }

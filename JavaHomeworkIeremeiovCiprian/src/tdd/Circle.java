@@ -9,16 +9,17 @@ package tdd;
  *
  * @author Cip
  */
-public class Patrulater extends Plana implements Definibila {
+public class Circle extends TwoDimensional implements Definable {
     
-    private String definitie;
-
+    private String definition;
     
     @Override
     public String getDefinition() {
-        this.definitie = super.getDefinition() + "patrulaterul ";
-        return definitie;
+        definition = super.getDefinition() + "defined by a boundary (the circumference) consisting of points equidistant from a fixed point (the centre).";
+        return definition;
     }
+    
+    
     
     
     

@@ -9,15 +9,17 @@ package tdd;
  *
  * @author Cip
  */
-public class Triunghi extends Plana implements Definibila {
+public class Square extends Rectangle implements Definable {
     
     private String definition;
 
     
     @Override
     public String getDefinition() {
-        definition = super.getDefinition() + "data de reuniunea segmentelor inchise determinate de ele ";
+        definition = super.getDefinition().replace("sides", "equal sides");
         return definition;
     }
+    
+    
     
 }

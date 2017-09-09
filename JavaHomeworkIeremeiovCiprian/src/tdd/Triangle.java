@@ -9,17 +9,15 @@ package tdd;
  *
  * @author Cip
  */
-public class Patrat extends Patrulater implements Definibila {
+public class Triangle extends TwoDimensional implements Definable {
     
-    private String definitie;
+    private String definition;
 
     
     @Override
     public String getDefinition() {
-        definitie = super.getDefinition() + "care are toate laturile egale si toate unghiurile drepte. ";
-        return definitie;
+        definition = super.getDefinition() + "defined by three liens and three angles.";
+        return definition;
     }
-    
-    
     
 }

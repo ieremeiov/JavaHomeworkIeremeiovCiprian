@@ -12,19 +12,19 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class PatratTest {
+public class TriangleTest {
 
-    public PatratTest() {
+    public TriangleTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Patrat.
+     * Test of getDefinition method, of class Triangle.
      */
     @Test
     public void testGetDefinition() {
-        Definibila patrat = new Patrat();
-        String actualDefinition = patrat.getDefinition();
-        String expectedDefinition = "Figura geometrica plana patrulaterul care are toate laturile egale si toate unghiurile drepte. ";
+        Definable triunghi = new Triangle();
+        String actualDefinition = triunghi.getDefinition();
+        String expectedDefinition = "Two dimensional geometric shape defined by three liens and three angles.";
         assertEquals(expectedDefinition, actualDefinition);
     }
 

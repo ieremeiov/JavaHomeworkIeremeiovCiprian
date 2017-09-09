@@ -12,19 +12,19 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class RombTest {
+public class GeometricShapeTest {
 
-    public RombTest() {
+    public GeometricShapeTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Romb.
+     * Test of getDefinition method, of class GeometricShape.
      */
     @Test
     public void testGetDefinition() {
-        Definibila romb = new Romb();
-        String actualDefinition = romb.getDefinition();
-        String expectedDefinition = "Figura geometrica plana patrulaterul cu laturile opuse paralele si congruente";
+        Definable figuraGeometirca = new GeometricShape();
+        String actualDefinition = figuraGeometirca.getDefinition();
+        String expectedDefinition = "geometric shape ";
         assertEquals(expectedDefinition, actualDefinition);
     }
 

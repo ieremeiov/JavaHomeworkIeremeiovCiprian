@@ -12,20 +12,21 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class SegmentDeDreaptaTest {
-
-    public SegmentDeDreaptaTest() {
+public class CircleTest {
+    
+    public CircleTest() {
     }
 
     /**
-     * Test of getDefinition method, of class SegmentDeDreapta.
+     * Test of getDefinition method, of class Circle.
      */
     @Test
     public void testGetDefinition() {
-        Definibila segment = new SegmentDeDreapta();
-        String actualDefinition = segment.getDefinition();
-        String expectedDefinition = "Figura geometrica plana determinata de 2 puncte numite capetele segmentului ";
+        Definable cerc = new Circle();
+        String actualDefinition = cerc.getDefinition();
+        String expectedDefinition = "Two dimensional geometric shape defined by a "
+                + "boundary (the circumference) consisting of points equidistant from a fixed point (the centre).";
         assertEquals(expectedDefinition, actualDefinition);
     }
-
+    
 }

@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
  * @author Cip
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({tdd.DisplayShapesTest.class, tdd.DreptunghiTest.class, tdd.RombTest.class, tdd.CercTest.class, tdd.PatrulaterTest.class, tdd.SegmentDeDreaptaTest.class, tdd.FiguraGeometricaTest.class, tdd.PlanaTest.class, tdd.PatratTest.class, tdd.TriunghiTest.class})
+@Suite.SuiteClasses({tdd.DisplayShapesTest.class, tdd.RectangleTest.class, tdd.DiamondTest.class, tdd.CircleTest.class, tdd.QuadrilateralTest.class, tdd.LineSegmentTest.class, tdd.GeometricShapeTest.class, tdd.TowDimensionalTest.class, tdd.SquareTest.class, tdd.TriangleTest.class})
 public class TddSuite {
     
 }

@@ -12,19 +12,19 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class TriunghiTest {
+public class TowDimensionalTest {
 
-    public TriunghiTest() {
+    public TowDimensionalTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Triunghi.
+     * Test of getDefinition method, of class TwoDimensional.
      */
     @Test
     public void testGetDefinition() {
-        Definibila triunghi = new Triunghi();
-        String actualDefinition = triunghi.getDefinition();
-        String expectedDefinition = "Figura geometrica plana data de reuniunea segmentelor inchise determinate de ele ";
+        Definable plana = new TwoDimensional();
+        String actualDefinition = plana.getDefinition();
+        String expectedDefinition = "Two dimensional geometric shape ";
         assertEquals(expectedDefinition, actualDefinition);
     }
 

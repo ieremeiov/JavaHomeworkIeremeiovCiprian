@@ -12,19 +12,19 @@ import static org.junit.Assert.*;
  *
  * @author Cip
  */
-public class DreptunghiTest {
+public class RectangleTest {
 
-    public DreptunghiTest() {
+    public RectangleTest() {
     }
 
     /**
-     * Test of getDefinition method, of class Dreptunghi.
+     * Test of getDefinition method, of class Rectangle.
      */
     @Test
     public void testGetDefinition() {
-        Definibila dreptunghi = new Dreptunghi();
+        Definable dreptunghi = new Rectangle();
         String actualDefinition = dreptunghi.getDefinition();
-        String expectedDefinition = "Figura geometrica plana patrulaterul cu toate unghiurile drepte";
+        String expectedDefinition = "Two dimensional geometric shape defined by 4 sides and 4 right angles.";
         assertEquals(expectedDefinition, actualDefinition);
     }
 

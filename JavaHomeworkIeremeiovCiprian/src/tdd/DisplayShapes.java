@@ -12,52 +12,56 @@ import java.util.Map;
  */
 public class DisplayShapes {
 
-    public static Map<Definibila, String> definitii = new LinkedHashMap<>();
-    public static String[] definitiiArray = null;
+    public static Map<Definable, String> definitions = new LinkedHashMap<>();
+    public static String[] definitionsArray = null;
 
 //    /**
 //     * @param args the command line arguments
 //     */
 //    public static void main(String[] args) {
 //
-//        Definibila segment = new SegmentDeDreapta();
-//        Definibila romb = new Romb();
-//        Definibila patrat = new Patrat();
-//        Definibila cerc = new Cerc();
+//        Definable segment = new SegmentDeDreapta();
+//        Definable romb = new Romb();
+//        Definable patrat = new Patrat();
+//        Definable cerc = new Cerc();
 //
-//        definitii.put(segment, segment.getDefinition());
-//        definitii.put(romb, romb.getDefinition());
-//        definitii.put(patrat, patrat.getDefinition());
-//        definitii.put(new Cerc(), cerc.getDefinition());
+//        definitions.put(segment, segment.getDefinition());
+//        definitions.put(romb, romb.getDefinition());
+//        definitions.put(patrat, patrat.getDefinition());
+//        definitions.put(new Cerc(), cerc.getDefinition());
 //
-////        for (Iterator<Definibila> it = definitii.keySet().iterator(); it.hasNext(); ) {
-////            String definitie = definitii.get(it.next());
+////        for (Iterator<Definibila> it = definitions.keySet().iterator(); it.hasNext(); ) {
+////            String definitie = definitions.get(it.next());
 ////            System.out.println(definitie);
 ////        }
 //// init + display
-//        definitiiArray = new String[definitii.values().size()];
-//        DisplayShapes.setDefinitiiArray(definitiiArray);
+//        definitionsArray = new String[definitions.values().size()];
+//        DisplayShapes.setDefinitionsArray(definitionsArray);
 //
-//        for (String s : definitiiArray) {
+//        for (String s : definitionsArray) {
 //            System.out.println(s);
 //        }
 //
 //    }
 
-    public static void setDefinitiiArray(String[] def) {
+    public static void setDefinitionsArray(String[] def) {
         int i = 0;
-        for (String definitie : definitii.values()) {
-            def[i] = definitie;
+        for (String definition : definitions.values()) {
+            def[i] = definition;
             i++;
         }
 
-//        definitiiArray = (String[]) definitii.values().toArray();
+//        definitionsArray = (String[]) definitions.values().toArray();
     }
 
     /*
-    Figura geometrica plana patrulaterul care are toate laturile egale si toate unghiurile drepte. 
-    Figura geometrica plana determinata de 2 puncte numite capetele segmentului 
-    Figura geometrica plana patrulaterul cu laturile opuse paralele si congruente
-    Figura geometrica plana formata din multimea tuturor punctelor egal departate de un punct fix
+   
+    Quadrilateral : has 4 sides
+    Line segment :  a part of a line that is bounded by two distinct end points, and contains every point on the line between its endpoints.
+    Diamond : a figure with four straight sides of equal length forming two opposite acute angles and two opposite obtuse angles; a rhombus.
+    Square : a plane figure with four equal straight sides and four right angles.
+    Rectangle : a plane figure with four straight sides and four right angles, especially one with unequal adjacent sides, in contrast to a square.
+    
+    
      */
 }

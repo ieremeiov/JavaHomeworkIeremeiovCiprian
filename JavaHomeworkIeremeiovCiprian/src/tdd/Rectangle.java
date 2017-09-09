@@ -5,22 +5,23 @@
  */
 package tdd;
 
+
+
 /**
  *
  * @author Cip
  */
-public class Cerc extends Plana implements Definibila {
-    
+public class Rectangle extends Quadrilateral  implements Definable {
+
     private String definition;
+
     
     @Override
     public String getDefinition() {
-        definition = super.getDefinition() + "formata din multimea tuturor punctelor egal departate de un punct fix";
+        definition = super.getDefinition() + "and 4 right angles.";
         return definition;
     }
     
     
-    
-    
-    
+
 }

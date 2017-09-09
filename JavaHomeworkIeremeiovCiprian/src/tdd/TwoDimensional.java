@@ -7,9 +7,9 @@ package tdd;
  *
  * @author Cip
  */
-public class Plana extends FiguraGeometrica implements Definibila {
+public class TwoDimensional extends GeometricShape implements Definable {
     
-    private String definitie;
+    private String definition;
 
 
     /**
@@ -18,8 +18,8 @@ public class Plana extends FiguraGeometrica implements Definibila {
      */
     @Override
     public String getDefinition() {
-        definitie = super.getDefinition() + "plana ";
-        return definitie;
+        definition = "Two dimensional " + super.getDefinition();
+        return definition;
     }
     
     
