@@ -15,12 +15,17 @@ import java.util.logging.Logger;
 public class TvShow extends Thread {
 
     private String color = ThreadColor.ANSI_RED;
-    private int timer = 1;
+    private int startTimer = 1;
+    private int showDuration = 2;
 
     private Husband husband;
+    private Wife wife;
 
     private volatile boolean started = false;
-    private int count = 0;
+    private volatile boolean ended = false;
+
+    private int countStart = 0;
+    private int countEnd = 0;
 
     /**
      *
@@ -30,7 +35,7 @@ public class TvShow extends Thread {
      */
     public TvShow(Husband husband) {
         this.husband = husband;
-
+        this.wife = husband.getWife();
     }
 
     /**
@@ -43,9 +48,12 @@ public class TvShow extends Thread {
     }
 
     private void isTheShowStartedYet() {
+
         husband.show = this;
+        wife.show = this;
 
         while (!started) {
+
             System.out.println(color + "The TV Show didn't start yet...");
 
             try {
@@ -53,10 +61,10 @@ public class TvShow extends Thread {
             } catch (InterruptedException ex) {
             }
 
-            if (count == timer) {
+            if (countStart == startTimer) {
                 break;
             }
-            count++;
+            countStart++;
         }
 
         synchronized (this) {
@@ -64,6 +72,36 @@ public class TvShow extends Thread {
             started = true;
             husband.interrupt();
         }
+
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {
+        }
+        
+        synchronized (this) {
+        
+            while (!ended) {
+
+                System.out.println(color + "The TV Show is running.");
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                }
+
+                if (countEnd == showDuration) {
+                    ended = true;
+                }
+
+                countEnd++;
+
+            }
+
+            System.out.println(color + "The Show has ended !!!");
+            husband.interrupt();
+            wife.interrupt();
+        }
+
     }
 
     /**
@@ -72,6 +110,14 @@ public class TvShow extends Thread {
      */
     public Husband getHusband() {
         return husband;
+    }
+    
+        /**
+     *
+     * @return
+     */
+    public Wife getWife() {
+        return wife;
     }
 
     /**

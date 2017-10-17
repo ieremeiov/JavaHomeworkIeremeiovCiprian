@@ -5,6 +5,9 @@
  */
 package multithreading;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Cip
@@ -13,8 +16,8 @@ public class Tv extends Thread {
 
     private String color = ThreadColor.ANSI_YELLOW;
     private TvShow show;
-//    private Husband husband;
-//    private Wife wife;
+    private Husband husband;
+    private Wife wife;
 
     /**
      *
@@ -23,8 +26,8 @@ public class Tv extends Thread {
      */
     public Tv(TvShow show) {
         this.show = show;
-//        this.husband = show.getHusband();
-//        this.wife = show.getWife();
+        this.husband = show.getHusband();
+        this.wife = show.getWife();
     }
 
     /**
@@ -32,12 +35,23 @@ public class Tv extends Thread {
      */
     @Override
     public void run() {
-        turnOn();
+        try {
+            turnOn();
+        } catch (InterruptedException ex) {
+
+        }
     }
 
-    private void turnOn() {
+    private void turnOn() throws InterruptedException {
         System.out.println(color + "The TV is running...");
         show.start();
+        husband.start();
+        wife.start();
+
+        husband.join();
+        wife.join();
+        
+        System.out.println(color + "The TV is turned Off!");
     }
 
 }

@@ -18,7 +18,15 @@ public class VacuumCleaner extends Thread {
      */
     @Override
     public void run() {
-        System.out.println(color + "The vacuum cleaner is running...");
+        try {
+            System.out.println(color + "The vacuum cleaner is running...");
+            
+            synchronized (this) {
+                wait();
+            }
+        } catch (InterruptedException e) {
+            System.out.println(color + "The vacuum cleaner is stopped because show has started...");
+        }
     }
 
 }

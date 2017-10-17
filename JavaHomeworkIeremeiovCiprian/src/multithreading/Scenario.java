@@ -14,7 +14,7 @@ public class Scenario {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Wife wife = new Wife();
         Husband husband = new Husband(wife);
@@ -29,9 +29,8 @@ public class Scenario {
         Thread tv = new Tv(show);
 
         tv.start();
-        husband.start();
-        wife.start();
 
+        
     }
 
 }

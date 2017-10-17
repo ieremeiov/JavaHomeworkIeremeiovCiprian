@@ -14,10 +14,10 @@ import java.util.logging.Logger;
  */
 public class Husband extends Thread {
 
-    private String color = ThreadColor.ANSI_BLACK;
+    private String color = ThreadColor.ANSI_BLUE;
     private Wife wife;
     // private Object lock = new Object();
-    Thread cleaner = new VacuumCleaner();
+    private Thread cleaner = new VacuumCleaner();
     TvShow show;
 
     /**
@@ -38,6 +38,10 @@ public class Husband extends Thread {
     }
 
     private void cleanAndWaitForShow() {
+
+        // wife accepts the ring :D
+        wife.setHusband(this);
+
         try {
             Thread.sleep(50);
         } catch (InterruptedException ex) {
@@ -45,23 +49,43 @@ public class Husband extends Thread {
 
         cleaner.start();
 
-        try {
-            cleaner.join();
-        } catch (InterruptedException ex) {
-        }
-
         System.out.println(color + "The husband is cleaning the room...");
 
         while (!show.started()) {
+
             try {
+
                 System.out.println(color + "Husband is waiting for the show...");
                 Thread.sleep(1000);
+
             } catch (InterruptedException ex) {
+
                 System.out.println(color + "Husband tries to wake up the wife...");
                 show.setStarted(true);
+                cleaner.interrupt();
                 wife.interrupt();
+
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException ex1) {
+                }
+
+                
+                System.out.println(color + "Husband is watching the show.");
+
+                synchronized (this) {
+                    try {
+                        wait();
+                    } catch (InterruptedException ex1) {
+                        System.out.println(color + "Husband stopped watchign the show.");
+                    }
+                }
             }
         }
+    }
+
+    public Wife getWife() {
+        return this.wife;
     }
 
 }

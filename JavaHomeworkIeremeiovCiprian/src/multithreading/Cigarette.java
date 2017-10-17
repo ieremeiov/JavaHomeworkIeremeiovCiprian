@@ -11,7 +11,7 @@ package multithreading;
  */
 public class Cigarette extends Thread {
 
-    private String color = ThreadColor.ANSI_PURPLE;
+    private String color = ThreadColor.ANSI_BLACK;
 
     /**
      *
