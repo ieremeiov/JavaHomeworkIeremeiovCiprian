@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CRUD</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/ebookstore.css">
+    </head>
+    <body>
+        <h3>CRUD Operations</h3>
+
+        <hr>
+
+        <h4>Books</h4>
+            <form>
+
+
+                <table class="tablecenterdwithborder">
+                    <tr><td>ISBN: </td><td><input class = "inputlarge" type="text"></td></tr> 
+                    <tr><td>Book Title: </td><td><input class = "inputlarge" type="text"></td></tr> 
+                    <tr><td>Price:  </td><td><input class = "inputlarge" type="text"></td></tr> 
+
+                    <tr><td>Book Type: </td><td>
+                            <select>
+                                <option selected="">None</option>
+                                <option>Hardcover</option>
+                                <option>Paperback</option>
+                                <option>Pdf</option>
+                                <option>ePub</option>
+                                <option>Kindle</option>
+                                <option>Chm</option>
+                            </select>
+                        </td></tr>
+
+                    <tr><td>Book Genre: </td><td>
+                            <select>
+
+                                <option selected="">None</option>
+                                <option>Adventure</option>
+                                <option>Fantasy</option>
+                                <option>Biography</option>
+                                <option>Drama</option>
+                                <option>Poetry</option>
+                                <option>Science</option>
+                                <option>History</option>
+                            </select>
+                        </td></tr>
+
+                    <tr><td>Book Page Quality: </td><td>
+                            <select>
+                                <option selected="">None</option>
+                                <option>Cast coated</option>
+                                <option>Gloss</option>
+                                <option>Dull</option>
+                                <option>Silk</option>
+                                <option>Matte</option>
+                                <option>Recycled</option>
+
+                            </select>
+                        </td></tr>
+                    <tr><td></td><td><input type="submit" name="authenticationpage_authenticate" value="INSERT"></td></tr>
+                    <tr><td></td><td><input type="submit" name="authenticationpage_authenticate" value="UPDATE"></td></tr>
+                    <tr><td></td><td><input type="submit" name="authenticationpage_authenticate" value="DELETE"></td></tr>
+
+                </table>
+            </form>
+
+            <br>
+            <hr>
+
+            <h4>Authors</h4>
+            <form>
+                <table class="tablecenterdwithborder">
+                    <tr><td>ISBN: </td><td><input class = "inputlarge" type="text"></td></tr> 
+                    <tr><td>SSN: </td><td><input class = "inputlarge" type="text"></td></tr> 
+                    <tr><td>Name: </td><td><input class = "inputlarge" type="text"></td></tr> 
+                    <tr><td></td><td><input type="submit" value="Insert"></td></tr>
+                </table>
+            </form>
+
+            <br>
+            <hr>
+            <h4>Reports</h4>
+            
+            <form>
+
+                <table class="tablecenterdwithborder" >
+                    
+                    <tr><td></td><td><input type="submit" value="Ebooks Report"></td></tr>
+                    
+                    <tr><td></td><td><input type="submit" value="Sold Ebooks"></td></tr>
+                    
+                    <tr><td></td><td><input type="submit" value="Ratings"></td></tr>
+                    
+                </table>
+
+            </form>
+
+
+    </body>
+</html>
