@@ -48,11 +48,11 @@
                         password="sargeras01"/>
                     
                     
-                    <sql:query dataSource="${snapshot}" var="result">
+                    <cip:MySelect dataSource="${snapshot}" resultSet="result">
                         SELECT EBOOKS.USERS.SSN, EBOOKS.USERS."NAME", EBOOKS.USERS.PASSWORD, EBOOKS.USERS."ROLE" 
                         FROM EBOOKS.USERS, EBOOKS.ROLES 
                         WHERE EBOOKS.USERS."ROLE" = EBOOKS.ROLES."ROLE" ORDER BY NAME, ROLE ASC 
-                    </sql:query>
+                    </cip:MySelect>>
                         
                         
                         
