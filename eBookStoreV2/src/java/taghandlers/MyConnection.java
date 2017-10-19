@@ -29,7 +29,7 @@ public class MyConnection extends SimpleTagSupport implements javax.sql.DataSour
     private String password;
     private String myConnection;
 
-    private Connection connectionDB = null;
+    private Connection connectionDB;
 // ========================================================================================================================
 
     /**
@@ -41,6 +41,7 @@ public class MyConnection extends SimpleTagSupport implements javax.sql.DataSour
      */
     @Override
     public void doTag() throws JspException {
+        
         JspWriter out = getJspContext().getOut();
         try {
             // ==================================================================
@@ -50,8 +51,6 @@ public class MyConnection extends SimpleTagSupport implements javax.sql.DataSour
                 Class driverClass = Class.forName(driver);
                 connectionDB = DriverManager.getConnection(url, username, password);
 
-                
-                
                 /* set a session variable that contains the connection. 
                 This can be used to execute Statements, PreparedStatements or
                 CallableStatements on DB.

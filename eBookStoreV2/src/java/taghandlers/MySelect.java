@@ -5,11 +5,12 @@
  */
 package taghandlers;
 
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.servlet.jsp.JspWriter;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.JspFragment;
@@ -32,24 +33,27 @@ public class MySelect extends SimpleTagSupport {
      * Called by the container to invoke this tag. The implementation of this
      * method is provided by the tag library developer, and handles all tag
      * processing, body iteration, etc.
+     *
      * @throws javax.servlet.jsp.JspException
      */
     @Override
     public void doTag() throws JspException {
-        JspWriter out = getJspContext().getOut();
 
+//        JspWriter out = getJspContext().getOut();
         try {
-            // TODO: insert code to write html before writing the body content.
-            // e.g.:
-            //
-            // out.println("<strong>" + attribute_1 + "</strong>");
-            // out.println("    <blockquote>");
-
-            
-            String query = getJspBody().toString();
 
             Statement statement;
             Connection connection;
+
+            JspFragment f = getJspBody();
+
+            StringWriter stringWriter = new StringWriter();
+
+            if (f != null) {
+                f.invoke(stringWriter);
+            }
+
+            String query = stringWriter.getBuffer().toString();
 
             try {
 
@@ -58,28 +62,17 @@ public class MySelect extends SimpleTagSupport {
 
                 resultSetDb = statement.executeQuery(query);
 
+                getJspContext().setAttribute(resultSet, resultSetDb, PageContext.SESSION_SCOPE);
+//                getJspContext().setAttribute(dataSource, dataSourceDb, PageContext.SESSION_SCOPE);
+
             } catch (SQLException ex) {
-                
+
             }
 
-            getJspContext().setAttribute(dataSource, dataSourceDb, PageContext.SESSION_SCOPE);
-            getJspContext().setAttribute(resultSet, resultSetDb, PageContext.SESSION_SCOPE);
-            
-            JspFragment f = getJspBody();
-            if (f != null) {
-                f.invoke(out);
-            }
-
-            // TODO: insert code to write html after writing the body content.
-            // e.g.:
-            //
-            // out.println("    </blockquote>");
         } catch (java.io.IOException ex) {
             throw new JspException("Error in MySelect tag", ex);
         }
     }
-    
-    
 
     public void setDataSource(String dataSource) {
         this.dataSource = dataSource;
@@ -88,12 +81,9 @@ public class MySelect extends SimpleTagSupport {
     public void setResultSet(String resultSet) {
         this.resultSet = resultSet;
     }
-    
-    
-    
-    
-    
-    
-    
 
+    // ========================================================================================================================
+    // ========================================================================================================================
+    // ========================================================================================================================
+   
 }
